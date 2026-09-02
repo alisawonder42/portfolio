@@ -1,76 +1,163 @@
-/**
- * CV page content. Drawn from existing site copy and project pages.
- * Empty hrefs are omitted at render so the page never links nowhere.
- *
- * Fill `siteContent.contact.linkedin` and `siteContent.contact.email` in
- * `site.ts` when those destinations exist. There is no PDF in the repo.
- */
-
 export interface CvExperience {
-  title: string
+  company: string
   role: string
-  place?: string
-  summary: string[]
+  start: string
+  end: string
+  employmentType: string
+  workMode?: string
+  location?: string
+  description: string[]
+}
+
+export interface CvEducation {
+  title: string
+  school: string
+  faculty: string
+  dates: string
 }
 
 export const cvContent = {
-  eyebrow: '01',
-  title: 'CV',
   name: 'Katarina Ranković',
   headline: 'Creative Technologist / Software Engineer',
   profile: [
-    'Katarina Ranković is a creative technologist and software engineer with a BSc in Computer Science and 8+ years of professional experience building games and realtime interactive systems, primarily with Unity and C#.',
-    'Her work combines a strong engineering background with interactive systems, realtime technology, generative AI and physical–digital experiences.',
+    'Creative technologist and software engineer with 8+ years of professional experience building games and realtime interactive systems, primarily with Unity and C#.',
+    'Background across gameplay systems, UI and animation, system architecture and development tools, with additional experience in VR, Unreal Engine/C++, web-based realtime systems and AI-assisted development.',
   ],
   experience: [
     {
-      title: "Lily's Garden",
-      role: 'Gameplay Developer',
-      place: 'Tactile · Copenhagen, Denmark',
-      summary: [
-        'Part of a large live Unity project, with a strong focus on UI, animation and feature development.',
-        'Built and integrated animated UI and interactive sequences using Unity’s Animator and Timeline, working closely with artists and designers.',
-        'Worked in a large existing codebase where architecture, maintainability and unit testing mattered, and contributed to internal tools and workflow improvements.',
+      company: 'Nurture',
+      role: 'Senior AI Unity Platform Engineer',
+      start: 'FEB 2026',
+      end: 'MAY 2026',
+      employmentType: 'Freelance',
+      description: [
+        'Worked on a Unity-based educational platform for children and its transition toward a web-based realtime platform.',
+        'Contributed to gameplay and interactive systems, engine-level architecture and the migration of Unity systems toward a Babylon.js-based web implementation. Used coding agents and AI-assisted development workflows as part of implementation, debugging and iteration.',
       ],
     },
     {
-      title: 'The Book of Distance',
-      role: 'Freelance Unity Developer',
-      summary: [
-        'Joined during the final stage of development, mainly on performance optimization, bug fixing and testing.',
-        'Profiling, gameplay and interaction fixes, testing across target VR devices, and stability work ahead of launch on SteamVR and Oculus.',
+      company: 'LingoLooper',
+      role: 'Full Stack Developer',
+      start: 'AUG 2025',
+      end: 'FEB 2026',
+      employmentType: 'Freelance',
+      description: [
+        'Worked across .NET backend services and a Unity client in a small startup environment.',
+        'Built REST integrations, set up Jenkins CI/CD pipelines and unit testing, and worked closely with the CTO on technical setup, architecture and engineering workflows.',
+      ],
+    },
+    {
+      company: 'Tactile Games',
+      role: 'Game Programmer',
+      start: 'FEB 2023',
+      end: 'MAY 2025',
+      employmentType: 'Full-time',
+      workMode: 'On-site',
+      location: 'Copenhagen, Denmark',
+      description: [
+        'Worked on Lily’s Garden, a large live Unity match-3 game, developing gameplay features, UI and animation using Unity Animator and Timeline.',
+        'Worked closely with artists and designers to implement visual and interactive features, while contributing to architecture, unit testing, internal tools and maintainable development inside a large production codebase.',
+      ],
+    },
+    {
+      company: 'Ironbelly Studios',
+      role: 'Senior Unity Developer',
+      start: 'JAN 2022',
+      end: 'JAN 2023',
+      employmentType: 'Freelance',
+      workMode: 'Remote',
+      description: [
+        'Worked on Unity and VR projects including The Book of Distance, focusing on performance optimization, bug fixing and testing during the final stage of development.',
+        'Also worked with Unreal Engine and C++ on an early prototype.',
+      ],
+    },
+    {
+      company: 'Yboga',
+      role: 'Unity Developer',
+      start: 'NOV 2020',
+      end: 'JAN 2022',
+      employmentType: 'Full-time',
+      workMode: 'Hybrid',
+      location: 'Belgrade, Serbia',
+      description: [
+        'Worked on My Dream Hotel Story, contributing to a Unity project developed from the ground up.',
+        'Focused particularly on gameplay systems and game AI for the small autonomous characters moving through and interacting with the game world, alongside architecture and development tools.',
+      ],
+    },
+    {
+      company: 'Brave Giant',
+      role: 'Unity Team Lead',
+      start: 'OCT 2019',
+      end: 'NOV 2020',
+      employmentType: 'Full-time',
+      workMode: 'On-site',
+      location: 'Novi Sad, Serbia',
+      description: [
+        'Led a small team of Unity developers (about 1–3 people) while remaining hands-on with development.',
+        'Worked on project architecture, technical setup, code reviews and day-to-day technical guidance, collaborating closely with artists and designers across Nora’s Adventures and several HOPA titles.',
+      ],
+    },
+    {
+      company: 'IGT',
+      role: 'Software Engineer I',
+      start: 'MAR 2018',
+      end: 'JUN 2019',
+      employmentType: 'Full-time',
+      workMode: 'On-site',
+      location: 'Belgrade, Serbia',
+      description: [
+        'Developed Unity/C# casino games for regulated markets, working across gameplay, UI and animation within established production and compliance requirements.',
       ],
     },
   ] satisfies CvExperience[],
-  education: [{ title: 'BSc Computer Science' }],
+  education: [
+    {
+      title: 'BSc Computer Science',
+      school: 'University of Novi Sad',
+      faculty: 'Faculty of Sciences',
+      dates: 'Completed 2021',
+    },
+    {
+      title: 'Previous Computer Science studies',
+      school: 'University of Belgrade',
+      faculty: 'Faculty of Mathematics',
+      dates: '2013 — 2016',
+    },
+  ] satisfies CvEducation[],
   capabilities: [
+    { title: 'Realtime', items: ['Unity', 'Unreal Engine'] },
+    { title: 'Code', items: ['C#', 'C++', '.NET'] },
     {
-      title: 'Realtime',
-      items: ['Unity / C#', 'Unreal / C++'],
-    },
-    {
-      title: 'Systems',
+      title: 'Interactive systems',
       items: [
-        'Realtime systems / gameplay systems',
-        'System architecture / clean architecture',
-        'Unit testing / development tools',
+        'Gameplay Systems',
+        'UI Implementation',
+        'Animation',
+        'Unity Animator',
+        'Timeline',
+        'AR / VR',
+        'Realtime Interaction',
       ],
     },
     {
-      title: 'Implementation',
+      title: 'Engineering',
       items: [
-        'UI implementation / animation',
-        'Unity Animator / Timeline',
-        'Working closely with artists and designers',
+        'System Architecture',
+        'Clean Architecture',
+        'Unit Testing',
+        'Development Tools',
+        'Performance Profiling',
+        'CI/CD',
       ],
     },
     {
-      title: 'Creative technology',
-      items: [
-        'Interactive systems',
-        'Generative AI in interactive experiences',
-        'Physical–digital interaction',
-      ],
+      title: 'Workflow / tooling',
+      items: ['Git', 'Jenkins', 'AI-assisted Development'],
     },
+  ],
+  languages: [
+    { name: 'Serbian', level: 'Native' },
+    { name: 'English', level: 'Fluent' },
+    { name: 'Danish', level: 'A2' },
   ],
 } as const

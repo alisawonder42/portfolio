@@ -10,21 +10,10 @@ import { OrganismScene } from '@/organism/OrganismScene'
 import styles from './Home.module.css'
 
 function CloseLinks() {
-  const links = siteContent.close.links
-    .map((link) => {
-      if (link.label === 'LinkedIn')
-        return { ...link, href: siteContent.contact.linkedin as string }
-      if (link.label === 'Contact') return { ...link, href: siteContent.contact.email as string }
-      return { ...link, href: link.href as string }
-    })
-    .filter((link) => link.href)
-
-  if (!links.length) return null
-
   return (
     <footer id="close" className={styles.close}>
       <ul className={styles.closeLinks}>
-        {links.map((link) => (
+        {siteContent.close.links.map((link) => (
           <li key={link.label}>
             {link.external ? (
               <a href={link.href} target="_blank" rel="noreferrer noopener">

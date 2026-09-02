@@ -29,22 +29,19 @@ export const siteContent = {
     title: 'Playground',
     note: 'Experiments and studies',
   },
-  /**
-   * Destinations that are not in the repository stay empty and are omitted
-   * at render. Fill these when they exist — do not invent URLs.
-   *
-   * linkedin: full profile URL, e.g. https://www.linkedin.com/in/…
-   * email: mailto: address, e.g. mailto:name@example.com
-   */
   contact: {
-    linkedin: '',
-    email: '',
+    linkedin: 'https://www.linkedin.com/in/katarina-rankovic-42071b198/',
+    email: 'mailto:katarinarankovic42@gmail.com',
   },
   close: {
     links: [
       { label: 'CV', href: '/cv', external: false },
-      { label: 'LinkedIn', href: '', external: true },
-      { label: 'Contact', href: '', external: true },
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/katarina-rankovic-42071b198/',
+        external: true,
+      },
+      { label: 'Contact', href: 'mailto:katarinarankovic42@gmail.com', external: false },
     ],
   },
   footer: {
