@@ -61,6 +61,8 @@ export interface BloomSceneProps extends MetalBloomProps {
   parallax?: number
   /** Vertical offset of the bloom in scene units (positive moves it up). */
   offsetY?: number
+  /** Uniform scale of the bloom; presets are authored at roughly 2.7 units across. */
+  scale?: number
   environmentIntensity?: number
   /** Extra scene content (lab helpers, etc.). */
   children?: ReactNode
@@ -76,6 +78,7 @@ export function BloomScene({
   pitch = 0.95,
   parallax = 0.12,
   offsetY = 0,
+  scale = 0.58,
   environmentIntensity = 1,
   children,
   ...bloom
@@ -90,12 +93,12 @@ export function BloomScene({
         alpha: true,
         powerPreference: 'high-performance',
         toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1.05,
+        toneMappingExposure: 0.95,
       }}
       style={{ background: 'transparent' }}
     >
       <StudioEnvironment intensity={environmentIntensity} />
-      <group position-y={offsetY}>
+      <group position-y={offsetY} scale={scale}>
         <Stage pitch={pitch} parallax={parallax}>
           <MetalBloom {...bloom} />
         </Stage>

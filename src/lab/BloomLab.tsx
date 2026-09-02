@@ -60,12 +60,38 @@ function toPetalShape(v: PetalValues): PetalShape {
 const FINISH_OPTIONS = Object.keys(METAL_FINISHES) as MetalFinish[]
 
 /**
+ * Initial lab state from the hash query, e.g. `#/lab?direction=lotus&bloom=0.8&spin=0`.
+ * Lets a specific view be shared or captured deterministically.
+ */
+function readLabQuery() {
+  const query = window.location.hash.split('?')[1] ?? ''
+  const params = new URLSearchParams(query)
+  const num = (key: string, fallback: number) => {
+    const v = Number(params.get(key))
+    return params.has(key) && Number.isFinite(v) ? v : fallback
+  }
+  const dir = params.get('direction')
+  return {
+    direction: dir && dir in DIRECTIONS ? (dir as DirectionKey) : DEFAULT_DIRECTION,
+    finish: params.get('finish') as MetalFinish | null,
+    bloom: num('bloom', 0.72),
+    spin: num('spin', 0.06),
+    pitchDeg: num('pitch', 54),
+    distance: num('distance', 2.9),
+    scale: num('scale', 0.58),
+    parallax: num('parallax', 0.12),
+    autoplay: params.get('autoplay') === '1',
+  }
+}
+
+/**
  * Design lab for the Metal Bloom, reachable at `#/lab`. Every geometric,
  * layout and material parameter is live so directions can be compared and
  * tuned, then exported as JSON to become the shipped preset.
  */
 export function BloomLab() {
-  const [direction, setDirection] = useState<DirectionKey>(DEFAULT_DIRECTION)
+  const [initial] = useState(readLabQuery)
+  const [direction, setDirection] = useState<DirectionKey>(initial.direction)
   const preset = DIRECTIONS[direction]
   const [copied, setCopied] = useState(false)
   const latestConfig = useRef<BloomConfig | null>(null)
@@ -88,26 +114,29 @@ export function BloomLab() {
   })
 
   const anim = useControls('Animation', {
-    bloom: { value: 0.72, min: 0, max: 1, step: 0.01 },
-    autoplay: false,
+    bloom: { value: initial.bloom, min: 0, max: 1, step: 0.01 },
+    autoplay: initial.autoplay,
     cycleSeconds: { value: 7, min: 2, max: 20, step: 0.5 },
-    spin: { value: 0.06, min: 0, max: 0.6, step: 0.01, label: 'spin rad/s' },
+    spin: { value: initial.spin, min: 0, max: 0.6, step: 0.01, label: 'spin rad/s' },
     responsiveness: { value: 0.35, min: 0.05, max: 1.5, step: 0.01 },
   })
 
   const camera = useControls('Camera', {
-    pitchDeg: { value: 54, min: 0, max: 90, step: 1, label: 'pitch °' },
-    distance: { value: 2.9, min: 1.5, max: 6, step: 0.05 },
-    parallax: { value: 0.12, min: 0, max: 0.5, step: 0.01 },
+    pitchDeg: { value: initial.pitchDeg, min: 0, max: 90, step: 1, label: 'pitch °' },
+    distance: { value: initial.distance, min: 1.5, max: 6, step: 0.05 },
+    scale: { value: initial.scale, min: 0.2, max: 1.2, step: 0.01 },
+    parallax: { value: initial.parallax, min: 0, max: 0.5, step: 0.01 },
     environment: { value: 1, min: 0, max: 3, step: 0.05 },
   })
 
   const [finishCtl] = useControls(
     'Material',
     () => {
-      const f = METAL_FINISHES[preset.finish]
+      const finish =
+        initial.finish && initial.finish in METAL_FINISHES ? initial.finish : preset.finish
+      const f = METAL_FINISHES[finish]
       return {
-        finish: { value: preset.finish, options: FINISH_OPTIONS },
+        finish: { value: finish, options: FINISH_OPTIONS },
         color: f.color,
         roughness: { value: f.roughness, min: 0, max: 1, step: 0.01 },
         clearcoat: { value: f.clearcoat, min: 0, max: 1, step: 0.01 },
@@ -277,6 +306,7 @@ export function BloomLab() {
         materialParams={materialParams}
         pitch={camera.pitchDeg / RAD}
         distance={camera.distance}
+        scale={camera.scale}
         parallax={camera.parallax}
         environmentIntensity={camera.environment}
       />

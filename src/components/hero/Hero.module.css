@@ -145,6 +145,6 @@
   }
   .canvas :global(canvas) {
     /* Push the bloom to the right half on wide screens so copy and flower share the frame. */
-    transform: translateX(18%);
+    transform: translateX(24%);
   }
 }

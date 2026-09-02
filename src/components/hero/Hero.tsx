@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section ref={ref} className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.canvas} aria-hidden="true">
-        <BloomScene config={config} getBloom={getBloom} offsetY={-0.05} />
+        <BloomScene config={config} getBloom={getBloom} offsetY={-0.02} scale={0.62} />
       </div>
       <div className={`container ${styles.copy}`}>
         <p className="eyebrow">{siteContent.hero.eyebrow}</p>
