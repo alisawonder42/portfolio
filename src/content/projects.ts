@@ -57,6 +57,8 @@ export interface Project {
   location?: string
   /** Shown as Project type when it differs from the homepage `type` line. */
   kindLabel?: string
+  /** Credit line under the spec, e.g. a collaboration. */
+  collaboration?: string
   /** Only what Katarina did. */
   contribution?: string[]
   sections?: ProjectSection[]
@@ -69,17 +71,17 @@ export const projects: Project[] = [
   {
     slug: 'flat',
     title: 'FLAT',
-    type: 'Interactive Installation / Generative AI',
-    kindLabel: 'Interactive Installation / Generative AI',
+    type: 'Interactive Gallery Installation / Generative AI',
+    kindLabel: 'Interactive Gallery Installation / Generative AI',
     kind: 'independent',
+    collaboration: 'Created in collaboration with painter Mladen Ilić',
     overview:
-      'FLAT is an interactive installation developed in collaboration with painter Mladen Ilić, connecting a physical painting, visitor input, generative AI, and nine synchronized display tablets.',
+      'FLAT is a gallery installation exploring the distance between a physical artwork and its digital interpretation through human perception and generative AI.',
     sections: [
       {
         content: [
-          'I built a mobile web experience accessed through a QR code, where visitors describe the painting in their own words. The original image is never sent to the model — only the visitor’s text is used to generate a new visual interpretation. The result is queued and automatically assigned to one of nine portrait displays.',
-          'The system uses React/Vite, Supabase, OpenAI Image API, and a Capacitor Android kiosk app for the gallery tablets. The tablets handle device authentication, job assignment, local image caching, and fullscreen display.',
-          'I developed the system using coding agents as part of the implementation workflow, especially while building and iterating on the web, backend, and kiosk components.',
+          'Visitors scan a QR code and describe the physical painting from their phones. The AI never sees the original work, it receives only the visitor’s description and generates a new interpretation, which is automatically displayed on one of nine tablets beside the painting.',
+          'I designed and developed the technical system: the mobile web interface, generative pipeline, backend and Android kiosk app controlling the gallery displays. The system uses React/Vite, Supabase, OpenAI Image API and Capacitor, and was developed with coding agents.',
         ],
       },
     ],

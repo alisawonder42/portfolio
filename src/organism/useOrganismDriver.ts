@@ -39,7 +39,7 @@ export function useOrganismDriver() {
     const heroTravel = Math.min(1, Math.max(0, window.scrollY / (vh * 0.85)))
     const bloom1Target = sectionOpen('projects')
     const bloom2Target = sectionOpen('playground')
-    const bloom3Target = sectionOpen('about')
+    const bloom3Target = sectionOpen('close')
     const growthTarget = Math.min(
       1,
       0.22 * heroTravel + 0.26 * bloom1Target + 0.26 * bloom2Target + 0.26 * bloom3Target,
