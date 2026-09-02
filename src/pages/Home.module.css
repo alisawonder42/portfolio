@@ -1,0 +1,116 @@
+.workGrid {
+  display: grid;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.workCard {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-6);
+}
+
+.workLink {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.workThumb {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(80% 120% at 20% 0%, rgba(223, 230, 255, 0.08), transparent 60%), var(--bg-elev);
+  border: 1px solid var(--line);
+  transition: border-color var(--dur) var(--ease-out);
+}
+
+.workLink:hover .workThumb {
+  border-color: var(--line-strong);
+}
+
+.workMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.workTitle {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.workRole {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  white-space: nowrap;
+}
+
+.workSummary {
+  color: var(--fg-muted);
+  max-width: 56ch;
+}
+
+.prose {
+  display: grid;
+  gap: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--fg-muted);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+.contact {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.email {
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-tight);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.email:hover {
+  text-decoration-color: var(--fg);
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--fg-muted);
+}
+
+.socials a:hover {
+  color: var(--fg);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--line);
+  color: var(--fg-faint);
+  font-size: var(--text-sm);
+}
+
+.labLink {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.labLink:hover {
+  color: var(--fg);
+}
