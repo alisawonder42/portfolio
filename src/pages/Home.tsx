@@ -1,4 +1,4 @@
-import { About } from '@/components/About'
+import { Link } from '@/app/Link'
 import { Hero } from '@/components/hero/Hero'
 import { Nav } from '@/components/Nav'
 import { PlaygroundIndex } from '@/components/PlaygroundIndex'
@@ -9,8 +9,41 @@ import { OrganismScene } from '@/organism/OrganismScene'
 
 import styles from './Home.module.css'
 
+function CloseLinks() {
+  const links = siteContent.close.links
+    .map((link) => {
+      if (link.label === 'LinkedIn')
+        return { ...link, href: siteContent.contact.linkedin as string }
+      if (link.label === 'Contact') return { ...link, href: siteContent.contact.email as string }
+      return { ...link, href: link.href as string }
+    })
+    .filter((link) => link.href)
+
+  if (!links.length) return null
+
+  return (
+    <footer id="close" className={styles.close}>
+      <ul className={styles.closeLinks}>
+        {links.map((link) => (
+          <li key={link.label}>
+            {link.external ? (
+              <a href={link.href} target="_blank" rel="noreferrer noopener">
+                {link.label} <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <Link href={link.href}>
+                {link.label} <span aria-hidden="true">↗</span>
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    </footer>
+  )
+}
+
 export function Home() {
-  const { work, playground, about, footer } = siteContent
+  const { work, playground } = siteContent
   return (
     <>
       <div className={styles.stage} aria-hidden="true">
@@ -32,14 +65,8 @@ export function Home() {
         >
           <PlaygroundIndex />
         </Section>
-
-        <Section id="about" eyebrow={about.eyebrow} title={about.title}>
-          <About />
-        </Section>
       </main>
-      <footer className={styles.footer}>
-        <p>{footer.note}</p>
-      </footer>
+      <CloseLinks />
     </>
   )
 }

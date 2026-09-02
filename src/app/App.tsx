@@ -4,6 +4,7 @@ import { projectBySlug } from '@/content/projects'
 import { Home } from '@/pages/Home'
 import { NotFound } from '@/pages/NotFound'
 import { ProjectPage } from '@/pages/ProjectPage'
+import { CvPage } from '@/pages/CvPage'
 
 import { useRoute } from './routing'
 
@@ -24,6 +25,8 @@ export function App() {
     const project = projectBySlug(route.slug)
     return project ? <ProjectPage project={project} /> : <NotFound />
   }
+
+  if (route.name === 'cv') return <CvPage />
 
   if (route.name === 'notFound') return <NotFound />
 
