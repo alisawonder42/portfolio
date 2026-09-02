@@ -61,7 +61,7 @@ export const cvContent = {
     },
     {
       company: 'Ironbelly Studios',
-      role: 'Senior Unity Developer',
+      role: 'Game Programmer',
       start: 'JAN 2022',
       end: 'JAN 2023',
       employmentType: 'Freelance',

@@ -128,8 +128,9 @@ export const projects: Project[] = [
     title: 'The Book of Distance',
     type: 'Narrative VR experience',
     kindLabel: 'Virtual Reality',
-    credit: 'Freelance Unity Developer',
+    credit: 'Game Programmer',
     kind: 'professional',
+    collaboration: 'Freelance, Ironbelly Studios',
     role: 'A narrative VR experience by Randall Okita, produced by the National Film Board of Canada.',
     contribution: [
       'I worked on The Book of Distance during the final stage of development, mainly on performance optimization, bug fixing, and testing.',
@@ -156,7 +157,7 @@ export const projects: Project[] = [
     title: "Lily's Garden",
     type: 'Mobile game',
     kindLabel: 'Live mobile match-3 game',
-    credit: 'Gameplay Developer',
+    credit: 'Game Programmer',
     location: 'Copenhagen, Denmark',
     kind: 'professional',
     contribution: [
