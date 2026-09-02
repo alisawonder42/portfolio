@@ -132,6 +132,9 @@ export function ProjectPage({ project }: { project: Project }) {
             <p className={styles.meta}>{meta}</p>
           )}
           {project.tags?.length ? <p className={styles.tags}>{project.tags.join(' · ')}</p> : null}
+          {project.collaboration ? (
+            <p className={styles.collaboration}>{project.collaboration}</p>
+          ) : null}
         </header>
 
         {project.overview ? <p className={styles.overview}>{project.overview}</p> : null}
