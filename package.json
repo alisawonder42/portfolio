@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc -b",
     "deploy": "npm run build && wrangler deploy",
-    "deploy:check": "npm run build && wrangler deploy --dry-run"
+    "deploy:check": "npm run build && wrangler deploy --dry-run",
+    "deploy:preview": "npm run build && wrangler deploy --env preview"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.8",

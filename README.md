@@ -32,21 +32,31 @@ npm run format     # prettier
 
 The site is deployed to Cloudflare Workers (static assets) at
 [katarinarankovic.fyi](https://katarinarankovic.fyi). Configuration lives in
-`wrangler.jsonc`; `public/_headers` and `public/_redirects` are copied into
-`dist/` and applied at the edge (long-lived caching for hashed assets, `www` →
-apex redirect).
+`wrangler.jsonc` (including the account id, which is not secret).
+`public/_headers` is copied into `dist/` and applied at the edge (long-lived
+caching for hashed assets, basic security headers). `worker/index.ts` is a
+few-line edge script that redirects `www.` to the apex and otherwise serves the
+static assets; static `_redirects` cannot express cross-host redirects.
 
 - **CI:** every push to `main` runs `.github/workflows/deploy.yml`, which
-  lints, builds and runs `wrangler deploy`. It needs two repository secrets:
-  `CLOUDFLARE_API_TOKEN` (a token with the _Workers Scripts: Edit_, _Workers
-  Routes: Edit_ and _DNS: Edit_ permissions on the zone) and
-  `CLOUDFLARE_ACCOUNT_ID`.
-- **Manual:** `npm run deploy` with the same two variables exported (or after
+  lints, builds and runs `wrangler deploy`. It needs one repository secret,
+  `CLOUDFLARE_API_TOKEN`: a custom token with _Account → Workers Scripts:
+  Edit_, _Zone → Workers Routes: Edit_ and _Zone → DNS: Edit_ on the
+  `katarinarankovic.fyi` zone.
+- **Manual:** `npm run deploy` with `CLOUDFLARE_API_TOKEN` exported (or after
   `npx wrangler login`). `npm run deploy:check` does a dry run.
+- **Preview:** `npm run deploy:preview` publishes to a `*.workers.dev` URL
+  without touching the custom domain. Add `-- --temporary` to deploy to a
+  throwaway Cloudflare account with no login at all (expires after an hour
+  unless claimed).
 
 The custom-domain routes in `wrangler.jsonc` make Wrangler create the DNS
 records for `katarinarankovic.fyi` and `www.katarinarankovic.fyi` automatically
 on the first deploy, provided the zone is in the same Cloudflare account.
+
+`.cursor/mcp.json` registers Cloudflare's MCP servers so Cloud Agents working
+on this repo can inspect the account (Workers, builds, logs) once the MCP is
+authorised.
 
 ## Project layout
 
