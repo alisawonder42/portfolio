@@ -164,6 +164,22 @@
   object-fit: contain;
   object-position: left center;
   display: block;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.mediaLink {
+  display: block;
+  color: inherit;
+}
+
+.mediaLink:hover img,
+.mediaLink:focus-visible img {
+  opacity: 0.88;
+}
+
+.mediaLink:focus-visible {
+  outline: 1px solid var(--fg-faint);
+  outline-offset: 4px;
 }
 
 .figure figcaption {

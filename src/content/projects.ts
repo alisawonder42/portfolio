@@ -28,6 +28,8 @@ export interface ProjectMedia {
   src: string
   alt: string
   caption?: string
+  /** If set, the image or video opens this URL in a new tab. */
+  href?: string
 }
 
 export interface ProjectLink {
@@ -51,6 +53,8 @@ export interface Project {
   role?: string
   /** Shown as Role on the project page, e.g. Freelance Unity Developer. */
   credit?: string
+  /** Shown as Location on the project page. */
+  location?: string
   /** Shown as Project type when it differs from the homepage `type` line. */
   kindLabel?: string
   /** Only what Katarina did. */
@@ -162,33 +166,37 @@ export const projects: Project[] = [
         kind: 'image',
         src: '/projects/the-book-of-distance/poster.jpg',
         alt: 'Promotional poster for The Book of Distance: a silhouetted figure on a ship looking out over a moonlit sea.',
+        href: 'https://www.meta.com/experiences/pcvr/the-book-of-distance/3726132664124874/',
       },
       {
         kind: 'image',
         src: '/projects/the-book-of-distance/still.png',
         alt: 'Still from The Book of Distance: a figure stands in a shadowed room looking out through a circular opening into a garden.',
+        href: 'https://www.meta.com/experiences/pcvr/the-book-of-distance/3726132664124874/',
       },
     ],
   },
   {
     slug: 'lilys-garden',
     title: "Lily's Garden",
-    type: 'Realtime Game Systems · LiveOps',
+    type: 'Mobile game',
+    kindLabel: 'Live mobile match-3 game',
+    credit: 'Gameplay Developer',
+    location: 'Copenhagen, Denmark',
     kind: 'professional',
-    overview:
-      'A live mobile title, built and maintained by a team under a continuous release cycle. It is here for the realtime systems depth rather than the game itself.',
-    role: 'Katarina worked as part of the development team.',
     contribution: [
-      'Live gameplay features',
-      'LiveOps',
-      'Weekly releases',
-      'Work across a large production codebase',
-      'Architecture decisions',
-      'Stability',
-      'Internal tools',
-      'Workflow optimization',
+      'At Tactile, I worked on Lily’s Garden as part of a large live Unity project, with a strong focus on UI, animation, and feature development.',
+      'A large part of my work involved building and integrating animated UI and interactive sequences using Unity’s Animator and Timeline, working closely with artists and designers to turn visual ideas into reliable in-game systems.',
+      'I also worked within a large existing codebase where clean architecture, maintainability, and unit testing were important parts of development. Alongside feature work, I contributed to internal tools and workflow improvements that made iteration easier across disciplines.',
     ],
-    media: [],
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/lilys-garden/title.png',
+        alt: 'Lily’s Garden title art: the game logo over a painted garden.',
+        href: 'https://play.google.com/store/apps/details/Lily_s_Garden?id=dk.tactile.lilysgarden&hl=sr&pli=1',
+      },
+    ],
   },
 ]
 

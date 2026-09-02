@@ -1,6 +1,6 @@
 import { Link } from '@/app/Link'
 import { Nav } from '@/components/Nav'
-import { nextProject, projectPath, type Project, type ProjectSection } from '@/content/projects'
+import { nextProject, projectPath, type Project, type ProjectMedia, type ProjectSection } from '@/content/projects'
 import { siteContent } from '@/content/site'
 
 import styles from './ProjectPage.module.css'
@@ -55,10 +55,33 @@ function Contribution({ items }: { items: string[] }) {
   )
 }
 
+function MediaFigure({ item }: { item: ProjectMedia }) {
+  const media =
+    item.kind === 'video' ? (
+      <video src={item.src} controls playsInline preload="metadata" />
+    ) : (
+      <img src={item.src} alt={item.alt} loading="lazy" />
+    )
+
+  return (
+    <figure className={styles.figure}>
+      {item.href ? (
+        <a className={styles.mediaLink} href={item.href} target="_blank" rel="noreferrer noopener">
+          {media}
+        </a>
+      ) : (
+        media
+      )}
+      {item.caption ? <figcaption>{item.caption}</figcaption> : null}
+    </figure>
+  )
+}
+
 export function ProjectPage({ project }: { project: Project }) {
   const upcoming = nextProject(project.slug)
   const meta = [project.type, project.year].filter(Boolean).join(' · ')
-  const hasSpec = Boolean(project.kindLabel || project.credit)
+  const hasSpec = Boolean(project.kindLabel || project.credit || project.location)
+  const showType = Boolean(project.type && (!project.kindLabel || project.type !== project.kindLabel))
 
   return (
     <>
@@ -72,10 +95,10 @@ export function ProjectPage({ project }: { project: Project }) {
           <h1 className={styles.title}>{project.title}</h1>
           {hasSpec ? (
             <dl className={styles.spec}>
-              {project.kindLabel ? (
+              {project.location ? (
                 <div>
-                  <dt>Project type</dt>
-                  <dd>{project.kindLabel}</dd>
+                  <dt>Location</dt>
+                  <dd>{project.location}</dd>
                 </div>
               ) : null}
               {project.credit ? (
@@ -84,7 +107,13 @@ export function ProjectPage({ project }: { project: Project }) {
                   <dd>{project.credit}</dd>
                 </div>
               ) : null}
-              {project.type ? (
+              {project.kindLabel ? (
+                <div>
+                  <dt>Project type</dt>
+                  <dd>{project.kindLabel}</dd>
+                </div>
+              ) : null}
+              {showType ? (
                 <div>
                   <dt>Type</dt>
                   <dd>{project.type}</dd>
@@ -124,14 +153,7 @@ export function ProjectPage({ project }: { project: Project }) {
         {project.media?.length ? (
           <div className={styles.media}>
             {project.media.map((item) => (
-              <figure key={item.src} className={styles.figure}>
-                {item.kind === 'video' ? (
-                  <video src={item.src} controls playsInline preload="metadata" />
-                ) : (
-                  <img src={item.src} alt={item.alt} loading="lazy" />
-                )}
-                {item.caption ? <figcaption>{item.caption}</figcaption> : null}
-              </figure>
+              <MediaFigure key={item.src} item={item} />
             ))}
           </div>
         ) : null}
