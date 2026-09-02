@@ -1,0 +1,33 @@
+.section {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  gap: var(--space-12);
+  padding: 22vh var(--gutter) 26vh;
+  max-width: 32rem;
+}
+
+.header {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+}
+
+.body {
+  min-width: 0;
+}
+
+@media (min-width: 60rem) {
+  .section {
+    max-width: 34rem;
+  }
+}

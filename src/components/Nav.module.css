@@ -1,0 +1,43 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  padding: var(--space-5, 1.25rem) var(--gutter);
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+  pointer-events: auto;
+}
+
+.brand {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.links a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.links a:hover {
+  color: var(--fg);
+}
