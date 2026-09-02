@@ -1,5 +1,5 @@
 /**
- * Editorial copy. Project entries remain lightly sketched until real work is supplied.
+ * Site-level copy. Project and experiment content lives in `projects.ts`.
  */
 export const siteContent = {
   meta: {
@@ -9,9 +9,9 @@ export const siteContent = {
   nav: {
     brand: 'Katarina Ranković',
     links: [
-      { label: 'Projects', href: '#projects' },
-      { label: 'Playground', href: '#playground' },
-      { label: 'About', href: '#about' },
+      { label: 'Projects', href: '/#projects' },
+      { label: 'Playground', href: '/#playground' },
+      { label: 'About', href: '/#about' },
     ],
   },
   hero: {
@@ -21,43 +21,51 @@ export const siteContent = {
   work: {
     eyebrow: '01',
     title: 'Projects',
-    items: [
-      {
-        title: 'Selected work',
-        role: 'To be added',
-        summary:
-          'A first collection of commissioned and self-initiated pieces. Titles and stills will sit here.',
-        href: '#projects',
-      },
-      {
-        title: 'Installations',
-        role: 'To be added',
-        summary:
-          'Room-scale and site-specific systems, including work that depends on a visitor being physically present.',
-        href: '#projects',
-      },
-    ],
+    note: 'Selected work',
   },
   playground: {
     eyebrow: '02',
     title: 'Playground',
-    items: [
-      {
-        title: 'Sketches',
-        summary: 'Smaller studies, failed directions, and things that do not yet have a name.',
-      },
-      {
-        title: 'Systems',
-        summary: 'Tools, toys, and procedural experiments that sit beside the finished work.',
-      },
-    ],
+    note: 'Experiments and studies',
   },
   about: {
     eyebrow: '03',
     title: 'About',
-    body: [
-      'I work where software, image and physical space overlap — building things that can be walked around, played with, or simply looked at for a while.',
-      'Based between studio practice and digital systems. More writing and a fuller biography will follow.',
+    bio: [
+      'Katarina Ranković is a creative technologist and software engineer with a BSc in Computer Science and 8+ years of professional experience building games and realtime interactive systems, primarily with Unity and C#.',
+      'Based in Serbia, she works across interactive systems, realtime technology and experimental digital experiences, combining a strong engineering background with work in AI-enabled interaction, participatory systems and physical–digital formats.',
+    ],
+    background: {
+      title: 'Background',
+      body: [
+        'Professional experience across games, VR and realtime software, from gameplay systems and system architecture to development tools and production-scale codebases.',
+      ],
+    },
+    capabilities: [
+      { title: 'Realtime', items: ['Unity / Unreal Engine'] },
+      { title: 'Code', items: ['C# / C++'] },
+      {
+        title: 'Systems',
+        items: [
+          'System Architecture / Gameplay Systems',
+          'Unit Testing / Development Tools / .NET',
+        ],
+      },
+      {
+        title: 'Creative Technology',
+        items: [
+          'Interactive Systems / Generative AI',
+          'Physical–Digital Interaction / Experimental Interfaces',
+        ],
+      },
+    ],
+    /**
+     * Destinations are not in the repository. Empty hrefs are filtered out at
+     * render so the site never shows a link that goes nowhere.
+     */
+    contact: [
+      { label: 'CV', href: '' },
+      { label: 'Email', href: '' },
     ],
   },
   footer: {

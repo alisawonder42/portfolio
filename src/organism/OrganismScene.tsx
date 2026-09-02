@@ -58,16 +58,24 @@ function OrganismRig() {
   const vine = useRef<THREE.Group>(null)
   const [pose, setPose] = useState({ growth: 0, bloom1: 0, bloom2: 0, bloom3: 0 })
 
-  useFrame((_, delta) => {
+  useFrame((frame, delta) => {
     const dt = Math.min(delta, 1 / 20)
     const s = tick(dt)
     const node = vine.current
     if (node) {
       // Pull back in step with the stem so the growing tip stays in frame.
       const framing = smoothstep(0, 0.78, s.growth)
-      node.position.x = THREE.MathUtils.lerp(1.24, 1.14, framing)
-      node.position.y = THREE.MathUtils.lerp(2.02, 0.02, framing)
-      node.scale.setScalar(THREE.MathUtils.lerp(0.86, 0.42, framing))
+      // A portrait viewport is far narrower in world units than a landscape one,
+      // so the offset that seats the vine beside desktop copy pushes it off a
+      // phone screen entirely. Draw it in and shrink it as the frame narrows.
+      const aspect = frame.size.width / Math.max(frame.size.height, 1)
+      const narrow = THREE.MathUtils.clamp((1.1 - aspect) / 0.5, 0, 1)
+
+      node.position.x = THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.24, 1.14, framing), 0.1, narrow)
+      node.position.y = THREE.MathUtils.lerp(2.02, 0.02, framing) + 0.45 * narrow
+      node.scale.setScalar(
+        THREE.MathUtils.lerp(0.86, 0.42, framing) * THREE.MathUtils.lerp(1, 0.62, narrow),
+      )
     }
 
     setPose((prev) => {

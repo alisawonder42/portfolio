@@ -6,7 +6,23 @@
   pointer-events: none;
 }
 
+/* Page copy scrolls under the nav, so the band it sits in needs to clear. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4.5rem;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg) 80%, transparent) 55%,
+    transparent 100%
+  );
+}
+
 .nav {
+  position: relative;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -20,6 +36,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-muted);
+  white-space: nowrap;
 }
 
 .links {
@@ -40,4 +57,24 @@
 
 .links a:hover {
   color: var(--fg);
+}
+
+/*
+ * Below this width the name and the three links cannot share a line without the
+ * last link running off the screen. The hero states the name directly underneath,
+ * so the nav gives its space to the links.
+ */
+@media (max-width: 30rem) {
+  .brand {
+    display: none;
+  }
+
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .links {
+    gap: var(--space-4);
+    letter-spacing: 0.06em;
+  }
 }
