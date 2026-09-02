@@ -31,4 +31,6 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy
+          # The config defines a preview environment, so wrangler refuses to
+          # guess a target. An empty --env selects the top-level one.
+          command: deploy --env=""
