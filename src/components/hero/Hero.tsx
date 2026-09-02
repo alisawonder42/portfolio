@@ -1,20 +1,17 @@
 import { useRef } from 'react'
 
-import { BloomScene, DEFAULT_DIRECTION, DIRECTIONS } from '@/bloom'
 import { siteContent } from '@/content/site'
+import { PrototypeScene } from '@/organism/PrototypeScene'
 
 import styles from './Hero.module.css'
-import { useHeroBloom } from './useHeroBloom'
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
-  const getBloom = useHeroBloom(ref)
-  const config = DIRECTIONS[DEFAULT_DIRECTION]
 
   return (
     <section ref={ref} className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.canvas} aria-hidden="true">
-        <BloomScene config={config} getBloom={getBloom} offsetY={-0.02} scale={0.62} />
+        <PrototypeScene />
       </div>
       <div className={`container ${styles.copy}`}>
         <p className="eyebrow">{siteContent.hero.eyebrow}</p>
