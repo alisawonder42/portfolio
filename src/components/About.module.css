@@ -3,12 +3,12 @@
   gap: var(--space-12);
 }
 
-/* Wider than the default column so the introduction reads as prose. */
+/* Wider than the project index so the introduction reads as prose. */
 .bio {
   display: grid;
   gap: var(--space-5, 1.25rem);
   color: var(--fg-muted);
-  max-width: 28rem;
+  max-width: 30rem;
   text-wrap: pretty;
 }
 
@@ -34,7 +34,7 @@
   display: grid;
   gap: var(--space-4);
   color: var(--fg-muted);
-  max-width: 28rem;
+  max-width: 30rem;
   text-wrap: pretty;
 }
 
@@ -67,7 +67,7 @@
   list-style: none;
   display: grid;
   gap: 0.15rem;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   line-height: 1.5;
   color: var(--fg-muted);
 }
