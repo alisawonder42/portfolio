@@ -69,53 +69,27 @@ export const projects: Project[] = [
   {
     slug: 'flat',
     title: 'FLAT',
-    type: 'Interactive installation',
-    tags: ['AI', 'Participation', 'Physical–Digital'],
+    type: 'Interactive Installation / Generative AI',
+    kindLabel: 'Interactive Installation / Generative AI',
     kind: 'independent',
     overview:
-      'FLAT explores how direct experience changes as it moves through perception, language and digital media.',
+      'FLAT is an interactive installation developed in collaboration with painter Mladen Ilić, connecting a physical painting, visitor input, generative AI, and nine synchronized display tablets.',
     sections: [
       {
-        title: 'The installation',
         content: [
-          'At the centre of the installation is a painting, The Burden of a Conscious Mind — 80 × 80 cm, oil and gesso on canvas. Its surface is heavily material, close to relief, built through layers, texture and surface depth that carry the traces of a long physical process.',
-          'Nine screens are positioned beside it.',
-        ],
-      },
-      {
-        title: 'Interaction',
-        steps: [
-          'A visitor observes the physical painting.',
-          'Using a phone, they describe what they see.',
-          'The generative model receives only that description — it never sees the painting.',
-          'The language is used to generate a new visual interpretation.',
-          'The interpretation appears digitally within the installation.',
-        ],
-      },
-      {
-        title: 'System',
-        content: [
-          'The installation connects physical and digital space through several interaction elements:',
-        ],
-        items: ['Phone interaction', 'NFC', 'QR', 'Kiosk-style interfaces', 'Multiple screens'],
-      },
-      {
-        title: 'Translation',
-        highlight: 'physical object → perception → language → digital data → digital image',
-        content: [
-          'At each transition something is transferred, something changes, and something disappears.',
-          'Experience becomes description. Description becomes information. Information becomes another image.',
-        ],
-      },
-      {
-        title: 'Attention',
-        content: [
-          'The process appears to digitally flatten the physical artwork. It also produces the opposite effect. To describe the painting properly, a visitor has to slow down and pay closer attention to texture, surface, light, colour, detail and depth.',
-          'The digital system redirects attention back toward the qualities it cannot fully transmit: materiality, depth, time, presence.',
+          'I built a mobile web experience accessed through a QR code, where visitors describe the painting in their own words. The original image is never sent to the model — only the visitor’s text is used to generate a new visual interpretation. The result is queued and automatically assigned to one of nine portrait displays.',
+          'The system uses React/Vite, Supabase, OpenAI Image API, and a Capacitor Android kiosk app for the gallery tablets. The tablets handle device authentication, job assignment, local image caching, and fullscreen display.',
+          'I developed the system using coding agents as part of the implementation workflow, especially while building and iterating on the web, backend, and kiosk components.',
         ],
       },
     ],
-    media: [],
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/flat/installation.gif',
+        alt: 'FLAT in a gallery: a square painting on the left and a three-by-three grid of portrait tablets on the right.',
+      },
+    ],
   },
   {
     slug: 'shrinkme',
