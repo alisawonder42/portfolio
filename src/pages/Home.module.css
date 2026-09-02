@@ -24,6 +24,23 @@
   );
 }
 
+/*
+ * The desktop scrim clears a column on the left. On a phone the copy runs the
+ * full width and the organism sits above it, so the wash has to come from the
+ * bottom instead.
+ */
+@media (max-width: 48rem) {
+  .stage::after {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 36%,
+      color-mix(in srgb, var(--bg) 86%, transparent) 56%,
+      var(--bg) 72%
+    );
+  }
+}
+
 .main {
   position: relative;
   z-index: 1;
