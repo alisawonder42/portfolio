@@ -22,6 +22,15 @@
   letter-spacing: var(--tracking-tight);
 }
 
+.note {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-top: var(--space-2);
+}
+
 .body {
   min-width: 0;
 }

@@ -1,0 +1,85 @@
+.about {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.bio {
+  display: grid;
+  gap: var(--space-5, 1.25rem);
+  color: var(--fg-muted);
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
+.bio p:first-child {
+  color: var(--fg);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.blockTitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.practice {
+  color: var(--fg-muted);
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
+.capabilities {
+  margin: 0;
+  display: grid;
+  gap: var(--space-5, 1.25rem);
+}
+
+.group {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.groupTitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.groupItems {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  max-width: 44ch;
+}
+
+.contact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact a {
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 2px;
+  transition: border-color var(--dur) var(--ease-out);
+}
+
+.contact a:hover {
+  border-color: var(--fg);
+}
