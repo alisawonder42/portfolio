@@ -10,7 +10,7 @@
  */
 
 export interface ProjectSection {
-  title: string
+  title?: string
   /** Body paragraphs. */
   content?: string[]
   /** An ordered flow, rendered as a numbered list. */
@@ -120,33 +120,32 @@ export const projects: Project[] = [
   {
     slug: 'shrinkme',
     title: 'ShrinkMe',
-    type: 'AR · AI · Voice Interaction',
+    type: 'AR / AI Interactive Prototype',
+    kindLabel: 'AR / AI Interactive Prototype',
     kind: 'independent',
     overview:
-      'ShrinkMe is an experimental AR prototype, made quickly as an exploration of conversational characters placed into physical space.',
+      'ShrinkMe is a small AR experiment I built as a playful parody of wellness and therapy apps, using sarcastic virtual therapists instead of reassuring ones.',
     sections: [
       {
-        title: 'The prototype',
         content: [
-          'Virtual therapist characters are placed into the user’s surroundings, spoken to, and answer with generated dialogue that is voiced and animated.',
-        ],
-        items: [
-          'AR',
-          'Virtual therapist characters',
-          'Voice input and speech interaction',
-          'AI-generated dialogue',
-          'Text-to-speech responses',
-          'Character animation',
-        ],
-      },
-      {
-        title: 'Scope',
-        content: [
-          'This is a prototype and an experiment. It is not a finished therapy platform, it has not been clinically validated, and it is not a medical product.',
+          'Built in Unity with AR Foundation, the prototype lets users place virtual therapist characters into their surroundings, speak to them through a microphone, and receive generated spoken responses. The characters were intentionally designed to be dry, sarcastic, and slightly unhelpful, turning the familiar wellness-app interaction into something more absurd.',
+          'The project combines voice input, generative AI, AR interaction, and Mixamo character animation into a single realtime experience.',
+          'It was a rapid experiment in conversational character design and in how AI-driven interactions can feel when they move out of a traditional chat interface and into physical space.',
         ],
       },
     ],
-    media: [],
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/shrinkme/logo.png',
+        alt: 'ShrinkMe logo: a cartoon therapist crouched inside a wireframe cube, with the words SHRINK ME underneath.',
+      },
+      {
+        kind: 'image',
+        src: '/projects/shrinkme/ar-mockup.png',
+        alt: 'Phone mockup of ShrinkMe: a virtual therapist character standing on a picnic blanket in a park.',
+      },
+    ],
   },
   {
     slug: 'the-book-of-distance',

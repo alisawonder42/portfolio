@@ -14,7 +14,7 @@ import styles from './ProjectPage.module.css'
 function SectionBlock({ section }: { section: ProjectSection }) {
   return (
     <section className={styles.section}>
-      <h2 className={styles.sectionTitle}>{section.title}</h2>
+      {section.title ? <h2 className={styles.sectionTitle}>{section.title}</h2> : null}
       <div className={styles.sectionBody}>
         {section.highlight ? <p className={styles.highlight}>{section.highlight}</p> : null}
         {section.content?.map((paragraph) => (
@@ -155,7 +155,7 @@ export function ProjectPage({ project }: { project: Project }) {
         ) : null}
 
         {project.sections?.map((section) => (
-          <SectionBlock key={section.title} section={section} />
+          <SectionBlock key={section.title ?? section.content?.[0]} section={section} />
         ))}
 
         {project.media?.length ? (
