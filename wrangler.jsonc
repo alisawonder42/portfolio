@@ -20,10 +20,9 @@
     // be answered straight from the asset store.
     "run_worker_first": true,
   },
-  "routes": [
-    { "pattern": "katarinarankovic.fyi", "custom_domain": true },
-    { "pattern": "www.katarinarankovic.fyi", "custom_domain": true },
-  ],
+  // Custom domains are already attached to this service through Cloudflare's
+  // Workers Domains API. Keep them out of this file so deploy-only tokens do
+  // not also need permission to enumerate legacy Workers Routes.
   "workers_dev": false,
   "observability": { "enabled": true },
   "env": {

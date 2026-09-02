@@ -41,8 +41,8 @@ static assets; static `_redirects` cannot express cross-host redirects.
 - **CI:** every push to `main` runs `.github/workflows/deploy.yml`, which
   lints, builds and runs `wrangler deploy`. It needs one repository secret,
   `CLOUDFLARE_API_TOKEN`: a custom token with _Account → Workers Scripts:
-  Edit_, _Zone → Workers Routes: Edit_ and _Zone → DNS: Edit_ on the
-  `katarinarankovic.fyi` zone.
+  Edit_. The production domains have already been attached to the Worker
+  service, so ordinary code deployments do not need DNS or Routes access.
 - **Manual:** `npm run deploy` with `CLOUDFLARE_API_TOKEN` exported (or after
   `npx wrangler login`). `npm run deploy:check` does a dry run.
 - **Preview:** `npm run deploy:preview` publishes to a `*.workers.dev` URL
@@ -50,9 +50,11 @@ static assets; static `_redirects` cannot express cross-host redirects.
   throwaway Cloudflare account with no login at all (expires after an hour
   unless claimed).
 
-The custom-domain routes in `wrangler.jsonc` make Wrangler create the DNS
-records for `katarinarankovic.fyi` and `www.katarinarankovic.fyi` automatically
-on the first deploy, provided the zone is in the same Cloudflare account.
+The apex and `www` custom domains are attached to the `katarinarankovic-fyi`
+Worker through Cloudflare's Workers Domains API. That association persists
+across deployments; it is intentionally not duplicated in `wrangler.jsonc`,
+because Wrangler otherwise requires permission to enumerate legacy Worker
+Routes on every deploy.
 
 `.cursor/mcp.json` registers Cloudflare's MCP servers so Cloud Agents working
 on this repo can inspect the account (Workers, builds, logs) once the MCP is
