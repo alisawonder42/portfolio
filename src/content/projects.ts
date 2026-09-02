@@ -49,6 +49,10 @@ export interface Project {
   overview?: string
   /** What the project is, for work authored by others. */
   role?: string
+  /** Shown as Role on the project page, e.g. Freelance Unity Developer. */
+  credit?: string
+  /** Shown as Project type when it differs from the homepage `type` line. */
+  kindLabel?: string
   /** Only what Katarina did. */
   contribution?: string[]
   sections?: ProjectSection[]
@@ -143,18 +147,28 @@ export const projects: Project[] = [
   {
     slug: 'the-book-of-distance',
     title: 'The Book of Distance',
-    type: 'Narrative VR Experience',
+    type: 'Narrative VR experience',
+    kindLabel: 'Virtual Reality',
+    credit: 'Freelance Unity Developer',
     kind: 'professional',
-    overview: 'The Book of Distance is a narrative VR work.',
-    role: 'The work was created and directed by others. Katarina joined during the final production phase.',
+    role: 'A narrative VR experience by Randall Okita, produced by the National Film Board of Canada.',
     contribution: [
-      'Optimization',
-      'Profiling',
-      'Bug fixing',
-      'Technical stability',
-      'Realtime rendering and interaction polish',
+      'I worked on The Book of Distance during the final stage of development, mainly on performance optimization, bug fixing, and testing.',
+      'My work included profiling the experience, investigating performance issues, fixing gameplay and interaction bugs, testing the project across target VR devices, and helping improve overall stability before release.',
+      'I worked with the wider development team to help get the project into a solid state for launch on SteamVR and Oculus.',
     ],
-    media: [],
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/the-book-of-distance/poster.jpg',
+        alt: 'Promotional poster for The Book of Distance: a silhouetted figure on a ship looking out over a moonlit sea.',
+      },
+      {
+        kind: 'image',
+        src: '/projects/the-book-of-distance/still.png',
+        alt: 'Still from The Book of Distance: a figure stands in a shadowed room looking out through a circular opening into a garden.',
+      },
+    ],
   },
   {
     slug: 'lilys-garden',

@@ -49,6 +49,32 @@
   color: var(--fg-faint);
 }
 
+.spec {
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.spec > div {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+.spec dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.spec dd {
+  margin: 0;
+  color: var(--fg-muted);
+}
+
 .overview {
   font-family: var(--font-display);
   font-size: clamp(1.15rem, 2vw, 1.5rem);
@@ -134,6 +160,9 @@
 .figure video {
   width: 100%;
   height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  object-position: left center;
   display: block;
 }
 

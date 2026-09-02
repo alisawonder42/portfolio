@@ -33,9 +33,32 @@ function SectionBlock({ section }: { section: ProjectSection }) {
   )
 }
 
+function Contribution({ items }: { items: string[] }) {
+  const asProse = items.some((item) => item.length > 90)
+
+  if (asProse) {
+    return (
+      <>
+        {items.map((item) => (
+          <p key={item}>{item}</p>
+        ))}
+      </>
+    )
+  }
+
+  return (
+    <ul className={styles.contribution}>
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+}
+
 export function ProjectPage({ project }: { project: Project }) {
   const upcoming = nextProject(project.slug)
   const meta = [project.type, project.year].filter(Boolean).join(' · ')
+  const hasSpec = Boolean(project.kindLabel || project.credit)
 
   return (
     <>
@@ -47,7 +70,30 @@ export function ProjectPage({ project }: { project: Project }) {
 
         <header className={styles.header}>
           <h1 className={styles.title}>{project.title}</h1>
-          <p className={styles.meta}>{meta}</p>
+          {hasSpec ? (
+            <dl className={styles.spec}>
+              {project.kindLabel ? (
+                <div>
+                  <dt>Project type</dt>
+                  <dd>{project.kindLabel}</dd>
+                </div>
+              ) : null}
+              {project.credit ? (
+                <div>
+                  <dt>Role</dt>
+                  <dd>{project.credit}</dd>
+                </div>
+              ) : null}
+              {project.type ? (
+                <div>
+                  <dt>Type</dt>
+                  <dd>{project.type}</dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : (
+            <p className={styles.meta}>{meta}</p>
+          )}
           {project.tags?.length ? <p className={styles.tags}>{project.tags.join(' · ')}</p> : null}
         </header>
 
@@ -66,11 +112,7 @@ export function ProjectPage({ project }: { project: Project }) {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>My contribution</h2>
             <div className={styles.sectionBody}>
-              <ul className={styles.contribution}>
-                {project.contribution.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <Contribution items={project.contribution} />
             </div>
           </section>
         ) : null}
