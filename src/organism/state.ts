@@ -11,7 +11,7 @@ export interface OrganismState {
 }
 
 export const INITIAL_STATE: OrganismState = {
-  growth: 0.16,
+  growth: 0,
   bloom1: 0,
   bloom2: 0,
   bloom3: 0,
@@ -29,6 +29,16 @@ export function smoothstep(edge0: number, edge1: number, x: number): number {
 
 export function damp(current: number, target: number, lambda: number, dt: number): number {
   return current + (target - current) * (1 - Math.exp(-Math.max(dt, 0) * lambda))
+}
+
+/**
+ * How far along the stem the organism has assembled, given global growth. The
+ * base of the vine is already present at rest, and the stem finishes extending
+ * a little before the last bloom opens.
+ */
+export function stemReach(growth: number): number {
+  const eased = smoothstep(0, 0.85, growth)
+  return 0.3 + 0.7 * eased
 }
 
 export function easeOutCubic(t: number): number {

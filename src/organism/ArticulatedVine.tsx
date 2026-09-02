@@ -3,9 +3,17 @@ import { useMemo, useRef } from 'react'
 import * as THREE from 'three'
 
 import type { SculptureMaterials } from './materials'
-import { easeOutCubic, smoothstep, type OrganismState } from './state'
-
-export type Point = [number, number, number]
+import { createLeaf, createPanel } from './panelGeometry'
+import { easeOutCubic, smoothstep, stemReach, type OrganismState } from './state'
+import {
+  BRANCHES,
+  LEAVES,
+  MAIN,
+  MAIN_U,
+  normalisedLengths,
+  toLocal,
+  type Point,
+} from './vineLayout'
 
 const UP = new THREE.Vector3(0, 1, 0)
 const _world = new THREE.Vector3()
@@ -16,102 +24,144 @@ function orient(from: Point, to: Point) {
   const direction = end.clone().sub(start)
   const length = direction.length()
   const quaternion = new THREE.Quaternion().setFromUnitVectors(UP, direction.normalize())
-  return { midpoint: start.add(end).multiplyScalar(0.5), quaternion, length }
+  return { start, direction, quaternion, length }
 }
 
-/** GLSL-style smoothstep: maps `progress` from [start, start+span] onto 0..1. */
-function appearAmount(progress: number, start: number, span = 0.16): number {
-  return smoothstep(start, start + span, progress)
+/**
+ * How strongly this node should react to the cursor, from its own screen
+ * position. Returns 0 when the pointer is far away, rising smoothly as it nears.
+ */
+function proximity(
+  node: THREE.Object3D,
+  camera: THREE.Camera,
+  state: OrganismState,
+  radius: number,
+): number {
+  node.getWorldPosition(_world)
+  _world.project(camera)
+  const distance = Math.hypot(_world.x - state.cursorX, _world.y - state.cursorY)
+  return smoothstep(radius, radius * 0.25, distance)
 }
 
+/**
+ * A rigid member that telescopes out of its start joint. The cylinder is a unit
+ * column scaled along its own axis, so the segment extends rather than fades.
+ */
 function RigidLink({
   from,
   to,
-  radius = 0.04,
+  radiusStart,
+  radiusEnd,
   material,
-  appear = 1,
+  grow = 1,
 }: {
   from: Point
   to: Point
-  radius?: number
+  radiusStart: number
+  radiusEnd: number
   material: THREE.Material
-  appear?: number
+  grow?: number
 }) {
-  if (appear < 0.02) return null
-  const { midpoint, quaternion, length } = orient(from, to)
-  const s = THREE.MathUtils.smootherstep(appear, 0, 1)
+  const { start, direction, quaternion, length } = orient(from, to)
+  const g = THREE.MathUtils.clamp(grow, 0, 1)
+  const extended = length * g
+  const position = start.addScaledVector(direction, extended * 0.5)
   return (
-    <mesh position={midpoint} quaternion={quaternion} material={material} scale={[s, s, s]}>
-      <cylinderGeometry args={[radius * 0.72, radius, length, 14, 1, false]} />
+    <mesh
+      visible={g > 0.004}
+      position={position}
+      quaternion={quaternion}
+      material={material}
+      scale={[1, extended, 1]}
+    >
+      <cylinderGeometry args={[radiusEnd, radiusStart, 1, 14, 1, false]} />
     </mesh>
   )
 }
 
+/**
+ * Rotary joint between two members. It swings into alignment as it appears, so
+ * the vine reads as assembling itself rather than materialising.
+ */
 function RotaryJoint({
   point,
   previous,
   next,
-  radius = 0.07,
+  radius,
   materials,
   appear = 1,
 }: {
   point: Point
   previous: Point
   next: Point
-  radius?: number
+  radius: number
   materials: SculptureMaterials
   appear?: number
 }) {
-  if (appear < 0.08) return null
   const incoming = new THREE.Vector3(...point).sub(new THREE.Vector3(...previous)).normalize()
   const outgoing = new THREE.Vector3(...next).sub(new THREE.Vector3(...point)).normalize()
   const axle = incoming.clone().cross(outgoing)
   if (axle.lengthSq() < 1e-6) axle.set(0, 0, 1)
   const quaternion = new THREE.Quaternion().setFromUnitVectors(UP, axle.normalize())
-  const s = THREE.MathUtils.smootherstep(appear, 0, 1)
-  const disc = radius * 0.9
-  const height = radius * 0.26
+  const a = THREE.MathUtils.clamp(appear, 0, 1)
+  const settle = THREE.MathUtils.smootherstep(a, 0, 1)
+  const height = radius * 0.62
 
   return (
-    <group position={point} quaternion={quaternion} scale={s}>
-      <mesh material={materials.joint}>
-        <cylinderGeometry args={[disc, disc, height, 24]} />
-      </mesh>
-      <mesh material={materials.silver} position-y={height * 0.55}>
-        <cylinderGeometry args={[disc * 0.34, disc * 0.34, height * 0.28, 16]} />
-      </mesh>
-      <mesh material={materials.silver} position-y={-height * 0.55}>
-        <cylinderGeometry args={[disc * 0.34, disc * 0.34, height * 0.28, 16]} />
-      </mesh>
-      <mesh material={materials.graphite} rotation-x={Math.PI / 2}>
-        <torusGeometry args={[disc * 0.78, radius * 0.038, 8, 24]} />
-      </mesh>
+    <group visible={a > 0.02} position={point} quaternion={quaternion} scale={settle}>
+      <group rotation-y={(1 - settle) * 1.15}>
+        <mesh material={materials.joint}>
+          <cylinderGeometry args={[radius, radius, height, 22]} />
+        </mesh>
+        <mesh material={materials.polished} position-y={height * 0.52}>
+          <cylinderGeometry args={[radius * 0.44, radius * 0.44, height * 0.22, 16]} />
+        </mesh>
+        <mesh material={materials.polished} position-y={-height * 0.52}>
+          <cylinderGeometry args={[radius * 0.44, radius * 0.44, height * 0.22, 16]} />
+        </mesh>
+        <mesh material={materials.polished} rotation-x={Math.PI / 2}>
+          <torusGeometry args={[radius * 0.99, radius * 0.07, 8, 24]} />
+        </mesh>
+      </group>
     </group>
   )
 }
 
+/**
+ * A run of members and joints revealed by arc length, so the structure grows
+ * from its first point outward.
+ */
 function ArticulatedPath({
   points,
-  radiusStart = 0.048,
-  radiusEnd = 0.022,
+  radiusStart,
+  radiusEnd,
   jointScale = 1,
   materials,
-  growth,
-  growthStart = 0,
-  growthEnd = 1,
+  reach,
+  capTip = false,
 }: {
   points: Point[]
-  radiusStart?: number
-  radiusEnd?: number
+  radiusStart: number
+  radiusEnd: number
   jointScale?: number
   materials: SculptureMaterials
-  growth: number
-  growthStart?: number
-  growthEnd?: number
+  /** Normalised arc length currently reached, 0..1. */
+  reach: number
+  /** Draw a machined end cap at the growing tip. */
+  capTip?: boolean
 }) {
-  const local = smoothstep(growthStart, growthEnd, growth)
+  const u = useMemo(() => normalisedLengths(points), [points])
   return (
     <group>
+      {capTip ? (
+        <GrowingTip
+          points={points}
+          u={u}
+          reach={reach}
+          radius={THREE.MathUtils.lerp(radiusStart, radiusEnd, reach)}
+          materials={materials}
+        />
+      ) : null}
       {points.slice(0, -1).map((point, index) => {
         const t = index / Math.max(points.length - 2, 1)
         return (
@@ -119,26 +169,65 @@ function ArticulatedPath({
             key={`link-${index}`}
             from={point}
             to={points[index + 1]}
-            radius={THREE.MathUtils.lerp(radiusStart, radiusEnd, t)}
+            radiusStart={THREE.MathUtils.lerp(radiusStart, radiusEnd, t)}
+            radiusEnd={THREE.MathUtils.lerp(
+              radiusStart,
+              radiusEnd,
+              (index + 1) / (points.length - 1),
+            )}
             material={materials.stem}
-            appear={appearAmount(local, t * 0.74, 0.2)}
+            grow={smoothstep(u[index], u[index + 1], reach)}
           />
         )
       })}
       {points.slice(1, -1).map((point, index) => {
         const t = index / Math.max(points.length - 3, 1)
+        const at = u[index + 1]
         return (
           <RotaryJoint
             key={`joint-${index}`}
             point={point}
             previous={points[index]}
             next={points[index + 2]}
-            radius={THREE.MathUtils.lerp(radiusStart * 1.28, radiusEnd * 1.32, t) * jointScale}
+            radius={THREE.MathUtils.lerp(radiusStart * 1.62, radiusEnd * 1.72, t) * jointScale}
             materials={materials}
-            appear={appearAmount(local, t * 0.74 + 0.05, 0.2)}
+            appear={smoothstep(at, Math.min(1, at + 0.05), reach)}
           />
         )
       })}
+    </group>
+  )
+}
+
+/** The machined end of the stem, riding the point the organism has reached. */
+function GrowingTip({
+  points,
+  u,
+  reach,
+  radius,
+  materials,
+}: {
+  points: Point[]
+  u: number[]
+  reach: number
+  radius: number
+  materials: SculptureMaterials
+}) {
+  let segment = 0
+  while (segment < points.length - 2 && u[segment + 1] < reach) segment++
+  const span = Math.max(u[segment + 1] - u[segment], 1e-6)
+  const t = THREE.MathUtils.clamp((reach - u[segment]) / span, 0, 1)
+  const { start, direction, quaternion, length } = orient(points[segment], points[segment + 1])
+  const position = start.addScaledVector(direction, length * t)
+
+  return (
+    <group position={position} quaternion={quaternion}>
+      <mesh material={materials.joint}>
+        <cylinderGeometry args={[radius * 1.25, radius * 1.25, radius * 0.7, 18]} />
+      </mesh>
+      <mesh position-y={radius * 1.1} material={materials.polished}>
+        <coneGeometry args={[radius * 0.92, radius * 1.6, 12]} />
+      </mesh>
     </group>
   )
 }
@@ -146,178 +235,169 @@ function ArticulatedPath({
 function GeometricLeaf({
   base,
   tip,
-  width = 0.16,
+  width,
   materials,
-  appear = 1,
+  appear,
+  getState,
 }: {
   base: Point
   tip: Point
-  width?: number
+  width: number
   materials: SculptureMaterials
-  appear?: number
+  appear: number
+  getState: () => OrganismState
 }) {
   const { quaternion, length } = orient(base, tip)
-  const s = THREE.MathUtils.smootherstep(appear, 0, 1)
-  const geometry = useMemo(() => {
-    const positions = new Float32Array([
-      0,
-      0,
-      0,
-      -width * 0.58,
-      length * 0.4,
-      0.01,
-      width * 0.58,
-      length * 0.4,
-      0.01,
-      0,
-      length,
-      0,
-    ])
-    const geo = new THREE.BufferGeometry()
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-    geo.setIndex([0, 1, 3, 0, 3, 2])
-    geo.computeVertexNormals()
-    return geo
-  }, [length, width])
+  const geometry = useMemo(() => createLeaf(length, width), [length, width])
+  const hinge = useRef<THREE.Group>(null)
+  const attention = useRef(0)
+  const { camera } = useThree()
 
-  if (appear < 0.05) return null
+  useFrame((_, delta) => {
+    const node = hinge.current
+    if (!node) return
+    const state = getState()
+    const near = proximity(node, camera, state, 0.42)
+    attention.current += (near - attention.current) * (1 - Math.exp(-delta * 3))
+    node.rotation.z = attention.current * 0.16
+    node.rotation.x = attention.current * -0.1
+  })
+
+  const a = THREE.MathUtils.clamp(appear, 0, 1)
+  const settle = THREE.MathUtils.smootherstep(a, 0, 1)
 
   return (
-    <group position={base} quaternion={quaternion} scale={s}>
-      <mesh geometry={geometry} material={materials.leaf} />
-      <RigidLink
-        from={[0, 0, 0]}
-        to={[0, length, 0]}
-        radius={0.009}
-        material={materials.graphite}
-      />
+    <group visible={a > 0.02} position={base} quaternion={quaternion}>
+      <group ref={hinge} scale={settle} rotation-x={(1 - settle) * -0.9}>
+        <mesh geometry={geometry} material={materials.leaf} />
+        <mesh position-y={length * 0.5} material={materials.graphite}>
+          <cylinderGeometry args={[0.005, 0.008, length, 6]} />
+        </mesh>
+      </group>
     </group>
   )
 }
 
+/** A closed mechanical bud: a sheathed cone on a short hinged stalk. */
 function MechanicalBud({
   base,
   tip,
   materials,
-  appear = 1,
+  appear,
+  getState,
   scale = 1,
 }: {
   base: Point
   tip: Point
   materials: SculptureMaterials
-  appear?: number
+  appear: number
+  getState: () => OrganismState
   scale?: number
 }) {
-  if (appear < 0.08) return null
   const { quaternion, length } = orient(base, tip)
-  const s = THREE.MathUtils.smootherstep(appear, 0, 1) * scale
+  const hinge = useRef<THREE.Group>(null)
+  const attention = useRef(0)
+  const { camera } = useThree()
+
+  useFrame((_, delta) => {
+    const node = hinge.current
+    if (!node) return
+    const state = getState()
+    const near = proximity(node, camera, state, 0.4)
+    attention.current += (near - attention.current) * (1 - Math.exp(-delta * 3))
+    node.rotation.x = attention.current * 0.14
+    node.rotation.z = attention.current * 0.08
+  })
+
+  const a = THREE.MathUtils.clamp(appear, 0, 1)
+  const settle = THREE.MathUtils.smootherstep(a, 0, 1)
+  const stalk = length * 0.4
+
   return (
-    <group position={base} quaternion={quaternion} scale={s}>
-      <RigidLink
-        from={[0, 0, 0]}
-        to={[0, length * 0.46, 0]}
-        radius={0.012}
-        material={materials.stem}
-      />
-      <RotaryJoint
-        point={[0, length * 0.46, 0]}
-        previous={[0, 0, 0]}
-        next={[0, length, 0]}
-        radius={0.028}
-        materials={materials}
-      />
-      <mesh position-y={length * 0.72} material={materials.silver}>
-        <coneGeometry args={[0.048, length * 0.38, 6, 1, false]} />
-      </mesh>
+    <group visible={a > 0.02} position={base} quaternion={quaternion} scale={scale}>
+      <group ref={hinge} scale={settle}>
+        <mesh position-y={stalk * 0.5} material={materials.stem}>
+          <cylinderGeometry args={[0.012, 0.015, stalk, 10]} />
+        </mesh>
+        <mesh position-y={stalk} material={materials.joint}>
+          <cylinderGeometry args={[0.026, 0.026, 0.02, 14]} />
+        </mesh>
+        <mesh position-y={stalk + length * 0.2} material={materials.satin}>
+          <cylinderGeometry args={[0.014, 0.036, length * 0.34, 6]} />
+        </mesh>
+        <mesh position-y={stalk + length * 0.42} material={materials.polished}>
+          <coneGeometry args={[0.016, length * 0.18, 6]} />
+        </mesh>
+      </group>
     </group>
   )
 }
 
-function createPetalPanel(length: number, innerW: number, outerW: number, cup: number) {
-  const rows = 10
-  const cols = 5
-  const positions: number[] = []
-  const uvs: number[] = []
-  for (let i = 0; i <= rows; i++) {
-    const u = i / rows
-    const flare = Math.pow(Math.min(1, Math.max(0, (u - 0.12) / 0.88)), 0.82)
-    const half = THREE.MathUtils.lerp(innerW, outerW, flare) * 0.5
-    const y = u * length
-    for (let j = 0; j <= cols; j++) {
-      const v = j / cols
-      const x = THREE.MathUtils.lerp(-half, half, v)
-      const rim = 0.06 + 0.94 * Math.pow(u, 1.35)
-      const z = -cup * (1 - (v * 2 - 1) ** 2) * rim
-      positions.push(x, y, z)
-      uvs.push(u, v)
-    }
-  }
-  const indices: number[] = []
-  const stride = cols + 1
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      const a = i * stride + j
-      const b = a + 1
-      const c = a + stride
-      const d = c + 1
-      indices.push(a, c, b, b, c, d)
-    }
-  }
-  const geometry = new THREE.BufferGeometry()
-  geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3))
-  geometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(uvs), 2))
-  geometry.setIndex(indices)
-  geometry.computeVertexNormals()
-  return geometry
-}
-
 export type BloomVariant = 'classic' | 'strange' | 'full'
 
-const BLOOM_PROFILE: Record<
-  BloomVariant,
-  {
-    count: number
-    flare: number
-    length: number
-    inner: number
-    outer: number
-    twist: number
-    cup: number
-    gap: number
-  }
-> = {
+interface BloomProfile {
+  panels: number
+  length: number
+  innerWidth: number
+  outerWidth: number
+  cup: number
+  taper: number
+  /** Hinge radius when shut and when fully open. */
+  closedRadius: number
+  openRadius: number
+  closedFlare: number
+  openFlare: number
+  /** Secondary roll applied to alternating panels late in the opening. */
+  twist: number
+}
+
+const BLOOM_PROFILE: Record<BloomVariant, BloomProfile> = {
   classic: {
-    count: 9,
-    flare: 0.86,
-    length: 0.82,
-    inner: 0.032,
-    outer: 0.3,
-    twist: 0.03,
-    cup: 0.048,
-    gap: 0.82,
+    panels: 6,
+    length: 0.72,
+    innerWidth: 0.026,
+    outerWidth: 0.155,
+    cup: 0.082,
+    taper: 0.66,
+    closedRadius: 0.028,
+    openRadius: 0.088,
+    closedFlare: -0.035,
+    openFlare: 0.84,
+    twist: 0.07,
   },
   strange: {
-    count: 7,
-    flare: 1.04,
-    length: 0.9,
-    inner: 0.028,
-    outer: 0.36,
-    twist: 0.16,
-    cup: 0.07,
-    gap: 0.74,
+    panels: 5,
+    length: 0.8,
+    innerWidth: 0.024,
+    outerWidth: 0.185,
+    cup: 0.105,
+    taper: 0.52,
+    closedRadius: 0.03,
+    openRadius: 0.098,
+    closedFlare: -0.028,
+    openFlare: 1.06,
+    twist: 0.26,
   },
   full: {
-    count: 11,
-    flare: 0.96,
-    length: 0.94,
-    inner: 0.03,
-    outer: 0.34,
-    twist: 0.045,
-    cup: 0.044,
-    gap: 0.8,
+    panels: 7,
+    length: 0.84,
+    innerWidth: 0.026,
+    outerWidth: 0.165,
+    cup: 0.088,
+    taper: 0.6,
+    closedRadius: 0.031,
+    openRadius: 0.1,
+    closedFlare: -0.032,
+    openFlare: 0.96,
+    twist: 0.11,
   },
 }
 
+/**
+ * A trumpet bloom built from articulated panels. Opening is mechanical: the
+ * throat extends, the cap withdraws, then each panel swings out about its own
+ * hinge and drifts outward. Panels are never scaled.
+ */
 function MechanicalTrumpet({
   base,
   direction,
@@ -325,7 +405,7 @@ function MechanicalTrumpet({
   open,
   appear,
   getState,
-  variant = 'classic',
+  variant,
   scale = 1,
   roll = 0,
 }: {
@@ -335,7 +415,7 @@ function MechanicalTrumpet({
   open: number
   appear: number
   getState: () => OrganismState
-  variant?: BloomVariant
+  variant: BloomVariant
   scale?: number
   roll?: number
 }) {
@@ -346,91 +426,141 @@ function MechanicalTrumpet({
     [direction],
   )
   const panel = useMemo(
-    () => createPetalPanel(profile.length, profile.inner, profile.outer, profile.cup),
-    [profile.cup, profile.inner, profile.length, profile.outer],
+    () =>
+      createPanel({
+        length: profile.length,
+        innerWidth: profile.innerWidth,
+        outerWidth: profile.outerWidth,
+        cup: profile.cup,
+        taper: profile.taper,
+        thickness: 0.011,
+      }),
+    [profile.cup, profile.innerWidth, profile.length, profile.outerWidth, profile.taper],
   )
-  const group = useRef<THREE.Group>(null)
-  const petals = useRef<Array<THREE.Group | null>>([])
-  const pistil = useRef<THREE.Mesh>(null)
-  const local = useRef(0)
+  const panelMaterials = useMemo(
+    () => [materials.satin, materials.interior, materials.polished],
+    [materials],
+  )
+
+  const head = useRef<THREE.Group>(null)
+  const throat = useRef<THREE.Mesh>(null)
+  const cap = useRef<THREE.Group>(null)
+  const mounts = useRef<Array<THREE.Group | null>>([])
+  const hinges = useRef<Array<THREE.Group | null>>([])
+  const attention = useRef(0)
   const { camera } = useThree()
 
-  useFrame((_, delta) => {
-    const node = group.current
-    if (!node) return
-    const s = getState()
-    node.getWorldPosition(_world)
-    _world.project(camera)
-    const d = Math.hypot(_world.x - s.cursorX, _world.y - s.cursorY)
-    const near = Math.max(0, 1 - d / 0.62)
-    local.current += (near - local.current) * (1 - Math.exp(-delta * 3.2))
-    const notice = local.current
-    node.rotation.y = roll + (s.cursorX - _world.x) * 0.07 * notice
-    node.rotation.x = (s.cursorY - _world.y) * 0.05 * notice
-    node.rotation.z = s.cursorVx * 0.012 * notice
+  const THROAT_TOP = 0.16
 
-    const amount = easeOutCubic(THREE.MathUtils.clamp(open + notice * 0.055, 0, 1))
-    const flare = THREE.MathUtils.lerp(0.07, profile.flare, amount)
-    const stretch = THREE.MathUtils.lerp(0.58, 1, amount)
-    for (let index = 0; index < profile.count; index++) {
-      const petal = petals.current[index]
-      if (!petal) continue
-      const odd = variant === 'strange' && index % 2 === 0
-      petal.rotation.x = flare * (odd ? 1.1 : 1)
-      petal.scale.set(profile.gap, stretch * (odd ? 1.1 : 1), 1)
+  useFrame((_, delta) => {
+    const node = head.current
+    if (!node) return
+    const state = getState()
+    const near = proximity(node, camera, state, 0.55)
+    attention.current += (near - attention.current) * (1 - Math.exp(-delta * 2.8))
+    const notice = attention.current
+
+    node.rotation.y = roll + (state.cursorX - _world.x) * 0.1 * notice
+    node.rotation.x = (state.cursorY - _world.y) * 0.07 * notice
+
+    // Stage the opening: throat first, then the panels swing, then they separate.
+    const amount = THREE.MathUtils.clamp(open + notice * 0.05, 0, 1)
+    const throatStage = easeOutCubic(smoothstep(0, 0.32, amount))
+    const swingStage = easeOutCubic(smoothstep(0.12, 0.86, amount))
+    const partStage = easeOutCubic(smoothstep(0.35, 1, amount))
+    const twistStage = smoothstep(0.62, 1, amount)
+
+    if (throat.current) {
+      throat.current.scale.y = THREE.MathUtils.lerp(0.72, 1.18, throatStage)
+      throat.current.position.y = THREE.MathUtils.lerp(0.05, 0.09, throatStage)
     }
-    if (pistil.current) {
-      pistil.current.position.y = THREE.MathUtils.lerp(0.16, 0.34, amount)
-      pistil.current.scale.setScalar(THREE.MathUtils.lerp(0.55, 1, amount))
+    if (cap.current) {
+      // The nose cone shuts the bud, then withdraws into the throat as a stamen.
+      cap.current.position.y = THREE.MathUtils.lerp(
+        THROAT_TOP + profile.length * 0.94,
+        THROAT_TOP + 0.14,
+        easeOutCubic(amount),
+      )
+      const shrink = THREE.MathUtils.lerp(1, 0.32, easeOutCubic(amount))
+      cap.current.scale.set(shrink, THREE.MathUtils.lerp(1, 0.55, easeOutCubic(amount)), shrink)
+    }
+
+    for (let index = 0; index < profile.panels; index++) {
+      const mount = mounts.current[index]
+      const hinge = hinges.current[index]
+      const alternate = index % 2 === 0
+      // A tiny per-panel stagger keeps the shut bud a nested spiral, not a clash.
+      const nestled = profile.closedRadius + index * 0.0022
+      const radius = THREE.MathUtils.lerp(nestled, profile.openRadius, partStage)
+      if (mount) {
+        mount.position.z = radius
+        mount.position.y = THREE.MathUtils.lerp(THROAT_TOP - 0.01, THROAT_TOP + 0.05, throatStage)
+      }
+      if (hinge) {
+        const lean = alternate ? 1 : 0.93
+        hinge.rotation.x =
+          THREE.MathUtils.lerp(profile.closedFlare, profile.openFlare * lean, swingStage) +
+          notice * 0.035
+        hinge.rotation.y = twistStage * profile.twist * (alternate ? 1 : -0.6)
+      }
     }
   })
 
-  const s = THREE.MathUtils.smootherstep(appear, 0, 1) * scale
-  if (appear < 0.06) return null
+  const a = THREE.MathUtils.clamp(appear, 0, 1)
+  const settle = THREE.MathUtils.smootherstep(a, 0, 1)
 
   return (
-    <group position={base} quaternion={quaternion} scale={s}>
-      <group ref={group}>
-        <mesh position-y={-0.07} material={materials.graphite}>
-          <cylinderGeometry args={[0.048, 0.072, 0.16, 16]} />
+    <group visible={a > 0.02} position={base} quaternion={quaternion} scale={scale * settle}>
+      <group ref={head}>
+        <mesh position-y={-0.06} material={materials.graphite}>
+          <cylinderGeometry args={[0.042, 0.052, 0.12, 16]} />
         </mesh>
-        <mesh position-y={0.04} material={materials.joint}>
-          <cylinderGeometry args={[0.058, 0.05, 0.09, 16]} />
+        <mesh position-y={0.02} material={materials.joint}>
+          <sphereGeometry args={[0.05, 18, 12]} />
         </mesh>
-        <mesh position-y={0.1} material={materials.silver} rotation-x={Math.PI / 2}>
-          <torusGeometry args={[0.068, 0.01, 8, profile.count]} />
+        <mesh ref={throat} position-y={0.05} material={materials.satin}>
+          <cylinderGeometry args={[0.058, 0.036, 0.14, 18, 1, true]} />
         </mesh>
-        <mesh position-y={0.18} material={materials.stem}>
-          <cylinderGeometry args={[0.038, 0.052, 0.16, 14]} />
+        <mesh position-y={THROAT_TOP - 0.01} material={materials.polished} rotation-x={Math.PI / 2}>
+          <torusGeometry args={[0.05, 0.008, 8, 26]} />
         </mesh>
-        <mesh ref={pistil} position-y={0.16} material={materials.interior}>
-          <cylinderGeometry args={[0.007, 0.014, 0.22, 8]} />
-        </mesh>
-        {Array.from({ length: profile.count }, (_, index) => {
-          const angle = (index / profile.count) * Math.PI * 2
+
+        <group ref={cap}>
+          <mesh material={materials.polished}>
+            <coneGeometry args={[0.03, 0.19, profile.panels]} />
+          </mesh>
+          <mesh position-y={-0.12} material={materials.interior}>
+            <cylinderGeometry args={[0.011, 0.019, 0.14, 8]} />
+          </mesh>
+        </group>
+
+        {Array.from({ length: profile.panels }, (_, index) => {
+          const angle = (index / profile.panels) * Math.PI * 2
           return (
-            <group
-              key={index}
-              ref={(el) => {
-                petals.current[index] = el
-              }}
-              position-y={0.22}
-              rotation-y={angle + profile.twist * (index % 3)}
-              rotation-x={0.08}
-            >
-              <mesh position-y={0.01} material={materials.joint} rotation-z={Math.PI / 2}>
-                <cylinderGeometry args={[0.01, 0.01, profile.inner * 1.1, 8]} />
-              </mesh>
-              <mesh geometry={panel} material={materials.silver} />
-              <mesh
-                geometry={panel}
-                material={materials.interior}
-                position-z={-0.005}
-                scale={[0.9, 0.97, 1]}
-              />
-              <mesh position-y={profile.length * 0.5} material={materials.graphite}>
-                <cylinderGeometry args={[0.0045, 0.007, profile.length * 0.92, 6]} />
-              </mesh>
+            <group key={index} rotation-y={angle}>
+              <group
+                ref={(el) => {
+                  mounts.current[index] = el
+                }}
+                position={[0, THROAT_TOP, profile.closedRadius]}
+              >
+                <mesh material={materials.joint} rotation-z={Math.PI / 2}>
+                  <cylinderGeometry args={[0.009, 0.009, profile.innerWidth * 2.4, 10]} />
+                </mesh>
+                <group
+                  ref={(el) => {
+                    hinges.current[index] = el
+                  }}
+                >
+                  <mesh geometry={panel} material={panelMaterials} />
+                  <mesh
+                    position={[0, profile.length * 0.46, -profile.cup * 0.62]}
+                    material={materials.graphite}
+                  >
+                    <cylinderGeometry args={[0.0035, 0.006, profile.length * 0.9, 6]} />
+                  </mesh>
+                </group>
+              </group>
             </group>
           )
         })}
@@ -439,33 +569,44 @@ function MechanicalTrumpet({
   )
 }
 
-const MAIN: Point[] = [
-  [-0.1, -4.15, 0],
-  [0.04, -3.62, 0.03],
-  [-0.12, -3.08, 0.02],
-  [-0.04, -2.54, -0.03],
-  [0.12, -2.0, 0],
-  [0.04, -1.46, 0.05],
-  [-0.1, -0.9, 0.02],
-  [0.06, -0.32, -0.04],
-  [0.16, 0.28, 0],
-  [0.08, 0.88, 0.05],
-  [-0.08, 1.48, 0.02],
-  [-0.14, 2.08, -0.04],
-  [0.04, 2.66, 0],
-  [0.02, 3.24, 0.03],
-  [-0.16, 3.86, 0],
-]
+/** One branch, hinged at the stem and unfolding away from it as it grows. */
+function Branch({
+  attach,
+  points,
+  radiusStart,
+  radiusEnd,
+  materials,
+  progress,
+  children,
+}: {
+  attach: Point
+  points: Point[]
+  radiusStart: number
+  radiusEnd: number
+  materials: SculptureMaterials
+  progress: number
+  children?: React.ReactNode
+}) {
+  const local = useMemo(() => points.map((point) => toLocal(point, attach)), [attach, points])
+  const p = THREE.MathUtils.clamp(progress, 0, 1)
+  const tip = local[local.length - 1]
+  // Fold the branch back against the stem before it deploys.
+  const fold = (1 - THREE.MathUtils.smootherstep(p, 0, 1)) * 0.95 * (tip[0] >= 0 ? -1 : 1)
 
-const BRANCHES: Point[][] = [
-  [MAIN[2], [-0.42, -2.88, 0.04], [-0.78, -2.64, 0.1], [-1.12, -2.36, 0.12]],
-  [MAIN[4], [0.38, -1.78, 0.05], [0.68, -1.52, 0.1], [0.96, -1.24, 0.08]],
-  [MAIN[6], [-0.4, -0.62, 0.03], [-0.72, -0.28, 0.1], [-1.04, -0.02, 0.14]],
-  [MAIN[7], [0.4, -0.04, 0.05], [0.76, 0.24, 0.12], [1.12, 0.48, 0.14]],
-  [MAIN[9], [0.42, 1.1, 0.03], [0.76, 1.4, 0.1], [1.04, 1.7, 0.14]],
-  [MAIN[11], [-0.44, 2.28, 0.04], [-0.76, 2.64, 0.1], [-0.96, 3.04, 0.12]],
-  [MAIN[13], [0.32, 3.42, 0.03], [0.54, 3.78, 0.08], [0.64, 4.14, 0.1]],
-]
+  return (
+    <group visible={p > 0.01} position={attach} rotation-z={fold}>
+      <ArticulatedPath
+        points={local}
+        radiusStart={radiusStart}
+        radiusEnd={radiusEnd}
+        jointScale={0.86}
+        materials={materials}
+        reach={p}
+      />
+      {children}
+    </group>
+  )
+}
 
 interface VineProps {
   materials: SculptureMaterials
@@ -477,8 +618,8 @@ interface VineProps {
 }
 
 /**
- * Slender articulated vine. Global growth reveals stem, branches and buds from
- * the base upward; three trumpet blooms open from their own progress values.
+ * The articulated vine. A single arc-length reach drives the stem, branches and
+ * buds bottom-to-top, while each bloom opens from its own progress value.
  */
 export function ArticulatedVine({
   materials,
@@ -489,200 +630,114 @@ export function ArticulatedVine({
   bloom3,
 }: VineProps) {
   const root = useRef<THREE.Group>(null)
+  const reach = stemReach(growth)
+  const bloomOpen = [bloom1, bloom2, bloom3]
+  const bloomVariant: BloomVariant[] = ['classic', 'strange', 'full']
+  const bloomDirection: Point[] = [
+    [-0.52, 0.64, 0.36],
+    [0.6, 0.58, 0.32],
+    [-0.4, 0.74, 0.34],
+  ]
+  const bloomScale = [0.74, 0.78, 0.82]
+  const bloomRoll = [0.16, -0.12, 0.26]
+  let bloomIndex = 0
+  let budIndex = 0
 
   useFrame((_, delta) => {
-    const s = getState()
     const node = root.current
     if (!node) return
-    node.rotation.y = THREE.MathUtils.damp(node.rotation.y, s.cursorX * 0.09, 3.4, delta)
-    node.rotation.x = THREE.MathUtils.damp(node.rotation.x, s.cursorY * 0.038, 3.4, delta)
+    const state = getState()
+    // Roughly four degrees of yaw and two of pitch, always trailing the cursor.
+    node.rotation.y = THREE.MathUtils.damp(node.rotation.y, state.cursorX * 0.078, 2.6, delta)
+    node.rotation.x = THREE.MathUtils.damp(node.rotation.x, state.cursorY * 0.046, 2.6, delta)
     node.rotation.z = THREE.MathUtils.damp(
       node.rotation.z,
-      -s.cursorX * 0.016 + s.cursorVx * 0.004,
-      3.4,
+      -state.cursorX * 0.014 + THREE.MathUtils.clamp(state.cursorVx, -3, 3) * 0.0035,
+      2.2,
       delta,
     )
+
+    if (import.meta.env.DEV) {
+      ;(window as unknown as { __vineRot?: unknown }).__vineRot = {
+        x: +node.rotation.x.toFixed(4),
+        y: +node.rotation.y.toFixed(4),
+        z: +node.rotation.z.toFixed(4),
+      }
+    }
   })
 
   return (
     <group ref={root}>
       <mesh position={MAIN[0]} material={materials.graphite}>
-        <cylinderGeometry args={[0.09, 0.11, 0.028, 20]} />
+        <cylinderGeometry args={[0.075, 0.095, 0.035, 22]} />
       </mesh>
 
       <ArticulatedPath
         points={MAIN}
-        radiusStart={0.044}
-        radiusEnd={0.012}
-        jointScale={0.92}
+        radiusStart={0.04}
+        radiusEnd={0.014}
         materials={materials}
-        growth={growth}
-        growthStart={0}
-        growthEnd={1}
+        reach={reach}
+        capTip
       />
 
-      <ArticulatedPath
-        points={BRANCHES[0]}
-        radiusStart={0.02}
-        radiusEnd={0.01}
-        jointScale={0.78}
-        materials={materials}
-        growth={growth}
-        growthStart={0.04}
-        growthEnd={0.32}
-      />
-      <ArticulatedPath
-        points={BRANCHES[1]}
-        radiusStart={0.016}
-        radiusEnd={0.009}
-        jointScale={0.74}
-        materials={materials}
-        growth={growth}
-        growthStart={0.34}
-        growthEnd={0.54}
-      />
-      <ArticulatedPath
-        points={BRANCHES[2]}
-        radiusStart={0.016}
-        radiusEnd={0.009}
-        jointScale={0.74}
-        materials={materials}
-        growth={growth}
-        growthStart={0.3}
-        growthEnd={0.5}
-      />
-      <ArticulatedPath
-        points={BRANCHES[3]}
-        radiusStart={0.02}
-        radiusEnd={0.01}
-        jointScale={0.78}
-        materials={materials}
-        growth={growth}
-        growthStart={0.48}
-        growthEnd={0.7}
-      />
-      <ArticulatedPath
-        points={BRANCHES[4]}
-        radiusStart={0.015}
-        radiusEnd={0.008}
-        jointScale={0.72}
-        materials={materials}
-        growth={growth}
-        growthStart={0.62}
-        growthEnd={0.82}
-      />
-      <ArticulatedPath
-        points={BRANCHES[5]}
-        radiusStart={0.018}
-        radiusEnd={0.01}
-        jointScale={0.76}
-        materials={materials}
-        growth={growth}
-        growthStart={0.7}
-        growthEnd={0.9}
-      />
-      <ArticulatedPath
-        points={BRANCHES[6]}
-        radiusStart={0.014}
-        radiusEnd={0.007}
-        jointScale={0.7}
-        materials={materials}
-        growth={growth}
-        growthStart={0.84}
-        growthEnd={1}
-      />
+      {BRANCHES.map((branch, index) => {
+        const attachU = MAIN_U[branch.attachIndex]
+        const progress = smoothstep(attachU + 0.01, Math.min(1, attachU + 0.18), reach)
+        const tip = toLocal(branch.points[branch.points.length - 1], branch.points[0])
+        const structural = smoothstep(0.4, 0.95, progress)
+        const slot = branch.kind === 'bloom' ? bloomIndex++ : budIndex++
 
-      <MechanicalTrumpet
-        base={BRANCHES[0][3]}
-        direction={[-0.72, 0.2, 0.38]}
-        materials={materials}
-        getState={getState}
-        variant="classic"
-        open={bloom1}
-        appear={appearAmount(growth, 0.08, 0.16)}
-        scale={0.96}
-        roll={0.16}
-      />
-      <MechanicalTrumpet
-        base={BRANCHES[3][3]}
-        direction={[0.82, 0.16, 0.32]}
-        materials={materials}
-        getState={getState}
-        variant="strange"
-        open={bloom2}
-        appear={appearAmount(growth, 0.5, 0.14)}
-        scale={1}
-        roll={-0.1}
-      />
-      <MechanicalTrumpet
-        base={BRANCHES[5][3]}
-        direction={[-0.58, 0.4, 0.34]}
-        materials={materials}
-        getState={getState}
-        variant="full"
-        open={bloom3}
-        appear={appearAmount(growth, 0.72, 0.14)}
-        scale={1.04}
-        roll={0.24}
-      />
+        return (
+          <Branch
+            key={`branch-${index}`}
+            attach={branch.points[0]}
+            points={branch.points}
+            radiusStart={branch.radiusStart}
+            radiusEnd={branch.radiusEnd}
+            materials={materials}
+            progress={progress}
+          >
+            {branch.kind === 'bloom' ? (
+              <MechanicalTrumpet
+                base={tip}
+                direction={bloomDirection[slot]}
+                materials={materials}
+                getState={getState}
+                variant={bloomVariant[slot]}
+                open={bloomOpen[slot]}
+                appear={structural}
+                scale={bloomScale[slot]}
+                roll={bloomRoll[slot]}
+              />
+            ) : (
+              <MechanicalBud
+                base={tip}
+                tip={[tip[0] + (tip[0] >= 0 ? 0.1 : -0.1), tip[1] + 0.34, tip[2] + 0.03]}
+                materials={materials}
+                getState={getState}
+                appear={structural}
+                scale={0.92}
+              />
+            )}
+          </Branch>
+        )
+      })}
 
-      <GeometricLeaf
-        base={[-0.02, -3.52, 0.03]}
-        tip={[-0.44, -3.26, 0.07]}
-        width={0.12}
-        materials={materials}
-        appear={appearAmount(growth, 0.1)}
-      />
-      <GeometricLeaf
-        base={[-0.4, -0.6, 0.03]}
-        tip={[-0.52, -0.08, 0.08]}
-        width={0.13}
-        materials={materials}
-        appear={appearAmount(growth, 0.36)}
-      />
-      <GeometricLeaf
-        base={[0.44, 1.12, 0.03]}
-        tip={[0.56, 1.62, 0.08]}
-        width={0.12}
-        materials={materials}
-        appear={appearAmount(growth, 0.64)}
-      />
-      <GeometricLeaf
-        base={[-0.46, 2.3, 0.04]}
-        tip={[-0.8, 2.14, 0.08]}
-        width={0.12}
-        materials={materials}
-        appear={appearAmount(growth, 0.76)}
-      />
-
-      <MechanicalBud
-        base={BRANCHES[1][3]}
-        tip={[1.06, -0.84, 0.1]}
-        materials={materials}
-        appear={appearAmount(growth, 0.38)}
-        scale={0.84}
-      />
-      <MechanicalBud
-        base={BRANCHES[2][3]}
-        tip={[-1.14, 0.38, 0.14]}
-        materials={materials}
-        appear={appearAmount(growth, 0.34)}
-        scale={0.8}
-      />
-      <MechanicalBud
-        base={BRANCHES[4][3]}
-        tip={[1.1, 2.1, 0.12]}
-        materials={materials}
-        appear={appearAmount(growth, 0.66)}
-        scale={0.82}
-      />
-      <MechanicalBud
-        base={BRANCHES[6][3]}
-        tip={[0.6, 4.52, 0.1]}
-        materials={materials}
-        appear={appearAmount(growth, 0.88)}
-        scale={0.86}
-      />
+      {LEAVES.map((leaf, index) => {
+        const attachU = MAIN_U[leaf.attachIndex]
+        return (
+          <GeometricLeaf
+            key={`leaf-${index}`}
+            base={leaf.base}
+            tip={leaf.tip}
+            width={leaf.width}
+            materials={materials}
+            getState={getState}
+            appear={smoothstep(attachU + 0.02, Math.min(1, attachU + 0.14), reach)}
+          />
+        )
+      })}
     </group>
   )
 }

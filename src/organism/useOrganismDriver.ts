@@ -3,9 +3,10 @@ import { useEffect, useRef } from 'react'
 import { damp, INITIAL_STATE, smoothstep, type OrganismState } from './state'
 
 /**
- * Maps page scroll to growth / sequential bloom progress, and damps cursor
- * motion. The canvas reads this ref every frame; the DOM is the source of truth
- * for section positions so the 3D narrative stays locked to the editorial page.
+ * Maps page scroll to global growth and to three independent bloom progress
+ * values, and damps cursor motion. The canvas reads this ref every frame; the
+ * DOM is the source of truth for section positions, so the organism's narrative
+ * stays locked to the editorial page rather than to a pixel count.
  */
 export function useOrganismDriver() {
   const state = useRef<OrganismState>({ ...INITIAL_STATE })
@@ -32,14 +33,16 @@ export function useOrganismDriver() {
   const tick = (dt: number) => {
     const s = state.current
     const vh = window.innerHeight || 1
-    const heroTravel = Math.min(1, Math.max(0, window.scrollY / (vh * 0.85)))
-    const bloom1 = sectionOpen('projects', 0.9, 0.3)
-    const bloom2 = sectionOpen('playground', 0.9, 0.3)
-    const bloom3 = sectionOpen('about', 0.9, 0.3)
 
+    // globalGrowthProgress: the hero scroll extends the stem, then each section
+    // that arrives adds another stage of the organism.
+    const heroTravel = Math.min(1, Math.max(0, window.scrollY / (vh * 0.85)))
+    const bloom1Target = sectionOpen('projects')
+    const bloom2Target = sectionOpen('playground')
+    const bloom3Target = sectionOpen('about')
     const growthTarget = Math.min(
       1,
-      0.16 + 0.18 * heroTravel + 0.22 * bloom1 + 0.22 * bloom2 + 0.22 * bloom3,
+      0.22 * heroTravel + 0.26 * bloom1Target + 0.26 * bloom2Target + 0.26 * bloom3Target,
     )
 
     const p = pointer.current
@@ -50,9 +53,9 @@ export function useOrganismDriver() {
 
     if (reduced.current) {
       s.growth = growthTarget
-      s.bloom1 = bloom1
-      s.bloom2 = bloom2
-      s.bloom3 = bloom3
+      s.bloom1 = bloom1Target
+      s.bloom2 = bloom2Target
+      s.bloom3 = bloom3Target
       s.cursorX = 0
       s.cursorY = 0
       s.cursorVx = 0
@@ -60,21 +63,26 @@ export function useOrganismDriver() {
       return s
     }
 
-    s.growth = damp(s.growth, growthTarget, 3.1, dt)
-    s.bloom1 = damp(s.bloom1, bloom1, 2.05, dt)
-    s.bloom2 = damp(s.bloom2, bloom2, 2.05, dt)
-    s.bloom3 = damp(s.bloom3, bloom3, 2.05, dt)
-    s.cursorX = damp(s.cursorX, p.x, 3.6, dt)
-    s.cursorY = damp(s.cursorY, p.y, 3.6, dt)
-    s.cursorVx = damp(s.cursorVx, vx, 6.2, dt)
-    s.cursorVy = damp(s.cursorVy, vy, 6.2, dt)
+    s.growth = damp(s.growth, growthTarget, 3, dt)
+    s.bloom1 = damp(s.bloom1, bloom1Target, 2, dt)
+    s.bloom2 = damp(s.bloom2, bloom2Target, 2, dt)
+    s.bloom3 = damp(s.bloom3, bloom3Target, 2, dt)
+    s.cursorX = damp(s.cursorX, p.x, 3.2, dt)
+    s.cursorY = damp(s.cursorY, p.y, 3.2, dt)
+    s.cursorVx = damp(s.cursorVx, vx, 5.5, dt)
+    s.cursorVy = damp(s.cursorVy, vy, 5.5, dt)
+
+    if (import.meta.env.DEV) {
+      ;(window as unknown as { __organism?: OrganismState }).__organism = { ...s }
+    }
     return s
   }
 
   return { state, tick }
 }
 
-function sectionOpen(id: string, enter = 0.9, full = 0.3): number {
+/** 0 while the section is still below the fold, 1 once it has settled in view. */
+function sectionOpen(id: string, enter = 0.85, full = 0.25): number {
   const el = document.getElementById(id)
   if (!el) return 0
   const vh = window.innerHeight || 1
