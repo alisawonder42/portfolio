@@ -21,6 +21,13 @@ function SectionBlock({ section }: { section: ProjectSection }) {
             ))}
           </ol>
         ) : null}
+        {section.items ? (
+          <ul className={styles.items}>
+            {section.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </section>
   )
@@ -48,7 +55,7 @@ export function ProjectPage({ project }: { project: Project }) {
 
         {project.role ? (
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>The project</h2>
+            <h2 className={styles.sectionTitle}>About the project</h2>
             <div className={styles.sectionBody}>
               <p>{project.role}</p>
             </div>

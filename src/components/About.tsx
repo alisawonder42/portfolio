@@ -3,7 +3,7 @@ import { siteContent } from '@/content/site'
 import styles from './About.module.css'
 
 export function About() {
-  const { bio, practice, capabilities, contact } = siteContent.about
+  const { bio, background, capabilities, contact } = siteContent.about
   const links = contact.filter((item) => item.href)
 
   return (
@@ -14,11 +14,15 @@ export function About() {
         ))}
       </div>
 
-      <section className={styles.block} aria-labelledby="about-practice">
-        <h3 id="about-practice" className={styles.blockTitle}>
-          {practice.title}
+      <section className={styles.block} aria-labelledby="about-background">
+        <h3 id="about-background" className={styles.blockTitle}>
+          {background.title}
         </h3>
-        <p className={styles.practice}>{practice.body}</p>
+        <div className={styles.backgroundBody}>
+          {background.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </section>
 
       <section className={styles.block} aria-labelledby="about-capabilities">
@@ -29,25 +33,28 @@ export function About() {
           {capabilities.map((group) => (
             <div key={group.title} className={styles.group}>
               <dt className={styles.groupTitle}>{group.title}</dt>
-              <dd className={styles.groupItems}>{group.items.join(' / ')}</dd>
+              <dd className={styles.groupItems}>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </dd>
             </div>
           ))}
         </dl>
       </section>
 
       {links.length > 0 ? (
-        <section className={styles.block} aria-labelledby="about-contact">
-          <h3 id="about-contact" className={styles.blockTitle}>
-            Contact
-          </h3>
-          <ul className={styles.contact}>
-            {links.map((item) => (
-              <li key={item.label}>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <ul className={styles.contact}>
+          {links.map((item) => (
+            <li key={item.label}>
+              <a href={item.href}>
+                {item.label} <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       ) : null}
     </div>
   )

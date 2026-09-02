@@ -32,37 +32,72 @@ export const siteContent = {
     eyebrow: '03',
     title: 'About',
     bio: [
-      'Katarina Ranković is a creative technologist with a background in computer science and professional experience across video games, VR and interactive digital systems.',
-      'Her practice explores how technology can operate as both a creative medium and a system for shaping participation, perception and communication.',
-      'She is particularly interested in interactive, participatory and experimental formats, and in work connecting physical space with digital layers and responsive systems.',
+      'Katarina Ranković is a creative technologist with 8+ years of professional experience building games, realtime systems and interactive experiences, primarily with Unity and C#.',
+      'Her work sits between technology, interaction and design, combining a strong engineering background with experimentation across interactive art, XR, AI-enabled experiences and physical–digital systems.',
+      'She is particularly interested in projects where technology becomes part of the experience itself — through movement, language, participation, realtime visuals and physical space.',
     ],
-    practice: {
-      title: 'Practice',
-      body: 'Alongside her independent creative practice, Katarina has more than eight years of experience building games and realtime interactive systems.',
+    background: {
+      title: 'Background',
+      body: [
+        'Experience across games, VR/AR and realtime software, from gameplay systems and architecture to rapid prototyping, realtime visuals and development tools.',
+        'She has worked closely with designers and artists, building technical systems and tools that help turn visual and interactive ideas into working experiences.',
+      ],
     },
+    /**
+     * Ordered so the creative identity reads first and the engineering that
+     * supports it reads last.
+     */
     capabilities: [
-      { title: 'Realtime', items: ['Unity', 'Unreal', 'Babylon.js', 'WebGL'] },
-      { title: 'Engineering', items: ['C#', 'C++', 'TypeScript', '.NET'] },
       {
-        title: 'Systems',
+        title: 'Interactive',
         items: [
-          'Realtime architecture',
-          'Interaction design',
-          'Gameplay systems',
-          'Tooling',
-          'Creative technology',
+          'Interactive Experiences',
+          'Rapid Prototyping',
+          'Games / AR / VR / XR',
+          'Physical–Digital Systems',
+        ],
+      },
+      {
+        title: 'Realtime & Visual',
+        items: [
+          'Unity / Unreal Engine',
+          'Animation Systems',
+          'Particles / VFX / Post-processing',
+          'Lighting / Cameras / Materials',
+          '3D Asset Pipelines',
+          'Basic Shader Work',
+        ],
+      },
+      {
+        title: 'AI & Integrations',
+        items: [
+          'Generative AI',
+          'Prompt Design & Optimization',
+          'Speech-to-Text / Text-to-Speech',
+          'Conversational / Language-learning Systems',
+          'NFC / QR / Kiosk Integrations',
+        ],
+      },
+      {
+        title: 'Engineering',
+        items: [
+          'C# / C++',
+          'System Architecture',
+          'Gameplay Systems',
+          'Development & Art Pipeline Tools',
+          'Unit Testing / .NET',
         ],
       },
     ],
     /**
      * Real destinations are not known yet. Entries stay here with an empty href
-     * and are not rendered, so the site never shows a link that goes nowhere.
+     * and are filtered out at render, so the site never shows a link that goes
+     * nowhere. They appear as soon as a real URL is supplied.
      */
     contact: [
       { label: 'CV', href: '' },
       { label: 'Email', href: '' },
       { label: 'LinkedIn', href: '' },
-      { label: 'GitHub', href: '' },
     ],
   },
   footer: {

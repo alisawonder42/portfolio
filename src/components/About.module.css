@@ -3,11 +3,12 @@
   gap: var(--space-12);
 }
 
+/* Wider than the default column so the introduction reads as prose. */
 .bio {
   display: grid;
   gap: var(--space-5, 1.25rem);
   color: var(--fg-muted);
-  max-width: 42ch;
+  max-width: 28rem;
   text-wrap: pretty;
 }
 
@@ -29,21 +30,23 @@
   color: var(--fg-faint);
 }
 
-.practice {
+.backgroundBody {
+  display: grid;
+  gap: var(--space-4);
   color: var(--fg-muted);
-  max-width: 42ch;
+  max-width: 28rem;
   text-wrap: pretty;
 }
 
 .capabilities {
   margin: 0;
   display: grid;
-  gap: var(--space-5, 1.25rem);
+  gap: var(--space-8);
 }
 
 .group {
   display: grid;
-  gap: 0.3rem;
+  gap: var(--space-2);
 }
 
 .groupTitle {
@@ -56,9 +59,17 @@
 
 .groupItems {
   margin: 0;
+}
+
+.groupItems ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.15rem;
   font-size: var(--text-sm);
+  line-height: 1.5;
   color: var(--fg-muted);
-  max-width: 44ch;
 }
 
 .contact {
