@@ -5,7 +5,7 @@ import styles from './Nav.module.css'
 export function Nav() {
   return (
     <header className={styles.header}>
-      <nav className={`container ${styles.nav}`} aria-label="Primary">
+      <nav className={styles.nav} aria-label="Primary">
         <a href="#" className={styles.brand}>
           {siteContent.nav.brand}
         </a>

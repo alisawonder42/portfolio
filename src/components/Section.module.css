@@ -1,11 +1,12 @@
 .section {
-  padding-block: var(--space-24);
-  border-top: 1px solid var(--line);
-}
-
-.inner {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
   display: grid;
-  gap: var(--space-12);
+  align-content: center;
+  gap: var(--space-10, 2.5rem);
+  padding: 18vh var(--gutter) 22vh;
+  max-width: 34rem;
 }
 
 .header {
@@ -14,12 +15,11 @@
 }
 
 .title {
+  font-family: var(--font-display);
   font-size: var(--text-xl);
+  font-weight: 400;
   line-height: 1.15;
   letter-spacing: var(--tracking-tight);
-  font-weight: 500;
-  max-width: 24ch;
-  text-wrap: balance;
 }
 
 .body {
@@ -27,13 +27,7 @@
 }
 
 @media (min-width: 60rem) {
-  .inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: var(--space-16);
-  }
-  .header {
-    position: sticky;
-    top: var(--space-24);
-    align-self: start;
+  .section {
+    max-width: 38rem;
   }
 }

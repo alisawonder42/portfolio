@@ -1,40 +1,35 @@
 :root {
-  /* Surfaces: near-black with a cold blue cast so the metal reads warm against it. */
-  --bg: #0a0a0d;
-  --bg-elev: #111116;
-  --bg-elev-2: #17171e;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
+  --bg: #f3efe6;
+  --bg-elev: #e7e2d7;
+  --bg-elev-2: #ddd6c8;
+  --line: rgba(32, 28, 22, 0.12);
+  --line-strong: rgba(32, 28, 22, 0.22);
 
-  /* Text */
-  --fg: #ececf1;
-  --fg-muted: #9a9ba6;
-  --fg-faint: #5f606b;
+  --fg: #1c1914;
+  --fg-muted: #6a645a;
+  --fg-faint: #9a9386;
 
-  /* Accent: pulled from the chrome highlight; swap when the finish is chosen. */
-  --accent: #dfe6ff;
-  --accent-warm: #ffd7b0;
+  --accent: #3d3a34;
+  --accent-warm: #c4b49a;
 
-  /* Type */
-  --font-sans:
-    'Inter', 'SF Pro Text', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  --font-display:
+    'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', Georgia, serif;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
   --font-mono:
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: clamp(1.75rem, 2.5vw, 2.5rem);
-  --text-display: clamp(2.75rem, 7vw, 6.5rem);
+  --text-xs: 0.72rem;
+  --text-sm: 0.9rem;
+  --text-base: 1.05rem;
+  --text-lg: 1.2rem;
+  --text-xl: clamp(1.6rem, 2.4vw, 2.15rem);
+  --text-display: clamp(2.4rem, 6vw, 4.4rem);
 
-  --leading-tight: 1.05;
-  --leading-normal: 1.55;
-  --tracking-tight: -0.03em;
-  --tracking-wide: 0.14em;
+  --leading-tight: 1.04;
+  --leading-normal: 1.6;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.16em;
 
-  /* Spacing & layout */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -44,12 +39,11 @@
   --space-12: 3rem;
   --space-16: 4rem;
   --space-24: 6rem;
-  --container: 72rem;
-  --gutter: clamp(1.25rem, 4vw, 3rem);
-  --radius: 0.75rem;
-  --radius-lg: 1.25rem;
+  --container: 78rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
 
-  /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 160ms;
   --dur: 320ms;

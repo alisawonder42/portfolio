@@ -1,70 +1,66 @@
 /**
- * All human-readable copy lives here so it can be replaced without touching
- * layout code. Everything below is placeholder text awaiting real content.
+ * Editorial copy. Project entries remain lightly sketched until real work is supplied.
  */
 export const siteContent = {
   meta: {
-    title: 'Katarina Rankovic',
-    description: 'Selected work and notes.',
+    title: 'Katarina Ranković',
+    description: 'Creative technologist working across interactive art, games and digital systems.',
   },
   nav: {
-    brand: 'Katarina Rankovic',
+    brand: 'Katarina Ranković',
     links: [
-      { label: 'Work', href: '#work' },
+      { label: 'Projects', href: '#projects' },
+      { label: 'Playground', href: '#playground' },
       { label: 'About', href: '#about' },
-      { label: 'Contact', href: '#contact' },
     ],
   },
   hero: {
-    eyebrow: 'Portfolio — 2026',
-    title: 'Work that opens up on closer inspection.',
-    lede: 'Placeholder introduction. One or two sentences on who you are, what you make, and the kind of problems you like to take on.',
-    primaryCta: 'See the work',
-    secondaryCta: 'Get in touch',
+    title: 'Katarina Ranković',
+    lede: 'Creative technologist working across interactive art, games and digital systems.',
   },
   work: {
-    eyebrow: 'Selected work',
+    eyebrow: '01',
     title: 'Projects',
     items: [
       {
-        title: 'Project One',
-        role: 'Role · Year',
+        title: 'Selected work',
+        role: 'To be added',
         summary:
-          'Placeholder summary. What the project was, what you did, and what changed because of it.',
-        href: '#',
+          'A first collection of commissioned and self-initiated pieces. Titles and stills will sit here.',
+        href: '#projects',
       },
       {
-        title: 'Project Two',
-        role: 'Role · Year',
-        summary: 'Placeholder summary. Keep each one to two or three sentences.',
-        href: '#',
+        title: 'Installations',
+        role: 'To be added',
+        summary:
+          'Room-scale and site-specific systems, including work that depends on a visitor being physically present.',
+        href: '#projects',
+      },
+    ],
+  },
+  playground: {
+    eyebrow: '02',
+    title: 'Playground',
+    items: [
+      {
+        title: 'Sketches',
+        summary: 'Smaller studies, failed directions, and things that do not yet have a name.',
       },
       {
-        title: 'Project Three',
-        role: 'Role · Year',
-        summary: 'Placeholder summary. The grid supports any number of entries.',
-        href: '#',
+        title: 'Systems',
+        summary: 'Tools, toys, and procedural experiments that sit beside the finished work.',
       },
     ],
   },
   about: {
-    eyebrow: 'About',
-    title: 'A short bio goes here.',
+    eyebrow: '03',
+    title: 'About',
     body: [
-      'Placeholder paragraph one. Where you are, what you have worked on, and what you care about in the work.',
-      'Placeholder paragraph two. Tools, collaborators, or a line about what you are looking for next.',
-    ],
-  },
-  contact: {
-    eyebrow: 'Contact',
-    title: 'Say hello.',
-    email: 'hello@example.com',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/alisawonder42' },
-      { label: 'LinkedIn', href: '#' },
+      'I work where software, image and physical space overlap — building things that can be walked around, played with, or simply looked at for a while.',
+      'Based between studio practice and digital systems. More writing and a fuller biography will follow.',
     ],
   },
   footer: {
-    note: '© 2026 Katarina Rankovic',
+    note: '© Katarina Ranković',
   },
 } as const
