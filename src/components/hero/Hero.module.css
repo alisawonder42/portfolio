@@ -4,34 +4,41 @@
   min-height: 100svh;
   display: flex;
   align-items: flex-end;
-  padding: 0 var(--gutter) clamp(3.5rem, 8vh, 6rem);
+  padding: 0 var(--gutter) clamp(4.5rem, 12vh, 8rem);
 }
 
 .copy {
-  max-width: 22rem;
+  max-width: 20rem;
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5, 1.25rem);
 }
 
 .title {
+  display: grid;
+  gap: 0.02em;
   font-family: var(--font-display);
-  font-size: var(--text-display);
+  font-size: clamp(2rem, 4.8vw, 3.4rem);
   font-weight: 400;
-  line-height: var(--leading-tight);
-  letter-spacing: -0.018em;
-  text-wrap: balance;
+  line-height: 0.96;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.given,
+.family {
+  display: block;
 }
 
 .lede {
   font-size: var(--text-sm);
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--fg-muted);
-  max-width: 28ch;
+  max-width: 32ch;
   text-wrap: pretty;
 }
 
 @media (min-width: 60rem) {
   .copy {
-    max-width: 24rem;
+    max-width: 22rem;
   }
 }

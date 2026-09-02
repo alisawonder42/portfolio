@@ -2,63 +2,55 @@ import { useEffect, useMemo } from 'react'
 import * as THREE from 'three'
 
 export interface SculptureMaterials {
-  stem: THREE.MeshPhysicalMaterial
-  joint: THREE.MeshPhysicalMaterial
-  silver: THREE.MeshPhysicalMaterial
-  graphite: THREE.MeshPhysicalMaterial
-  interior: THREE.MeshPhysicalMaterial
-  leaf: THREE.MeshPhysicalMaterial
+  stem: THREE.MeshStandardMaterial
+  joint: THREE.MeshStandardMaterial
+  silver: THREE.MeshStandardMaterial
+  graphite: THREE.MeshStandardMaterial
+  interior: THREE.MeshStandardMaterial
+  leaf: THREE.MeshStandardMaterial
 }
 
 export function useSculptureMaterials(): SculptureMaterials {
   const materials = useMemo<SculptureMaterials>(
     () => ({
-      stem: new THREE.MeshPhysicalMaterial({
-        color: '#8a8e94',
-        metalness: 0.88,
-        roughness: 0.44,
-        anisotropy: 0.72,
-        anisotropyRotation: Math.PI * 0.5,
-        envMapIntensity: 0.62,
-        clearcoat: 0.08,
-        clearcoatRoughness: 0.55,
+      stem: new THREE.MeshStandardMaterial({
+        color: '#4a5158',
+        metalness: 0.66,
+        roughness: 0.48,
+        envMapIntensity: 0.55,
       }),
-      joint: new THREE.MeshPhysicalMaterial({
-        color: '#3b3e43',
-        metalness: 0.94,
+      joint: new THREE.MeshStandardMaterial({
+        color: '#2c3034',
+        metalness: 0.78,
         roughness: 0.22,
-        envMapIntensity: 0.78,
-        clearcoat: 0.18,
-        clearcoatRoughness: 0.28,
-      }),
-      silver: new THREE.MeshPhysicalMaterial({
-        color: '#c9ced4',
-        metalness: 0.9,
-        roughness: 0.32,
         envMapIntensity: 0.7,
-        clearcoat: 0.22,
-        clearcoatRoughness: 0.35,
       }),
-      graphite: new THREE.MeshPhysicalMaterial({
-        color: '#5c6066',
-        metalness: 0.9,
-        roughness: 0.38,
-        envMapIntensity: 0.64,
+      silver: new THREE.MeshStandardMaterial({
+        color: '#8e969f',
+        metalness: 0.64,
+        roughness: 0.36,
+        envMapIntensity: 0.62,
       }),
-      interior: new THREE.MeshPhysicalMaterial({
-        color: '#d7e6ea',
-        metalness: 0.28,
+      graphite: new THREE.MeshStandardMaterial({
+        color: '#2f3338',
+        metalness: 0.72,
+        roughness: 0.44,
+        envMapIntensity: 0.42,
+      }),
+      interior: new THREE.MeshStandardMaterial({
+        color: '#c9d6db',
+        metalness: 0.18,
         roughness: 0.58,
-        emissive: '#8fb8c2',
-        emissiveIntensity: 0.08,
-        envMapIntensity: 0.35,
+        emissive: '#8eacb4',
+        emissiveIntensity: 0.07,
+        envMapIntensity: 0.28,
         side: THREE.DoubleSide,
       }),
-      leaf: new THREE.MeshPhysicalMaterial({
-        color: '#b7bcc2',
-        metalness: 0.82,
-        roughness: 0.4,
-        envMapIntensity: 0.55,
+      leaf: new THREE.MeshStandardMaterial({
+        color: '#5c636a',
+        metalness: 0.6,
+        roughness: 0.5,
+        envMapIntensity: 0.4,
         side: THREE.DoubleSide,
       }),
     }),

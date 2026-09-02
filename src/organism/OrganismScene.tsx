@@ -9,37 +9,37 @@ import { useOrganismDriver } from './useOrganismDriver'
 
 function QuietStudio() {
   return (
-    <Environment resolution={256} frames={1} background={false} environmentIntensity={0.58}>
+    <Environment resolution={64} frames={1} background={false} environmentIntensity={0.38}>
       <Lightformer
         form="rect"
-        intensity={1.15}
-        color="#f4f1ea"
-        position={[0, 4.5, 1]}
+        intensity={0.85}
+        color="#f3efe6"
+        position={[0, 4.6, 1]}
         rotation={[-Math.PI / 2.2, 0, 0]}
-        scale={[7, 7, 1]}
+        scale={[8, 8, 1]}
       />
       <Lightformer
         form="rect"
-        intensity={2.4}
+        intensity={2.6}
         color="#ffffff"
-        position={[-3.6, 2.2, 3]}
+        position={[-3.8, 2.4, 3.2]}
         rotation={[0, Math.PI / 3.2, Math.PI / 2.2]}
-        scale={[0.35, 7, 1]}
+        scale={[0.22, 8, 1]}
       />
       <Lightformer
         form="rect"
         intensity={0.55}
-        color="#e4eaf0"
-        position={[4, 0.4, 2]}
-        scale={[3.5, 5, 1]}
+        color="#d8dee6"
+        position={[4.6, 1.4, 2]}
+        scale={[2.4, 5, 1]}
       />
       <Lightformer
         form="rect"
-        intensity={0.28}
-        color="#d8d2c6"
-        position={[0, -3.2, 1]}
-        rotation={[Math.PI / 2.4, 0, 0]}
-        scale={[8, 4, 1]}
+        intensity={0.22}
+        color="#3a3c40"
+        position={[0, -3.6, 0]}
+        rotation={[Math.PI / 2.2, 0, 0]}
+        scale={[10, 8, 1]}
       />
     </Environment>
   )
@@ -49,7 +49,7 @@ function OrganismRig() {
   const materials = useSculptureMaterials()
   const { state, tick } = useOrganismDriver()
   const vine = useRef<THREE.Group>(null)
-  const [pose, setPose] = useState({ growth: 0.27, bloom1: 0, bloom2: 0, bloom3: 0 })
+  const [pose, setPose] = useState({ growth: 0.16, bloom1: 0, bloom2: 0, bloom3: 0 })
 
   useFrame((_, delta) => {
     const dt = Math.min(delta, 1 / 20)
@@ -57,10 +57,12 @@ function OrganismRig() {
     const g = s.growth
     const node = vine.current
     if (node) {
-      node.position.y = THREE.MathUtils.lerp(2.55, 0.08, g)
-      node.position.x = 0.55
-      node.scale.setScalar(THREE.MathUtils.lerp(1.08, 0.8, g))
+      node.position.x = 1.18
+      node.position.y = THREE.MathUtils.lerp(2.22, 0.1, g)
+      node.position.z = 0
+      node.scale.setScalar(THREE.MathUtils.lerp(1.08, 0.56, g))
     }
+
     setPose((prev) => {
       if (
         Math.abs(prev.growth - s.growth) < 0.007 &&
@@ -75,7 +77,7 @@ function OrganismRig() {
   })
 
   return (
-    <group ref={vine} position={[0.55, 2.55, 0]} scale={1.08}>
+    <group ref={vine} position={[1.18, 2.22, 0]} scale={1.08}>
       <ArticulatedVine
         materials={materials}
         getState={() => state.current}
@@ -96,20 +98,22 @@ export function OrganismScene() {
   return (
     <Canvas
       dpr={[1, 1.6]}
-      camera={{ position: [2.05, -0.15, 6.2], fov: 30, near: 0.1, far: 40 }}
+      camera={{ position: [0.18, 0.02, 8.2], fov: 28, near: 0.1, far: 40 }}
       gl={{
         antialias: true,
         alpha: true,
         powerPreference: 'high-performance',
         toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1.02,
+        toneMappingExposure: 1.04,
       }}
       style={{ background: 'transparent' }}
     >
       <QuietStudio />
-      <ambientLight intensity={0.42} />
-      <directionalLight position={[-3, 5, 6]} intensity={1.15} color="#fff7ee" />
-      <directionalLight position={[4, 1, 3]} intensity={0.35} color="#e8eef4" />
+      <hemisphereLight args={['#f4f0e8', '#8d8880', 0.7]} />
+      <ambientLight intensity={0.28} />
+      <directionalLight position={[-4.2, 5.5, 6.5]} intensity={2.15} color="#fff6ea" />
+      <directionalLight position={[5.2, 1.6, 3.4]} intensity={0.48} color="#e4ebf2" />
+      <directionalLight position={[1.2, 7, -2]} intensity={0.22} color="#f0ebe3" />
       <OrganismRig />
     </Canvas>
   )

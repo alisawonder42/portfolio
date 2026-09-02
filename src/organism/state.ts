@@ -11,7 +11,7 @@ export interface OrganismState {
 }
 
 export const INITIAL_STATE: OrganismState = {
-  growth: 0.27,
+  growth: 0.16,
   bloom1: 0,
   bloom2: 0,
   bloom3: 0,
@@ -21,6 +21,7 @@ export const INITIAL_STATE: OrganismState = {
   cursorVy: 0,
 }
 
+/** GLSL-style smoothstep(edge0, edge1, x). */
 export function smoothstep(edge0: number, edge1: number, x: number): number {
   const t = Math.min(1, Math.max(0, (x - edge0) / (edge1 - edge0)))
   return t * t * (3 - 2 * t)
