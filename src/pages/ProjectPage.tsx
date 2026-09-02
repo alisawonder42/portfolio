@@ -1,6 +1,12 @@
 import { Link } from '@/app/Link'
 import { Nav } from '@/components/Nav'
-import { nextProject, projectPath, type Project, type ProjectMedia, type ProjectSection } from '@/content/projects'
+import {
+  nextProject,
+  projectPath,
+  type Project,
+  type ProjectMedia,
+  type ProjectSection,
+} from '@/content/projects'
 import { siteContent } from '@/content/site'
 
 import styles from './ProjectPage.module.css'
@@ -81,7 +87,9 @@ export function ProjectPage({ project }: { project: Project }) {
   const upcoming = nextProject(project.slug)
   const meta = [project.type, project.year].filter(Boolean).join(' · ')
   const hasSpec = Boolean(project.kindLabel || project.credit || project.location)
-  const showType = Boolean(project.type && (!project.kindLabel || project.type !== project.kindLabel))
+  const showType = Boolean(
+    project.type && (!project.kindLabel || project.type !== project.kindLabel),
+  )
 
   return (
     <>
