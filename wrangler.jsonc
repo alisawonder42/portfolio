@@ -1,0 +1,21 @@
+// Cloudflare Workers (static assets) deployment for katarinarankovic.fyi.
+// Deploy locally with `npm run deploy`; CI deploys on every push to main
+// (see .github/workflows/deploy.yml).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "katarinarankovic-fyi",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./dist",
+    // Hash routes (#/lab) never reach the server, but keep SPA fallback so any
+    // future path-based routes still resolve to index.html.
+    "not_found_handling": "single-page-application",
+    "html_handling": "auto-trailing-slash",
+  },
+  "routes": [
+    { "pattern": "katarinarankovic.fyi", "custom_domain": true },
+    { "pattern": "www.katarinarankovic.fyi", "custom_domain": true },
+  ],
+  "workers_dev": false,
+  "observability": { "enabled": true },
+}

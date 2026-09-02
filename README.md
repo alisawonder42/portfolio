@@ -28,6 +28,26 @@ npm run typecheck  # tsc
 npm run format     # prettier
 ```
 
+## Deployment
+
+The site is deployed to Cloudflare Workers (static assets) at
+[katarinarankovic.fyi](https://katarinarankovic.fyi). Configuration lives in
+`wrangler.jsonc`; `public/_headers` and `public/_redirects` are copied into
+`dist/` and applied at the edge (long-lived caching for hashed assets, `www` →
+apex redirect).
+
+- **CI:** every push to `main` runs `.github/workflows/deploy.yml`, which
+  lints, builds and runs `wrangler deploy`. It needs two repository secrets:
+  `CLOUDFLARE_API_TOKEN` (a token with the _Workers Scripts: Edit_, _Workers
+  Routes: Edit_ and _DNS: Edit_ permissions on the zone) and
+  `CLOUDFLARE_ACCOUNT_ID`.
+- **Manual:** `npm run deploy` with the same two variables exported (or after
+  `npx wrangler login`). `npm run deploy:check` does a dry run.
+
+The custom-domain routes in `wrangler.jsonc` make Wrangler create the DNS
+records for `katarinarankovic.fyi` and `www.katarinarankovic.fyi` automatically
+on the first deploy, provided the zone is in the same Cloudflare account.
+
 ## Project layout
 
 ```

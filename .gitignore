@@ -9,6 +9,8 @@ dist-ssr
 # tooling caches
 node_modules/.tmp
 *.tsbuildinfo
+.wrangler
+.dev.vars*
 
 # logs
 npm-debug.log*

@@ -4,11 +4,11 @@
  */
 export const siteContent = {
   meta: {
-    title: 'Portfolio',
+    title: 'Katarina Rankovic',
     description: 'Selected work and notes.',
   },
   nav: {
-    brand: 'Your Name',
+    brand: 'Katarina Rankovic',
     links: [
       { label: 'Work', href: '#work' },
       { label: 'About', href: '#about' },
@@ -65,6 +65,6 @@ export const siteContent = {
     ],
   },
   footer: {
-    note: '© 2026 Your Name',
+    note: '© 2026 Katarina Rankovic',
   },
 } as const
