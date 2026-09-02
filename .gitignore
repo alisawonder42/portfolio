@@ -12,6 +12,10 @@ node_modules/.tmp
 .wrangler
 .dev.vars*
 
+# local credentials — never commit
+.env
+.env.*
+
 # logs
 npm-debug.log*
 yarn-debug.log*

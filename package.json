@@ -11,8 +11,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc -b",
-    "deploy": "npm run build && wrangler deploy",
-    "deploy:check": "npm run build && wrangler deploy --dry-run",
+    "deploy": "npm run build && wrangler deploy --env=\"\"",
+    "deploy:check": "npm run build && wrangler deploy --dry-run --env=\"\"",
     "deploy:preview": "npm run build && wrangler deploy --env preview"
   },
   "dependencies": {
