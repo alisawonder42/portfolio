@@ -88,6 +88,22 @@
   text-wrap: pretty;
 }
 
+.embed {
+  margin: 0;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: #f4f1ea;
+}
+
+.embed iframe {
+  display: block;
+  width: 100%;
+  height: min(72vh, 44rem);
+  border: 0;
+  background: #f4f1ea;
+}
+
 .section {
   display: grid;
   grid-template-columns: 1fr;
