@@ -118,6 +118,13 @@ export const projects: Project[] = [
       src: 'https://alisawonder42.github.io/boxpreview/?embed=1',
       title: 'The box',
     },
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/box/desk.jpg',
+        alt: 'The physical ornamental box on a desk in front of a monitor showing the 3D scan.',
+      },
+    ],
   },
   {
     slug: 'shrinkme',

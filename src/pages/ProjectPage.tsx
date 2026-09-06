@@ -186,6 +186,14 @@ export function ProjectPage({ project }: { project: Project }) {
 
         {project.embed ? <Embed src={project.embed.src} title={project.embed.title} /> : null}
 
+        {project.embed && project.media?.length ? (
+          <div className={`${styles.media} ${styles.mediaWithEmbed}`}>
+            {project.media.map((item) => (
+              <MediaFigure key={item.src} item={item} />
+            ))}
+          </div>
+        ) : null}
+
         {project.role ? (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>About the project</h2>
@@ -208,7 +216,7 @@ export function ProjectPage({ project }: { project: Project }) {
           <SectionBlock key={section.title ?? section.content?.[0]} section={section} />
         ))}
 
-        {project.media?.length ? (
+        {!project.embed && project.media?.length ? (
           <div className={styles.media}>
             {project.media.map((item) => (
               <MediaFigure key={item.src} item={item} />
