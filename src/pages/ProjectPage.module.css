@@ -89,19 +89,37 @@
 }
 
 .embed {
+  position: relative;
   margin: 0;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   background: #f4f1ea;
 }
 
 .embed iframe {
   display: block;
   width: 100%;
-  height: min(72vh, 44rem);
+  height: min(42vh, 26rem);
   border: 0;
   background: #f4f1ea;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.embed[data-ready] iframe {
+  opacity: 1;
+}
+
+.embedStatus {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }
 
 .section {

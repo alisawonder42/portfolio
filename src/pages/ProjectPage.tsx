@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Link } from '@/app/Link'
 import { Nav } from '@/components/Nav'
 import {
@@ -62,9 +64,16 @@ function Contribution({ items }: { items: string[] }) {
 }
 
 function Embed({ src, title }: { src: string; title: string }) {
+  const [ready, setReady] = useState(false)
+
   return (
-    <figure className={styles.embed}>
-      <iframe src={src} title={title} allow="fullscreen" loading="lazy" />
+    <figure className={styles.embed} data-ready={ready || undefined}>
+      {ready ? null : (
+        <p className={styles.embedStatus} aria-live="polite">
+          Loading
+        </p>
+      )}
+      <iframe src={src} title={title} allow="fullscreen" onLoad={() => setReady(true)} />
     </figure>
   )
 }
