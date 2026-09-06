@@ -116,9 +116,11 @@
 .embedStatus {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: grid;
   place-items: center;
   margin: 0;
+  background: #f4f1ea;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);

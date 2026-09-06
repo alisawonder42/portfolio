@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Link } from '@/app/Link'
 import { Nav } from '@/components/Nav'
@@ -66,6 +66,27 @@ function Contribution({ items }: { items: string[] }) {
 function Embed({ src, title }: { src: string; title: string }) {
   const [ready, setReady] = useState(false)
 
+  useEffect(() => {
+    const origin = (() => {
+      try {
+        return new URL(src, window.location.href).origin
+      } catch {
+        return ''
+      }
+    })()
+
+    const onMessage = (event: MessageEvent) => {
+      if (origin && event.origin !== origin) return
+      const data = event.data
+      if (data && data.source === 'boxpreview' && data.type === 'ready') {
+        setReady(true)
+      }
+    }
+
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [src])
+
   return (
     <figure className={styles.embed} data-ready={ready || undefined}>
       {ready ? null : (
@@ -73,7 +94,14 @@ function Embed({ src, title }: { src: string; title: string }) {
           Loading
         </p>
       )}
-      <iframe src={src} title={title} allow="fullscreen" onLoad={() => setReady(true)} />
+      <iframe
+        src={src}
+        title={title}
+        allow="fullscreen"
+        onLoad={() => {
+          window.setTimeout(() => setReady(true), 5000)
+        }}
+      />
     </figure>
   )
 }
