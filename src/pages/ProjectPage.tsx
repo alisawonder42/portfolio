@@ -61,6 +61,14 @@ function Contribution({ items }: { items: string[] }) {
   )
 }
 
+function Embed({ src, title }: { src: string; title: string }) {
+  return (
+    <figure className={styles.embed}>
+      <iframe src={src} title={title} allow="fullscreen" loading="lazy" />
+    </figure>
+  )
+}
+
 function MediaFigure({ item }: { item: ProjectMedia }) {
   const media =
     item.kind === 'video' ? (
@@ -138,6 +146,8 @@ export function ProjectPage({ project }: { project: Project }) {
         </header>
 
         {project.overview ? <p className={styles.overview}>{project.overview}</p> : null}
+
+        {project.embed ? <Embed src={project.embed.src} title={project.embed.title} /> : null}
 
         {project.role ? (
           <section className={styles.section}>

@@ -37,6 +37,11 @@ export interface ProjectLink {
   href: string
 }
 
+export interface ProjectEmbed {
+  src: string
+  title: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -65,6 +70,7 @@ export interface Project {
   /** Documentation lives on the project page, never on the homepage. */
   media?: ProjectMedia[]
   externalLinks?: ProjectLink[]
+  embed?: ProjectEmbed
 }
 
 export const projects: Project[] = [
@@ -92,6 +98,26 @@ export const projects: Project[] = [
         alt: 'FLAT in a gallery: a square painting on the left and a three-by-three grid of portrait tablets on the right.',
       },
     ],
+  },
+  {
+    slug: 'box',
+    title: 'Box',
+    type: 'Interactive 3D / Photogrammetry',
+    kindLabel: 'Interactive 3D / Photogrammetry',
+    kind: 'independent',
+    overview: 'A scanned ornamental box. Drag to turn it. Click, and it forgets that it is solid.',
+    sections: [
+      {
+        content: [
+          'The object is a photogrammetry scan of a real box. The animal print stays on the surface while it slumps, flattens, and drains off the stand.',
+          'Built in vanilla Three.js so it can sit on its own or inside this site.',
+        ],
+      },
+    ],
+    embed: {
+      src: '/box/index.html?embed=1',
+      title: 'The box',
+    },
   },
   {
     slug: 'shrinkme',
