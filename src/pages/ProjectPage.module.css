@@ -92,6 +92,10 @@
   position: relative;
   margin: 0;
   width: 100%;
+  /* Same measure as the overview so the frame lines up with those letters. */
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
   background: #f4f1ea;
 }
 
