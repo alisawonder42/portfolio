@@ -115,7 +115,7 @@ export const projects: Project[] = [
       },
     ],
     embed: {
-      src: '/box/index.html?embed=1',
+      src: 'https://alisawonder42.github.io/boxpreview/?embed=1',
       title: 'The box',
     },
   },
