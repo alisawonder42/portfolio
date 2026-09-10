@@ -22,7 +22,7 @@ function CloseLinks() {
   if (!links.length) return null
 
   return (
-    <footer id="close" className={styles.close}>
+    <footer id="contact" className={styles.close}>
       <ul className={styles.closeLinks}>
         {links.map((link) => (
           <li key={link.label}>

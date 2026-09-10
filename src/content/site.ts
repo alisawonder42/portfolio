@@ -1,23 +1,22 @@
 /**
  * Site-level copy. Project and experiment content lives in `projects.ts`.
- * CV body copy lives in `cv.ts`.
  */
 export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
-    description: 'Creative technologist working across interactive art, games and digital systems.',
+    description: 'Exploring relationship between art, software engineering and design',
   },
   nav: {
     brand: 'Katarina Ranković',
     links: [
       { label: 'Projects', href: '/#projects' },
       { label: 'Playground', href: '/#playground' },
-      { label: 'CV', href: '/cv' },
+      { label: 'Contact', href: '/#contact' },
     ],
   },
   hero: {
     title: 'Katarina Ranković',
-    lede: 'Creative technologist working across interactive art, games and digital systems.',
+    lede: 'Exploring relationship between art, software engineering and design',
   },
   work: {
     eyebrow: '01',
@@ -38,12 +37,10 @@ export const siteContent = {
    */
   contact: {
     linkedin: '',
-    email: '',
+    email: 'mailto:katarinarankovic42@gmail.com',
   },
   close: {
     links: [
-      { label: 'CV', href: '/cv', external: false },
-      { label: 'LinkedIn', href: '', external: true },
       { label: 'Contact', href: '', external: true },
     ],
   },
