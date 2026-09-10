@@ -64,6 +64,7 @@ export interface Project {
   kindLabel?: string
   /** Credit line under the spec, e.g. a collaboration. */
   collaboration?: string
+  collaborationLink?: ProjectLink
   /** Only what Katarina did. */
   contribution?: string[]
   sections?: ProjectSection[]
@@ -80,14 +81,18 @@ export const projects: Project[] = [
     type: 'Interactive Gallery Installation / Generative AI',
     kindLabel: 'Interactive Gallery Installation / Generative AI',
     kind: 'independent',
-    collaboration: 'Created in collaboration with painter Mladen Ilić',
+    collaboration: 'Idea developed together with painter',
+    collaborationLink: {
+      label: 'Mladen Ilić',
+      href: 'https://mladenilic.art/',
+    },
     overview:
       'FLAT is a gallery installation exploring the distance between a physical artwork and its digital interpretation through human perception and generative AI.',
     sections: [
       {
         content: [
           'Visitors scan a QR code and describe the physical painting from their phones. The AI never sees the original work, it receives only the visitor’s description and generates a new interpretation, which is automatically displayed on one of nine tablets beside the painting.',
-          'I designed and developed the technical system: the mobile web interface, generative pipeline, backend and Android kiosk app controlling the gallery displays. The system uses React/Vite, Supabase, OpenAI Image API and Capacitor, and was developed with coding agents.',
+          'Mladen Ilić and I developed the idea together. He prepared the exhibition, while I designed and developed its technical system: the mobile web interface, generative pipeline, backend and Android kiosk app controlling the gallery displays. The system uses React/Vite, Supabase, OpenAI Image API and Capacitor, and was developed with coding agents.',
         ],
       },
     ],
