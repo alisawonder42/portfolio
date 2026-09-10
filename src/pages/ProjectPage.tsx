@@ -13,6 +13,20 @@ import { siteContent } from '@/content/site'
 
 import styles from './ProjectPage.module.css'
 
+function InlineText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+        part.startsWith('**') && part.endsWith('**') ? (
+          <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  )
+}
+
 function SectionBlock({ section }: { section: ProjectSection }) {
   return (
     <section className={styles.section}>
@@ -20,7 +34,9 @@ function SectionBlock({ section }: { section: ProjectSection }) {
       <div className={styles.sectionBody}>
         {section.highlight ? <p className={styles.highlight}>{section.highlight}</p> : null}
         {section.content?.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+          <p key={paragraph}>
+            <InlineText text={paragraph} />
+          </p>
         ))}
         {section.steps ? (
           <ol className={styles.steps}>
