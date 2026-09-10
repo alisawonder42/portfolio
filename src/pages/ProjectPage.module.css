@@ -89,19 +89,43 @@
 }
 
 .embed {
+  position: relative;
   margin: 0;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
+  /* Same measure as the overview so the frame lines up with those letters. */
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
   background: #f4f1ea;
 }
 
 .embed iframe {
   display: block;
   width: 100%;
-  height: min(72vh, 44rem);
+  height: min(42vh, 26rem);
   border: 0;
   background: #f4f1ea;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.embed[data-ready] iframe {
+  opacity: 1;
+}
+
+.embedStatus {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  background: #f4f1ea;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }
 
 .section {
@@ -169,6 +193,16 @@
 .media {
   display: grid;
   gap: var(--space-12);
+}
+
+.mediaWithEmbed {
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+}
+
+.mediaWithEmbed .figure img {
+  max-height: none;
 }
 
 .figure {

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import { Link } from '@/app/Link'
 import { Nav } from '@/components/Nav'
 import {
@@ -62,9 +64,44 @@ function Contribution({ items }: { items: string[] }) {
 }
 
 function Embed({ src, title }: { src: string; title: string }) {
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const origin = (() => {
+      try {
+        return new URL(src, window.location.href).origin
+      } catch {
+        return ''
+      }
+    })()
+
+    const onMessage = (event: MessageEvent) => {
+      if (origin && event.origin !== origin) return
+      const data = event.data
+      if (data && data.source === 'boxpreview' && data.type === 'ready') {
+        setReady(true)
+      }
+    }
+
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [src])
+
   return (
-    <figure className={styles.embed}>
-      <iframe src={src} title={title} allow="fullscreen" loading="lazy" />
+    <figure className={styles.embed} data-ready={ready || undefined}>
+      {ready ? null : (
+        <p className={styles.embedStatus} aria-live="polite">
+          Loading
+        </p>
+      )}
+      <iframe
+        src={src}
+        title={title}
+        allow="fullscreen"
+        onLoad={() => {
+          window.setTimeout(() => setReady(true), 5000)
+        }}
+      />
     </figure>
   )
 }
@@ -149,6 +186,14 @@ export function ProjectPage({ project }: { project: Project }) {
 
         {project.embed ? <Embed src={project.embed.src} title={project.embed.title} /> : null}
 
+        {project.embed && project.media?.length ? (
+          <div className={`${styles.media} ${styles.mediaWithEmbed}`}>
+            {project.media.map((item) => (
+              <MediaFigure key={item.src} item={item} />
+            ))}
+          </div>
+        ) : null}
+
         {project.role ? (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>About the project</h2>
@@ -171,7 +216,7 @@ export function ProjectPage({ project }: { project: Project }) {
           <SectionBlock key={section.title ?? section.content?.[0]} section={section} />
         ))}
 
-        {project.media?.length ? (
+        {!project.embed && project.media?.length ? (
           <div className={styles.media}>
             {project.media.map((item) => (
               <MediaFigure key={item.src} item={item} />
