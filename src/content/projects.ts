@@ -110,9 +110,9 @@ export const projects: Project[] = [
     sections: [
       {
         content: [
-          'I started from a real object captured through photogrammetry and wanted the box to keep that realistic and then to have small parts of the object reveal a different visual layer that makes its digital nature visible.',
+          'I started from a real object captured through **photogrammetry** and wanted the box to keep that realistic and then to have small parts of the object reveal a different visual layer that makes its digital nature visible.',
           'My goal was to actually try effect of feeling that somthing is digital but that it doesnt go too much into retro ascii aesthetic.',
-          'A big part of the work was making the effect follow the actual shape of the box instead of looking like a flat overlay. I used normal map shader information to influence the position and appearance of the effect, so lines, offsets and shading react to the surface and smaller details of the object. On top of that, I layered **post processing effects** such as scanlines, RGB separation and signal distortion.',
+          'A big part of the work was making the effect follow the actual shape of the box instead of looking like a flat overlay. I used **normal map shader** information to influence the position and appearance of the effect, so lines, offsets and shading react to the surface and smaller details of the object. On top of that, I layered **post processing effects** such as scanlines, RGB separation and signal distortion.',
           'The effect is visible only inside a small square following the cursor and only where that square overlaps the box. The physical shape stays stable, while the way that part of the surface is rendered changes.',
           'FYI: I am still not happy how it looks so it is work in progress',
         ],
