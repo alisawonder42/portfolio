@@ -194,7 +194,21 @@ export function ProjectPage({ project }: { project: Project }) {
           )}
           {project.tags?.length ? <p className={styles.tags}>{project.tags.join(' · ')}</p> : null}
           {project.collaboration ? (
-            <p className={styles.collaboration}>{project.collaboration}</p>
+            <p className={styles.collaboration}>
+              {project.collaboration}
+              {project.collaborationLink ? (
+                <>
+                  {' '}
+                  <a
+                    href={project.collaborationLink.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {project.collaborationLink.label}
+                  </a>
+                </>
+              ) : null}
+            </p>
           ) : null}
         </header>
 
