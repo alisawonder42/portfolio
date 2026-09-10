@@ -101,17 +101,20 @@ export const projects: Project[] = [
   },
   {
     slug: 'box',
-    title: 'Box',
+    title: 'Box — Experiment',
     type: 'Interactive 3D / Photogrammetry',
     kindLabel: 'Interactive 3D / Photogrammetry',
     kind: 'independent',
-    overview: 'A scanned ornamental box. Drag to turn it. Click, and it forgets that it is solid.',
+    overview:
+      'The idea behind this project was to create a contrast between something that looks realistic and physical but is still clearly digital.',
     sections: [
       {
         content: [
-          'The object is a photogrammetry scan of a real box. The animal print stays on the surface while it slumps, flattens, and drains off the stand.',
-          'Built in vanilla Three.js so it can sit on its own or inside this site.',
+          'I started with a real object captured through photogrammetry. I wanted the box to retain that realism while small parts of it reveal a different visual layer that makes its digital nature visible. My goal was to explore how something can feel distinctly digital without leaning too far into a retro ASCII aesthetic.',
+          'A large part of the work involved making the effect follow the actual shape of the box instead of looking like a flat overlay. I used information from the normal map in the shader to influence the position and appearance of the effect, so the lines, offsets, and shading respond to the surface and its smaller details. On top of that, I layered post-processing effects such as scanlines, RGB separation, and signal distortion.',
+          'The effect appears only inside a small square that follows the cursor, and only where the square overlaps the box. The physical shape remains stable while the way that part of the surface is rendered changes.',
         ],
+        highlight: 'This experiment is still a work in progress, and I am continuing to refine its visual direction.',
       },
     ],
     embed: {
