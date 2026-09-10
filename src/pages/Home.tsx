@@ -1,4 +1,3 @@
-import { Link } from '@/app/Link'
 import { Hero } from '@/components/hero/Hero'
 import { Nav } from '@/components/Nav'
 import { PlaygroundIndex } from '@/components/PlaygroundIndex'
@@ -10,33 +9,16 @@ import { OrganismScene } from '@/organism/OrganismScene'
 import styles from './Home.module.css'
 
 function CloseLinks() {
-  const links = siteContent.close.links
-    .map((link) => {
-      if (link.label === 'LinkedIn')
-        return { ...link, href: siteContent.contact.linkedin as string }
-      if (link.label === 'Contact') return { ...link, href: siteContent.contact.email as string }
-      return { ...link, href: link.href as string }
-    })
-    .filter((link) => link.href)
-
-  if (!links.length) return null
+  const email = siteContent.contact.email
 
   return (
     <footer id="contact" className={styles.close}>
       <ul className={styles.closeLinks}>
-        {links.map((link) => (
-          <li key={link.label}>
-            {link.external ? (
-              <a href={link.href} target="_blank" rel="noreferrer noopener">
-                {link.label} <span aria-hidden="true">↗</span>
-              </a>
-            ) : (
-              <Link href={link.href}>
-                {link.label} <span aria-hidden="true">↗</span>
-              </Link>
-            )}
-          </li>
-        ))}
+        <li>
+          <a href={email}>
+            Contact <span aria-hidden="true">↗</span>
+          </a>
+        </li>
       </ul>
     </footer>
   )
