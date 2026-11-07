@@ -4,7 +4,7 @@
 export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
-    description: 'I’m interested in creativity and how technology can open up new ways to make and experience art.',
+    description: 'I’m interested in how technology can open up new ways to make and experience art. I’m also exploring how to use AI pragmatically in that process.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -16,7 +16,7 @@ export const siteContent = {
   },
   hero: {
     title: 'Katarina Ranković',
-    lede: 'I’m interested in creativity and how technology can open up new ways to make and experience art.',
+    lede: 'I’m interested in how technology can open up new ways to make and experience art. I’m also exploring how to use AI pragmatically in that process.',
   },
   work: {
     eyebrow: '01',
