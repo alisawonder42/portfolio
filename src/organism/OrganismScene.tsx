@@ -9,12 +9,13 @@ import { smoothstep } from './state'
 import { useOrganismDriver } from './useOrganismDriver'
 
 /**
- * A gallery reflection rig: narrow bright strips and dark cards give metallic
- * surfaces distinct highlights, with a broad soft source to retain their shape.
+ * A soft gallery box: one broad overhead source, a tall side strip for the
+ * specular highlight down the members, and a dark floor card so polished edges
+ * have something to fall off into. No HDR, no chrome.
  */
 function QuietStudio() {
   return (
-    <Environment resolution={256} frames={1} background={false} environmentIntensity={1.1}>
+    <Environment resolution={128} frames={1} background={false} environmentIntensity={0.95}>
       <Lightformer
         form="rect"
         intensity={2.2}
@@ -25,7 +26,7 @@ function QuietStudio() {
       />
       <Lightformer
         form="rect"
-        intensity={4.5}
+        intensity={3.6}
         color="#ffffff"
         position={[-3.4, 1.8, 3.4]}
         rotation={[0, Math.PI / 3, Math.PI / 2.1]}
@@ -38,22 +39,6 @@ function QuietStudio() {
         position={[4.4, 1.2, 2.6]}
         rotation={[0, -Math.PI / 3.4, 0]}
         scale={[2, 7, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={3}
-        color="#dceaff"
-        position={[2.8, 2, -3]}
-        rotation={[0, -Math.PI / 4, 0]}
-        scale={[0.45, 7, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={0.08}
-        color="#161b24"
-        position={[-3, 0, 0]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[3, 8, 1]}
       />
       <Lightformer
         form="rect"
