@@ -16,13 +16,15 @@ import styles from './ProjectPage.module.css'
 function InlineText({ text }: { text: string }) {
   return (
     <>
-      {text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
-        part.startsWith('**') && part.endsWith('**') ? (
-          <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
-        ) : (
-          part
-        ),
-      )}
+      {text
+        .split(/(\*\*[^*]+\*\*)/g)
+        .map((part, index) =>
+          part.startsWith('**') && part.endsWith('**') ? (
+            <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
+          ) : (
+            part
+          ),
+        )}
     </>
   )
 }
@@ -125,7 +127,7 @@ function Embed({ src, title }: { src: string; title: string }) {
 function MediaFigure({ item }: { item: ProjectMedia }) {
   const media =
     item.kind === 'video' ? (
-      <video src={item.src} controls playsInline preload="metadata" />
+      <video src={item.src} aria-label={item.alt} controls playsInline preload="metadata" />
     ) : (
       <img src={item.src} alt={item.alt} loading="lazy" />
     )
@@ -243,7 +245,10 @@ export function ProjectPage({ project }: { project: Project }) {
         ) : null}
 
         {project.sections?.map((section) => (
-          <SectionBlock key={section.title ?? section.content?.[0] ?? section.highlight} section={section} />
+          <SectionBlock
+            key={section.title ?? section.content?.[0] ?? section.highlight}
+            section={section}
+          />
         ))}
 
         {!project.embed && project.media?.length ? (

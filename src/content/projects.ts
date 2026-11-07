@@ -78,32 +78,69 @@ export const projects: Project[] = [
   {
     slug: 'unseen',
     title: 'un:seen',
-    type: 'Interactive Gallery Installation / Generative AI',
-    kindLabel: 'Interactive Gallery Installation / Generative AI',
+    type: 'Interactive Installation / Generative AI',
+    kindLabel: 'Interactive Installation / Generative AI',
+    credit: 'Concept & technical development',
     kind: 'independent',
-    collaboration: 'In collaboration with Mladen Ilić —',
+    collaboration: 'In collaboration with painter Mladen Ilić —',
     collaborationLink: {
       label: 'View his paintings ↗',
       href: 'https://mladenilic.art/',
     },
     overview:
-      'Between an image and the way we see it, between experience and words, something remains beyond translation.',
+      'un:seen demonstrates how AI and interactive technology can turn audience input into a shared experience, connecting a physical painting, a mobile interface and nine screens.',
     sections: [
       {
+        title: 'The experience',
         content: [
-          'un:seen is an interactive installation by Katarina Ranković and Mladen Ilić. It explores what happens as experience becomes language, and language becomes a new image. Bringing together painting, visitors’ descriptions and generative AI, the installation makes perception part of the work.',
-          'The physical presence of Hrabrost (Courage) is set against a changing series of digital interpretations generated from visitors’ descriptions. The AI model never sees the original painting; it knows it only through someone else’s words. Each new image bears the imprint of a personal response, transformed in the act of translation.',
+          'Visitors describe a painting on their phones. Their words become AI-generated images displayed across a three-by-three grid of tablets beside the original work. The model never sees the painting: each result starts with a visitor’s description.',
         ],
       },
       {
-        highlight: 'What is carried over, and what takes shape between image, perception and words?',
+        title: 'My contribution',
+        content: [
+          'I developed the interactive system, from the mobile interface and image-generation workflow to the Android kiosk app that displays the results. The project combines my interest in installations with practical experimentation in AI, interaction and physical space.',
+        ],
+      },
+      {
+        title: 'Technical setup',
+        content: [
+          'The system connects the OpenAI Image API with Supabase for image storage and data, and uses Capacitor for the Android kiosk app. Retry and fallback handling help keep the experience running during public use.',
+        ],
+      },
+      {
+        title: 'Exhibition',
+        content: [
+          'The exhibition presents un:seen as a working demonstration of audience participation and generative technology in a shared physical space.',
+        ],
       },
     ],
     media: [
       {
         kind: 'image',
         src: '/projects/unseen/installation.gif',
-        alt: 'un:seen in a gallery: a square painting on the left and a three-by-three grid of portrait tablets on the right.',
+        alt: 'un:seen installation mockup: a painting beside a three-by-three grid of portrait tablets.',
+        caption: 'Installation mockup showing the painting and nine-screen display.',
+      },
+      {
+        kind: 'video',
+        src: '/projects/unseen/unseen-instagram-sr.mp4',
+        alt: 'un:seen Instagram promotional video in Serbian.',
+        caption: 'Instagram promotional video · Serbian',
+      },
+    ],
+    externalLinks: [
+      {
+        label: 'Katalog · srpski · PDF (A5)',
+        href: '/projects/unseen/unseen-katalog-A5.pdf',
+      },
+      {
+        label: 'Katalog za štampu · srpski · PDF (A4)',
+        href: '/projects/unseen/unseen-katalog-A4-stampa.pdf',
+      },
+      {
+        label: 'Instagram video · srpski · MP4',
+        href: '/projects/unseen/unseen-instagram-sr.mp4',
       },
     ],
   },
