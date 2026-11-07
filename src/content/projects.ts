@@ -81,9 +81,9 @@ export const projects: Project[] = [
     type: 'Interactive Gallery Installation / Generative AI',
     kindLabel: 'Interactive Gallery Installation / Generative AI',
     kind: 'independent',
-    collaboration: 'In collaboration with',
+    collaboration: 'In collaboration with Mladen Ilić —',
     collaborationLink: {
-      label: 'Mladen Ilić',
+      label: 'View his paintings ↗',
       href: 'https://mladenilic.art/',
     },
     overview:
