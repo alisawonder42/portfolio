@@ -106,7 +106,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'box',
-    title: 'Box - Experiment',
+    title: 'box:shader',
     type: 'Interactive 3D / Photogrammetry',
     kindLabel: 'Interactive 3D / Photogrammetry',
     kind: 'independent',
@@ -132,36 +132,6 @@ export const projects: Project[] = [
         kind: 'image',
         src: '/projects/box/desk.jpg',
         alt: 'The physical ornamental box on a desk in front of a monitor showing the 3D scan.',
-      },
-    ],
-  },
-  {
-    slug: 'shrinkme',
-    title: 'ShrinkMe',
-    type: 'AR / AI Interactive Prototype',
-    kindLabel: 'AR / AI Interactive Prototype',
-    kind: 'independent',
-    overview:
-      'ShrinkMe is a small AR experiment I built as a playful parody of wellness and therapy apps, using sarcastic virtual therapists instead of reassuring ones.',
-    sections: [
-      {
-        content: [
-          'Built in Unity with AR Foundation, the prototype lets users place virtual therapist characters into their surroundings, speak to them through a microphone, and receive generated spoken responses. The characters were intentionally designed to be dry, sarcastic, and slightly unhelpful, turning the familiar wellness-app interaction into something more absurd.',
-          'The project combines voice input, generative AI, AR interaction, and Mixamo character animation into a single realtime experience.',
-          'It was a rapid experiment in conversational character design and in how AI-driven interactions can feel when they move out of a traditional chat interface and into physical space.',
-        ],
-      },
-    ],
-    media: [
-      {
-        kind: 'image',
-        src: '/projects/shrinkme/logo.png',
-        alt: 'ShrinkMe logo: a cartoon therapist crouched inside a wireframe cube, with the words SHRINK ME underneath.',
-      },
-      {
-        kind: 'image',
-        src: '/projects/shrinkme/ar-mockup.png',
-        alt: 'Phone mockup of ShrinkMe: a virtual therapist character standing on a picnic blanket in a park.',
       },
     ],
   },
