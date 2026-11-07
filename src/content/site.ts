@@ -4,7 +4,7 @@
 export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
-    description: 'Exploring relationship between art, software engineering and design',
+    description: 'I’m interested in creativity and how technology can open up new ways to make and experience art.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -16,7 +16,7 @@ export const siteContent = {
   },
   hero: {
     title: 'Katarina Ranković',
-    lede: 'Exploring relationship between art, software engineering and design',
+    lede: 'I’m interested in creativity and how technology can open up new ways to make and experience art.',
   },
   work: {
     eyebrow: '01',
