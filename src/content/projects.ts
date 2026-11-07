@@ -137,7 +137,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'the-book-of-distance',
-    title: 'The Book of Distance',
+    title: 'the book of distance:vr',
     type: 'Narrative VR experience',
     kindLabel: 'Virtual Reality',
     credit: 'Freelance Unity Developer',
@@ -165,7 +165,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'lilys-garden',
-    title: "Lily's Garden",
+    title: "lily's garden:mobile",
     type: 'Mobile game',
     kindLabel: 'Live mobile match-3 game',
     credit: 'Gameplay Developer',
@@ -213,19 +213,19 @@ export interface Experiment {
  */
 export const experiments: Experiment[] = [
   {
-    title: 'Proto',
+    title: 'proto:architecture',
     type: 'Systems / Architecture Study',
     note: 'A small Unity demo exploring scalable architecture with Zenject, MVC and unit testing. Also used in a teaching context.',
   },
   {
-    title: 'Thomas Was Alone — Remake',
+    title: 'thomas was alone:remake',
     type: 'Early Gameplay Experiment · 2016',
     note: 'A first Unity project, kept as personal history rather than current work.',
   },
   {
     // Working title. The recognition method is deliberately unstated: it has not
     // been confirmed, and naming one would be a guess.
-    title: 'Painting AR Experiment',
+    title: 'painting:ar',
     type: 'Physical painting / mobile interaction / animation · 2020',
     note: 'A physical painting recognised through a phone, with digital animation connected to the work. An early version of the physical–digital direction that un:seen continues.',
   },
