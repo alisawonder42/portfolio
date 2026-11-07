@@ -16,7 +16,7 @@ function CloseLinks() {
       <ul className={styles.closeLinks}>
         <li>
           <a href={email}>
-            Contact <span aria-hidden="true">↗</span>
+            {email.replace(/^mailto:/, '')} <span aria-hidden="true">↗</span>
           </a>
         </li>
       </ul>
