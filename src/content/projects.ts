@@ -87,13 +87,16 @@ export const projects: Project[] = [
       href: 'https://mladenilic.art/',
     },
     overview:
-      'un:seen explores how people and generative AI interpret a physical painting.',
+      'Between an image and the way we see it, between experience and words, something remains beyond translation.',
     sections: [
       {
         content: [
-          'Visitors describe the painting on their phones. AI generates new images from their words, without seeing the original, and displays them on nine tablets beside it.',
-          'I built the interactive system using React, Supabase, AI and generative AI.',
+          'un:seen is an interactive installation by Katarina Ranković and Mladen Ilić. It explores what happens as experience becomes language, and language becomes a new image. Bringing together painting, visitors’ descriptions and generative AI, the installation makes perception part of the work.',
+          'The physical presence of Hrabrost (Courage) is set against a changing series of digital interpretations generated from visitors’ descriptions. The AI model never sees the original painting; it knows it only through someone else’s words. Each new image bears the imprint of a personal response, transformed in the act of translation.',
         ],
+      },
+      {
+        highlight: 'What is carried over, and what takes shape between image, perception and words?',
       },
     ],
     media: [

@@ -155,7 +155,7 @@ export function ProjectPage({ project }: { project: Project }) {
   return (
     <>
       <Nav />
-      <main className={styles.page}>
+      <main className={`${styles.page} ${project.slug === 'unseen' ? styles.exhibition : ''}`}>
         <Link className={styles.back} href="/#projects">
           <span aria-hidden="true">←</span> Projects
         </Link>
@@ -243,7 +243,7 @@ export function ProjectPage({ project }: { project: Project }) {
         ) : null}
 
         {project.sections?.map((section) => (
-          <SectionBlock key={section.title ?? section.content?.[0]} section={section} />
+          <SectionBlock key={section.title ?? section.content?.[0] ?? section.highlight} section={section} />
         ))}
 
         {!project.embed && project.media?.length ? (

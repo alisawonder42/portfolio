@@ -307,3 +307,46 @@
     transform: none;
   }
 }
+
+/* Give the exhibition text a wider, responsive reading measure. */
+.exhibition {
+  max-width: 64rem;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.exhibition .overview {
+  max-width: 48ch;
+  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+  line-height: 1.4;
+}
+
+.exhibition .sectionBody {
+  width: 100%;
+  max-width: 76ch;
+  gap: 1.5rem;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.8;
+}
+
+.exhibition .sectionBody p {
+  margin: 0;
+}
+
+.exhibition .highlight {
+  max-width: 52ch;
+  padding-block: 0.25rem;
+  font-size: clamp(1.25rem, 2.3vw, 1.65rem);
+  line-height: 1.5;
+}
+
+.exhibition .collaboration a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 40rem) {
+  .exhibition .spec > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
