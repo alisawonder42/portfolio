@@ -76,7 +76,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'flat',
+    slug: 'unseen',
     title: 'un:seen',
     type: 'Interactive Gallery Installation / Generative AI',
     kindLabel: 'Interactive Gallery Installation / Generative AI',
