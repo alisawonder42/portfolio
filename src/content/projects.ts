@@ -99,7 +99,7 @@ export const projects: Project[] = [
     media: [
       {
         kind: 'image',
-        src: '/projects/flat/installation.gif',
+        src: '/projects/unseen/installation.gif',
         alt: 'un:seen in a gallery: a square painting on the left and a three-by-three grid of portrait tablets on the right.',
       },
     ],
