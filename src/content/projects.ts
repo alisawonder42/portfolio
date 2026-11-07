@@ -81,7 +81,7 @@ export const projects: Project[] = [
     type: 'Interactive Gallery Installation / Generative AI',
     kindLabel: 'Interactive Gallery Installation / Generative AI',
     kind: 'independent',
-    collaboration: 'Idea developed together with painter',
+    collaboration: 'In collaboration with',
     collaborationLink: {
       label: 'Mladen Ilić',
       href: 'https://mladenilic.art/',
@@ -92,7 +92,7 @@ export const projects: Project[] = [
       {
         content: [
           'Visitors describe the painting on their phones. AI generates new images from their words, without seeing the original, and displays them on nine tablets beside it.',
-          'Developed with painter Mladen Ilić. I built the interactive system using React, Supabase, AI and generative AI.',
+          'I built the interactive system using React, Supabase, AI and generative AI.',
         ],
       },
     ],
