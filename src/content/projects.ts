@@ -87,12 +87,12 @@ export const projects: Project[] = [
       href: 'https://mladenilic.art/',
     },
     overview:
-      'un:seen is a gallery installation exploring the distance between a physical artwork and its digital interpretation through human perception and generative AI.',
+      'un:seen explores how people and generative AI interpret a physical painting.',
     sections: [
       {
         content: [
-          'Visitors scan a QR code and describe the physical painting from their phones. The AI never sees the original work, it receives only the visitor’s description and generates a new interpretation, which is automatically displayed on one of nine tablets beside the painting.',
-          'Mladen Ilić and I developed the idea together. He prepared the exhibition, while I designed and developed its technical system: the mobile web interface, generative pipeline, backend and Android kiosk app controlling the gallery displays. The system uses React/Vite, Supabase, OpenAI Image API and Capacitor, and was developed with coding agents.',
+          'Visitors describe the painting on their phones. AI generates new images from their words, without seeing the original, and displays them on nine tablets beside it.',
+          'Developed with painter Mladen Ilić. I built the interactive system using React, Supabase, AI and generative AI.',
         ],
       },
     ],
