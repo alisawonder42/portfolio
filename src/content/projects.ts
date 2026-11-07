@@ -77,7 +77,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'flat',
-    title: 'FLAT',
+    title: 'un:seen',
     type: 'Interactive Gallery Installation / Generative AI',
     kindLabel: 'Interactive Gallery Installation / Generative AI',
     kind: 'independent',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
       href: 'https://mladenilic.art/',
     },
     overview:
-      'FLAT is a gallery installation exploring the distance between a physical artwork and its digital interpretation through human perception and generative AI.',
+      'un:seen is a gallery installation exploring the distance between a physical artwork and its digital interpretation through human perception and generative AI.',
     sections: [
       {
         content: [
@@ -100,7 +100,7 @@ export const projects: Project[] = [
       {
         kind: 'image',
         src: '/projects/flat/installation.gif',
-        alt: 'FLAT in a gallery: a square painting on the left and a three-by-three grid of portrait tablets on the right.',
+        alt: 'un:seen in a gallery: a square painting on the left and a three-by-three grid of portrait tablets on the right.',
       },
     ],
   },
@@ -257,6 +257,6 @@ export const experiments: Experiment[] = [
     // been confirmed, and naming one would be a guess.
     title: 'Painting AR Experiment',
     type: 'Physical painting / mobile interaction / animation · 2020',
-    note: 'A physical painting recognised through a phone, with digital animation connected to the work. An early version of the physical–digital direction that FLAT continues.',
+    note: 'A physical painting recognised through a phone, with digital animation connected to the work. An early version of the physical–digital direction that un:seen continues.',
   },
 ]
