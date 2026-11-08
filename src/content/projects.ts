@@ -197,9 +197,9 @@ export const projects: Project[] = [
   },
   {
     slug: 'mladen-ilic',
-    title: 'mladen ilić:website',
-    type: 'Artist website / Photography / Video',
-    kindLabel: 'Artist website',
+    title: 'artist portfolio:web',
+    type: 'Artist Portfolio / Photography / Video',
+    kindLabel: 'Artist Portfolio',
     credit: 'Concept, photography & video',
     kind: 'professional',
     overview:

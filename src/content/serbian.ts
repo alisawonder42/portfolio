@@ -110,8 +110,8 @@ const translations: Record<string, Partial<Project>> = {
     })),
   },
   'mladen-ilic': {
-    type: 'Sajt umetnika / Fotografija / Video',
-    kindLabel: 'Sajt umetnika',
+    type: 'Portfolio umetnika / Fotografija / Video',
+    kindLabel: 'Portfolio umetnika',
     credit: 'Koncept, fotografija i video',
     overview:
       'Sajt slikara Mladena Ilića koji predstavlja njegov rad u digitalnom prostoru kroz fotografiju, video i lični vizuelni identitet.',
