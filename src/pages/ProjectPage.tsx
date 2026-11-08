@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react'
 import { Link } from '@/app/Link'
 import { Nav } from '@/components/Nav'
 import {
-  nextProject,
   projectPath,
   type Project,
   type ProjectMedia,
   type ProjectSection,
 } from '@/content/projects'
-import { siteContent } from '@/content/site'
+import { useLanguage } from '@/content/Language'
 
 import styles from './ProjectPage.module.css'
 
@@ -82,6 +81,7 @@ function Contribution({ items }: { items: string[] }) {
 }
 
 function Embed({ src, title }: { src: string; title: string }) {
+  const { t } = useLanguage()
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -109,7 +109,7 @@ function Embed({ src, title }: { src: string; title: string }) {
     <figure className={styles.embed} data-ready={ready || undefined}>
       {ready ? null : (
         <p className={styles.embedStatus} aria-live="polite">
-          Loading
+          {t('Loading', 'Učitavanje')}
         </p>
       )}
       <iframe
@@ -147,7 +147,9 @@ function MediaFigure({ item }: { item: ProjectMedia }) {
 }
 
 export function ProjectPage({ project }: { project: Project }) {
-  const upcoming = nextProject(project.slug)
+  const { projects, site: siteContent, t } = useLanguage()
+  const upcoming =
+    projects[(projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length]
   const meta = [project.type, project.year].filter(Boolean).join(' · ')
   const hasSpec = Boolean(project.kindLabel || project.credit || project.location)
   const showType = Boolean(
@@ -159,7 +161,7 @@ export function ProjectPage({ project }: { project: Project }) {
       <Nav />
       <main className={`${styles.page} ${project.slug === 'unseen' ? styles.exhibition : ''}`}>
         <Link className={styles.back} href="/#projects">
-          <span aria-hidden="true">←</span> Projects
+          <span aria-hidden="true">←</span> {t('Projects', 'Projekti')}
         </Link>
 
         <header className={styles.header}>
@@ -168,25 +170,25 @@ export function ProjectPage({ project }: { project: Project }) {
             <dl className={styles.spec}>
               {project.location ? (
                 <div>
-                  <dt>Location</dt>
+                  <dt>{t('Location', 'Lokacija')}</dt>
                   <dd>{project.location}</dd>
                 </div>
               ) : null}
               {project.credit ? (
                 <div>
-                  <dt>Role</dt>
+                  <dt>{t('Role', 'Uloga')}</dt>
                   <dd>{project.credit}</dd>
                 </div>
               ) : null}
               {project.kindLabel ? (
                 <div>
-                  <dt>Project type</dt>
+                  <dt>{t('Project type', 'Vrsta projekta')}</dt>
                   <dd>{project.kindLabel}</dd>
                 </div>
               ) : null}
               {showType ? (
                 <div>
-                  <dt>Type</dt>
+                  <dt>{t('Type', 'Vrsta')}</dt>
                   <dd>{project.type}</dd>
                 </div>
               ) : null}
@@ -228,7 +230,7 @@ export function ProjectPage({ project }: { project: Project }) {
 
         {project.role ? (
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>About the project</h2>
+            <h2 className={styles.sectionTitle}>{t('About the project', 'O projektu')}</h2>
             <div className={styles.sectionBody}>
               <p>{project.role}</p>
             </div>
@@ -237,7 +239,7 @@ export function ProjectPage({ project }: { project: Project }) {
 
         {project.contribution?.length ? (
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>My contribution</h2>
+            <h2 className={styles.sectionTitle}>{t('My contribution', 'Moj doprinos')}</h2>
             <div className={styles.sectionBody}>
               <Contribution items={project.contribution} />
             </div>
@@ -273,7 +275,7 @@ export function ProjectPage({ project }: { project: Project }) {
 
         {upcoming ? (
           <Link className={styles.next} href={projectPath(upcoming.slug)}>
-            <span className={styles.nextLabel}>Next project</span>
+            <span className={styles.nextLabel}>{t('Next project', 'Sledeći projekat')}</span>
             <span className={styles.nextTitle}>
               {upcoming.title} <span aria-hidden="true">→</span>
             </span>

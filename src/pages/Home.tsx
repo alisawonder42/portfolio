@@ -3,24 +3,27 @@ import { Nav } from '@/components/Nav'
 import { PlaygroundIndex } from '@/components/PlaygroundIndex'
 import { ProjectIndex } from '@/components/ProjectIndex'
 import { Section } from '@/components/Section'
-import { siteContent } from '@/content/site'
+import { useLanguage } from '@/content/Language'
 import { OrganismScene } from '@/organism/OrganismScene'
 
 import styles from './Home.module.css'
 
 function ContactLink() {
+  const { site: siteContent } = useLanguage()
   const email = siteContent.contact.email
 
   return (
     <footer id="contact" className={styles.close}>
       <a className={styles.sendButton} href={email}>
-        {email.replace(/^mailto:/, '')} <span aria-hidden="true">↗</span>
+        {siteContent.contact.label} <span aria-hidden="true">↗</span>
       </a>
+      <p className={styles.invitation}>{siteContent.contact.invitation}</p>
     </footer>
   )
 }
 
 export function Home() {
+  const { site: siteContent } = useLanguage()
   const { work, playground } = siteContent
   return (
     <>

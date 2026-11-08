@@ -4,7 +4,8 @@
 export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
-    description: 'I’m interested in installations and the creative use of technology in art and design. I’m also exploring practical ways to use AI in the creative process.',
+    description:
+      'I’m interested in installations and the creative use of technology in art and design. I’m also exploring practical ways to use AI in the creative process.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -36,13 +37,14 @@ export const siteContent = {
    * email: mailto: address, e.g. mailto:name@example.com
    */
   contact: {
+    label: 'Contact me',
+    invitation:
+      'If you’re an artist who needs help with technology — a website, an idea you’d like to bring to life, or something else entirely — feel free to get in touch. I’m happy to help free of charge, or you’re welcome to gift me a piece of your art.',
     linkedin: '',
     email: 'mailto:katarinarankovic42@gmail.com',
   },
   close: {
-    links: [
-      { label: 'Contact', href: '', external: true },
-    ],
+    links: [{ label: 'Contact', href: '', external: true }],
   },
   footer: {
     note: '© Katarina Ranković',

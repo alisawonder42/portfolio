@@ -1,8 +1,9 @@
-import { siteContent } from '@/content/site'
+import { useLanguage } from '@/content/Language'
 
 import styles from './Hero.module.css'
 
 export function Hero() {
+  const { site: siteContent } = useLanguage()
   const [given, family] = splitName(siteContent.hero.title)
   return (
     <section className={styles.hero} aria-labelledby="hero-title">

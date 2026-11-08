@@ -1,5 +1,6 @@
+import { useLanguage } from '@/content/Language'
 import { Link } from '@/app/Link'
-import { projectPath, projects } from '@/content/projects'
+import { projectPath } from '@/content/projects'
 
 import styles from './ProjectIndex.module.css'
 
@@ -8,6 +9,7 @@ import styles from './ProjectIndex.module.css'
  * stays quiet so the sculpture remains the image on the page.
  */
 export function ProjectIndex() {
+  const { projects } = useLanguage()
   return (
     <ol className={styles.list}>
       {projects.map((project, index) => (

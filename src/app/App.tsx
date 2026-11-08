@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 
-import { projectBySlug } from '@/content/projects'
+import { useLanguage } from '@/content/Language'
 import { Home } from '@/pages/Home'
 import { NotFound } from '@/pages/NotFound'
 import { ProjectPage } from '@/pages/ProjectPage'
@@ -11,6 +11,7 @@ const BloomLab = lazy(() => import('@/lab/BloomLab').then((m) => ({ default: m.B
 
 export function App() {
   const route = useRoute()
+  const { projects } = useLanguage()
 
   if (route.name === 'lab') {
     return (
@@ -21,7 +22,7 @@ export function App() {
   }
 
   if (route.name === 'project') {
-    const project = projectBySlug(route.slug)
+    const project = projects.find((item) => item.slug === route.slug)
     return project ? <ProjectPage project={project} /> : <NotFound />
   }
 

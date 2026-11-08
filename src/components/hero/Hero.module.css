@@ -8,7 +8,8 @@
 }
 
 .copy {
-  max-width: 20rem;
+  width: 100%;
+  max-width: 72rem;
   display: grid;
   gap: var(--space-5, 1.25rem);
 }
@@ -33,12 +34,12 @@
   font-size: var(--text-sm);
   line-height: 1.6;
   color: var(--fg-muted);
-  max-width: 32ch;
+  max-width: min(100%, 90ch);
   text-wrap: pretty;
 }
 
 @media (min-width: 60rem) {
   .copy {
-    max-width: 22rem;
+    max-width: 72rem;
   }
 }

@@ -1,9 +1,10 @@
-import { experiments } from '@/content/projects'
+import { useLanguage } from '@/content/Language'
 
 import styles from './PlaygroundIndex.module.css'
 
 /** Smaller studies, set lighter than the project index on purpose. */
 export function PlaygroundIndex() {
+  const { experiments } = useLanguage()
   return (
     <ol className={styles.list}>
       {experiments.map((experiment, index) => (
