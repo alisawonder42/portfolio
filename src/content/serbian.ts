@@ -109,18 +109,26 @@ const translations: Record<string, Partial<Project>> = {
           : 'Scena iz The Book of Distance: osoba u zamračenoj sobi gleda kroz kružni otvor ka vrtu.',
     })),
   },
-  'lilys-garden': {
-    type: 'Mobilna igra',
-    kindLabel: 'Mobilna match-3 igra sa redovnim ažuriranjima',
-    credit: 'Programerka mehanika igre',
-    location: 'Kopenhagen, Danska',
+  'mladen-ilic': {
+    type: 'Sajt umetnika / Fotografija / Video',
+    kindLabel: 'Sajt umetnika',
+    credit: 'Koncept, fotografija i video',
+    overview:
+      'Sajt slikara Mladena Ilića koji predstavlja njegov rad u digitalnom prostoru kroz fotografiju, video i lični vizuelni identitet.',
     contribution: [
-      'U kompaniji Tactile razvijala sam nove funkcionalnosti za Lily’s Garden sa LiveOps timom, uglavnom radeći na mehanikama igre i animacijama. Blisko sam sarađivala sa umetnicima i dizajnerima na njihovoj realizaciji u igri.',
+      'Osmislila sam koncept sajta, fotografisala i snimila video-materijale kojima je predstavljen njegov rad.',
     ],
-    media: projects[3].media?.map((item) => ({
-      ...item,
-      alt: 'Naslovna ilustracija igre Lily’s Garden: logo igre na pozadini naslikanog vrta.',
-    })),
+    sections: [
+      {
+        title: 'Potpis kao identitet',
+        content: [
+          'Umesto tipografski ispisanog imena, upotrebila sam njegov svojeručni potpis kao prepoznatljiv znak sajta. Kao potpis na slici, on prenosi osećaj autorstva i autentičnosti u digitalni prostor.',
+        ],
+      },
+    ],
+    externalLinks: [
+      { label: 'Poseti mladenilic.art', href: 'https://mladenilic.art/' },
+    ],
   },
 }
 

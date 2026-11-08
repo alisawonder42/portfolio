@@ -196,23 +196,27 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'lilys-garden',
-    title: "lily's garden:mobile",
-    type: 'Mobile game',
-    kindLabel: 'Live mobile match-3 game',
-    credit: 'Gameplay Developer',
-    location: 'Copenhagen, Denmark',
+    slug: 'mladen-ilic',
+    title: 'mladen ilić:website',
+    type: 'Artist website / Photography / Video',
+    kindLabel: 'Artist website',
+    credit: 'Concept, photography & video',
     kind: 'professional',
+    overview:
+      'A website for painter Mladen Ilić, bringing his work into a digital space through photography, video and a personal visual identity.',
     contribution: [
-      'At Tactile, I developed features for Lily’s Garden with the LiveOps team, focusing mainly on gameplay and animations. I worked closely with artists and designers to bring these features into the game.',
+      'I developed the concept for the website, took the photographs and filmed the videos used to present his work.',
     ],
-    media: [
+    sections: [
       {
-        kind: 'image',
-        src: '/projects/lilys-garden/title.png',
-        alt: 'Lily’s Garden title art: the game logo over a painted garden.',
-        href: 'https://play.google.com/store/apps/details/Lily_s_Garden?id=dk.tactile.lilysgarden&hl=sr&pli=1',
+        title: 'A signature as an identity',
+        content: [
+          'In place of a typeset name, I used his handwritten signature as the website’s identifying mark. It echoes the way an artist signs a painting, carrying that sense of authorship and authenticity into the digital space.',
+        ],
       },
+    ],
+    externalLinks: [
+      { label: 'Visit mladenilic.art', href: 'https://mladenilic.art/' },
     ],
   },
 ]
