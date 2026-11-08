@@ -5,7 +5,7 @@ export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
     description:
-      'Interested in installations and the creative use of technology in art and design. Exploring practical ways to use AI in the creative process.',
+      'Interested in installations and the creative use of technology in art and design. Exploring how AI can support creativity and creative processes, with a pragmatic approach.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -17,7 +17,7 @@ export const siteContent = {
   },
   hero: {
     title: 'Katarina Ranković',
-    lede: 'Interested in installations and the creative use of technology in art and design. Exploring practical ways to use AI in the creative process.',
+    lede: 'Interested in installations and the creative use of technology in art and design. Exploring how AI can support creativity and creative processes, with a pragmatic approach.',
   },
   work: {
     eyebrow: '01',
