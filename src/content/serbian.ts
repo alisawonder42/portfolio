@@ -36,6 +36,12 @@ const translations: Record<string, Partial<Project>> = {
       'un:seen pokazuje kako veštačka inteligencija i interaktivna tehnologija mogu da pretvore doprinos publike u zajedničko iskustvo, povezujući fizičku sliku, mobilni interfejs i devet ekrana.',
     sections: [
       {
+        title: 'Koncept',
+        content: [
+          'Koncept za un:seen razvila sam polazeći od metafizičkih slika Mladena Ilića i njegovog intuitivnog pristupa slikanju. Njegovi radovi i stvaralački proces bili su polazište za instalaciju.',
+        ],
+      },
+      {
         title: 'Iskustvo',
         content: [
           'Posetioci opisuju sliku putem telefona. Njihove reči postaju slike generisane veštačkom inteligencijom, prikazane na devet tableta raspoređenih u mrežu tri puta tri pored originalnog rada. Model nikada ne vidi sliku: svaki rezultat nastaje isključivo na osnovu opisa posetioca.',

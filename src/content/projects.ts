@@ -91,6 +91,12 @@ export const projects: Project[] = [
       'un:seen demonstrates how AI and interactive technology can turn audience input into a shared experience, connecting a physical painting, a mobile interface and nine screens.',
     sections: [
       {
+        title: 'The concept',
+        content: [
+          'I developed the concept for un:seen from Mladen Ilić’s metaphysical paintings and his intuitive approach to painting. His work and creative process were the starting point for the installation.',
+        ],
+      },
+      {
         title: 'The experience',
         content: [
           'Visitors describe a painting on their phones. Their words become AI-generated images displayed across a three-by-three grid of tablets beside the original work. The model never sees the painting: each result starts with a visitor’s description.',
