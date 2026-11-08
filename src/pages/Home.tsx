@@ -14,9 +14,19 @@ function ContactLink() {
 
   return (
     <footer id="contact" className={styles.close}>
-      <a className={styles.sendButton} href={email}>
-        {siteContent.contact.label} <span aria-hidden="true">↗</span>
-      </a>
+      <div className={styles.contactLinks}>
+        <a className={styles.sendButton} href={email}>
+          {siteContent.contact.label} <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          className={styles.sendButton}
+          href={siteContent.contact.gamesUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {siteContent.contact.gamesLabel} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </footer>
   )
 }

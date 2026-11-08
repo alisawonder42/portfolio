@@ -59,6 +59,13 @@
   box-sizing: border-box;
 }
 
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
 .contactTitle {
   margin: 0 0 2rem;
   font-size: clamp(1.5rem, 3vw, 2rem);

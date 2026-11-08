@@ -21,6 +21,7 @@ export const serbianSite = {
   contact: {
     ...siteContent.contact,
     label: 'Javi mi se',
+    gamesLabel: 'Iskustvo u razvoju igara',
   },
 }
 

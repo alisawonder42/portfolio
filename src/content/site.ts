@@ -38,6 +38,8 @@ export const siteContent = {
    */
   contact: {
     label: 'Contact me',
+    gamesLabel: 'Game development experience',
+    gamesUrl: 'https://www.katarinagames.fyi/',
     linkedin: '',
     email: 'mailto:katarinarankovic42@gmail.com',
   },
