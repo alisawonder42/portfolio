@@ -38,8 +38,6 @@ export const siteContent = {
    */
   contact: {
     label: 'Contact me',
-    invitation:
-      'If you’re an emerging artist in any discipline and need help creating an online portfolio, building a website, or setting up digital tools to present and share your work, feel free to get in touch. I’m happy to help free of charge.',
     linkedin: '',
     email: 'mailto:katarinarankovic42@gmail.com',
   },

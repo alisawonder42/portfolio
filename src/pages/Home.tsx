@@ -17,7 +17,6 @@ function ContactLink() {
       <a className={styles.sendButton} href={email}>
         {siteContent.contact.label} <span aria-hidden="true">↗</span>
       </a>
-      <p className={styles.invitation}>{siteContent.contact.invitation}</p>
     </footer>
   )
 }

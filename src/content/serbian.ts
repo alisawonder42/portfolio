@@ -21,8 +21,6 @@ export const serbianSite = {
   contact: {
     ...siteContent.contact,
     label: 'Javi mi se',
-    invitation:
-      'Ako si na početku umetničke karijere, bez obzira na oblast kojom se baviš, i potrebna ti je pomoć oko onlajn portfolija, veb-sajta ili digitalnih alata za predstavljanje i deljenje svog rada, slobodno mi se javi. Rado ću pomoći besplatno.',
   },
 }
 
