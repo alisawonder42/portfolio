@@ -115,9 +115,7 @@ const translations: Record<string, Partial<Project>> = {
     credit: 'Programerka mehanika igre',
     location: 'Kopenhagen, Danska',
     contribution: [
-      'U kompaniji Tactile radila sam na igri Lily’s Garden, velikom Unity projektu koji se kontinuirano razvija, sa posebnim fokusom na korisnički interfejs, animaciju i razvoj funkcionalnosti.',
-      'Veliki deo mog rada obuhvatao je izradu i integraciju animiranog interfejsa i interaktivnih sekvenci pomoću Unity alata Animator i Timeline. Blisko sam sarađivala sa umetnicima i dizajnerima kako bismo vizuelne ideje pretvorili u pouzdane sisteme u igri.',
-      'Radila sam u okviru velike postojeće baze koda, gde su čista arhitektura, održavanje i jedinični testovi bili važan deo razvoja. Pored rada na funkcionalnostima, doprinosila sam internim alatima i unapređenjima procesa koji su olakšavali saradnju i iteracije između različitih disciplina.',
+      'U kompaniji Tactile razvijala sam nove funkcionalnosti za Lily’s Garden sa LiveOps timom, uglavnom radeći na mehanikama igre i animacijama. Blisko sam sarađivala sa umetnicima i dizajnerima na njihovoj realizaciji u igri.',
     ],
     media: projects[3].media?.map((item) => ({
       ...item,

@@ -204,9 +204,7 @@ export const projects: Project[] = [
     location: 'Copenhagen, Denmark',
     kind: 'professional',
     contribution: [
-      'At Tactile, I worked on Lily’s Garden as part of a large live Unity project, with a strong focus on UI, animation, and feature development.',
-      'A large part of my work involved building and integrating animated UI and interactive sequences using Unity’s Animator and Timeline, working closely with artists and designers to turn visual ideas into reliable in-game systems.',
-      'I also worked within a large existing codebase where clean architecture, maintainability, and unit testing were important parts of development. Alongside feature work, I contributed to internal tools and workflow improvements that made iteration easier across disciplines.',
+      'At Tactile, I developed features for Lily’s Garden with the LiveOps team, focusing mainly on gameplay and animations. I worked closely with artists and designers to bring these features into the game.',
     ],
     media: [
       {
