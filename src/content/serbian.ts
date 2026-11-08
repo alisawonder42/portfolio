@@ -22,7 +22,7 @@ export const serbianSite = {
     ...siteContent.contact,
     label: 'Javi mi se',
     invitation:
-      'Ako se baviš umetnošću i potreban ti je veb-sajt, pomoć da ostvariš neku ideju ili druga tehnološka podrška, slobodno mi se javi. Rado ću pomoći besplatno.',
+      'Ako si na početku umetničke karijere, bez obzira na oblast kojom se baviš, i potrebna ti je pomoć oko onlajn portfolija, veb-sajta ili digitalnih alata za predstavljanje i deljenje svog rada, slobodno mi se javi. Rado ću pomoći besplatno.',
   },
 }
 
