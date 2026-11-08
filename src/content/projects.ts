@@ -122,12 +122,6 @@ export const projects: Project[] = [
         alt: 'un:seen installation mockup: a painting beside a three-by-three grid of portrait tablets.',
         caption: 'Installation mockup showing the painting and nine-screen display.',
       },
-      {
-        kind: 'video',
-        src: '/projects/unseen/unseen-instagram-sr.mp4',
-        alt: 'un:seen Instagram promotional video in Serbian.',
-        caption: 'Instagram promotional video · Serbian',
-      },
     ],
     externalLinks: [
       {
