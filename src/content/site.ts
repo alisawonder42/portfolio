@@ -39,7 +39,7 @@ export const siteContent = {
   contact: {
     label: 'Contact me',
     invitation:
-      'If you’re an artist who needs a website, help bringing an idea to life, or any other technological support, feel free to get in touch. I’m happy to help free of charge, or you’re welcome to gift me a piece of your art.',
+      'If you’re an artist who needs a website, help bringing an idea to life, or any other technological support, feel free to get in touch. I’m happy to help free of charge.',
     linkedin: '',
     email: 'mailto:katarinarankovic42@gmail.com',
   },
