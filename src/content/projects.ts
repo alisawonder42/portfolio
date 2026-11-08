@@ -178,9 +178,7 @@ export const projects: Project[] = [
     kind: 'professional',
     role: 'A narrative VR experience by Randall Okita, produced by the National Film Board of Canada.',
     contribution: [
-      'I worked on The Book of Distance during the final stage of development, mainly on performance optimization, bug fixing, and testing.',
-      'My work included profiling the experience, investigating performance issues, fixing gameplay and interaction bugs, testing the project across target VR devices, and helping improve overall stability before release.',
-      'I worked with the wider development team to help get the project into a solid state for launch on SteamVR and Oculus.',
+      'I supported the team during the final stage of development, mainly through testing and performance profiling, with a small contribution to development.',
     ],
     media: [
       {

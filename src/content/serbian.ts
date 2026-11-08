@@ -99,9 +99,7 @@ const translations: Record<string, Partial<Project>> = {
     credit: 'Freelance Unity programerka',
     role: 'Narativno VR iskustvo autora Randalla Okite, u produkciji Nacionalnog filmskog odbora Kanade.',
     contribution: [
-      'Radila sam na projektu The Book of Distance u završnoj fazi razvoja, pre svega na optimizaciji performansi, ispravljanju grešaka i testiranju.',
-      'Moj rad je obuhvatao profilisanje aplikacije, istraživanje problema sa performansama, ispravljanje grešaka u mehanikama i interakcijama, testiranje na ciljanim VR uređajima i unapređivanje ukupne stabilnosti pre objavljivanja.',
-      'Sarađivala sam sa ostatkom razvojnog tima kako bismo pripremili projekat za objavljivanje na platformama SteamVR i Oculus.',
+      'Pomagala sam timu u završnoj fazi razvoja, uglavnom kroz testiranje i profilisanje performansi, uz manji doprinos samom razvoju.',
     ],
     media: projects[2].media?.map((item, index) => ({
       ...item,
