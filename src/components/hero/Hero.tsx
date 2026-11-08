@@ -5,6 +5,7 @@ import styles from './Hero.module.css'
 export function Hero() {
   const { site: siteContent } = useLanguage()
   const [given, family] = splitName(siteContent.hero.title)
+  const sentenceEnd = siteContent.hero.lede.indexOf('. ') + 1
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.copy}>
@@ -12,7 +13,11 @@ export function Hero() {
           <span className={styles.given}>{given}</span>
           <span className={styles.family}>{family}</span>
         </h1>
-        <p className={styles.lede}>{siteContent.hero.lede}</p>
+        <p className={styles.lede}>
+          {siteContent.hero.lede.slice(0, sentenceEnd)}
+          <br />
+          {siteContent.hero.lede.slice(sentenceEnd).trimStart()}
+        </p>
       </div>
     </section>
   )
