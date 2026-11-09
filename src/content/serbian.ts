@@ -123,6 +123,20 @@ const translations: Record<string, Partial<Project>> = {
           : 'Scena iz The Book of Distance: osoba u zamračenoj sobi gleda kroz kružni otvor ka vrtu.',
     })),
   },
+  'soft-photography': {
+    type: 'Analogna fotografija / Digitalni eksperimenti',
+    kindLabel: 'Fotografija / Digitalni eksperimenti',
+    overview:
+      'Rani eksperiment sa analognom fotografijom i digitalnim formama, snimljen fotoaparatom Zenit na filmu 2017. godine.',
+    sections: [
+      {
+        title: 'Istraživanja',
+        content: [
+          'Serija fotografija žena nastala tokom istraživanja analogne fotografije, mekog fokusa, nesavršenih kadrova i načina na koje se analogne slike mogu povezivati u digitalnom obliku.',
+        ],
+      },
+    ],
+  },
   'mladen-ilic': {
     type: 'Portfolio umetnika / Fotografija / Video',
     kindLabel: 'Portfolio umetnika',
