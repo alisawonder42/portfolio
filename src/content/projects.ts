@@ -245,6 +245,14 @@ export const projects: Project[] = [
     year: '2017',
     overview:
       'An early experiment with analogue photography and digital forms, photographed on a Zenit film camera in 2017.',
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/soft-photography/soft_photography_original_photos.gif',
+        alt: 'A simple looping slideshow of five original Zenit photographs of women.',
+        caption: 'Five photographs, shown in sequence without effects.',
+      },
+    ],
     sections: [
       {
         title: 'Explorations',
