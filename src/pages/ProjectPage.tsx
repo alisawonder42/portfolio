@@ -159,7 +159,7 @@ export function ProjectPage({ project }: { project: Project }) {
   return (
     <>
       <Nav />
-      <main className={`${styles.page} ${project.slug === 'unseen' ? styles.exhibition : ''}`}>
+      <main className={`${styles.page} ${project.slug === 'unseen' ? styles.exhibition : ''} ${project.slug === 'the-book-of-distance' ? styles.bookOfDistance : ''}`}>
         <Link className={styles.back} href="/#projects">
           <span aria-hidden="true">←</span> {t('Projects', 'Projekti')}
         </Link>
