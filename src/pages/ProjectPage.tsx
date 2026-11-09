@@ -168,6 +168,12 @@ export function ProjectPage({ project }: { project: Project }) {
           <h1 className={styles.title}>{project.title}</h1>
           {hasSpec ? (
             <dl className={styles.spec}>
+              {project.year ? (
+                <div>
+                  <dt>{t('Year', 'Godina')}</dt>
+                  <dd>{project.year}</dd>
+                </div>
+              ) : null}
               {project.location ? (
                 <div>
                   <dt>{t('Location', 'Lokacija')}</dt>
