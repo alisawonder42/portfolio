@@ -51,14 +51,33 @@ def main():
     # Make the English edition from the same background artwork and page
     # composition, replacing Serbian text with the English catalogue copy.
     for index, page in enumerate(document):
+        # Preserve any text that is identical in both editions, including the
+        # original Manrope title on the cover and the artist names.
+        unchanged = set()
         for block in page.get_text("dict")["blocks"]:
             for line in block.get("lines", []):
                 for span in line["spans"]:
-                    if span["text"].strip():
-                        page.add_redact_annot(
-                            fitz.Rect(span["bbox"]) + (-0.1, -0.1, 0.1, 0.1),
-                            fill=False,
-                        )
+                    if not span["text"].strip():
+                        continue
+                    x, y = span["origin"]
+                    match = next(
+                        (
+                            j for j, (ex, ey, _, size, _, content)
+                            in enumerate(ENGLISH_RUNS[index])
+                            if span["text"] == content
+                            and abs(x - ex) < 0.5
+                            and abs(y - ey) < 0.5
+                            and abs(span["size"] - size) < 0.5
+                        ),
+                        None,
+                    )
+                    if match is not None:
+                        unchanged.add(match)
+                        continue
+                    page.add_redact_annot(
+                        fitz.Rect(span["bbox"]) + (-0.1, -0.1, 0.1, 0.1),
+                        fill=False,
+                    )
         page.apply_redactions(images=0, graphics=0, text=0)
 
         for i, family in enumerate(FONT_FAMILIES):
@@ -67,7 +86,9 @@ def main():
                 raise FileNotFoundError(f"Required catalogue font: {path}")
             page.insert_font(fontname=FONT_NAMES[i], fontfile=str(path))
 
-        for x, y, font_index, size, rgb, caption in ENGLISH_RUNS[index]:
+        for j, (x, y, font_index, size, rgb, caption) in enumerate(ENGLISH_RUNS[index]):
+            if j in unchanged:
+                continue
             color = tuple(((rgb >> shift) & 255) / 255 for shift in (16, 8, 0))
             page.insert_text(
                 (x, y),
