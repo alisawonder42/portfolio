@@ -257,7 +257,7 @@ export const projects: Project[] = [
       {
         title: 'Explorations',
         content: [
-          'A series of photographs of sisters and friends in everyday moments, made while trying to capture something of girlhood.',
+          'A series of photographs of sisters and friends in everyday moments, exploring girlhood through the small details of daily life.',
         ],
       },
     ],
