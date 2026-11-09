@@ -105,7 +105,7 @@ export const projects: Project[] = [
       {
         title: 'My contribution',
         content: [
-          'I developed the interactive system, from the mobile interface and image-generation workflow to the Android kiosk app that displays the results. The project combines my interest in installations with practical experimentation in AI, interaction and physical space.',
+          'I developed the interactive system, from the mobile interface and image-generation workflow to the Android kiosk app that displays the results. I also designed the exhibition catalogue. The project combines my interest in installations with practical experimentation in AI, interaction and physical space.',
         ],
       },
       {
