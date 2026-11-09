@@ -245,6 +245,7 @@ export interface Experiment {
   title: string
   type: string
   note?: string
+  link?: string
 }
 
 /**
@@ -253,7 +254,8 @@ export interface Experiment {
  */
 export const experiments: Experiment[] = [
   {
-    title: 'thomas was alone:remake',
+    title: 'thomas was alone:copycat',
+    link: 'https://www.katarinagames.fyi/thomas-was-alone',
     type: 'Early Gameplay Experiment · 2016',
     note: 'A first Unity project, kept as personal history rather than current work.',
   },
