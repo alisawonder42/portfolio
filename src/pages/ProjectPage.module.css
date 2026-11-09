@@ -356,26 +356,34 @@
   }
 }
 
-/* The complete catalogue opens the un:seen page, before the description. */
+/* Exhibition catalogue: all four pages shown as images, in reading order. */
 .catalogue {
-  display: grid;
-  gap: var(--space-3);
   min-width: 0;
 }
 
 .cataloguePages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  align-items: start;
+}
+
+.catalogueFigure {
+  margin: 0;
+  min-width: 0;
+}
+
+.catalogueFigure img {
   display: block;
   width: 100%;
-  height: min(82svh, 58rem);
-  border: 0;
+  height: auto;
+  aspect-ratio: 420 / 595;
+  object-fit: contain;
   background: var(--bg-elev);
 }
 
-.catalogueFallback {
-  justify-self: start;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--fg-muted);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+@media (max-width: 40rem) {
+  .cataloguePages {
+    grid-template-columns: 1fr;
+  }
 }
