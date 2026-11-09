@@ -150,16 +150,23 @@ export const projects: Project[] = [
     type: 'Interactive 3D / Photogrammetry',
     kindLabel: 'Interactive 3D / Photogrammetry',
     kind: 'independent',
-    overview:
-      'The idea behind this project was to create a contrast between something that looks realistic and physical, but is still clearly digital.',
     sections: [
       {
+        title: 'Concept: digital distortion',
         content: [
-          'I started from a real object captured through **photogrammetry** and wanted the box to keep that realistic and then to have small parts of the object reveal a different visual layer that makes its digital nature visible.',
-          'My goal was to actually try effect of feeling that somthing is digital but that it doesnt go too much into retro ascii aesthetic.',
-          'A big part of the work was making the effect follow the actual shape of the box instead of looking like a flat overlay. I used **normal map shader** information to influence the position and appearance of the effect, so lines, offsets and shading react to the surface and smaller details of the object. On top of that, I layered **post processing effects** such as scanlines, RGB separation and signal distortion.',
-          'The effect is visible only inside a small square following the cursor and only where that square overlaps the box. The physical shape stays stable, while the way that part of the surface is rendered changes.',
-          'FYI: I am still not happy how it looks so it is work in progress',
+          'I wanted to explore the contrast between a realistic, physical-looking object and an unmistakably digital effect. Rather than a retro ASCII look, I was interested in subtle distortions that reveal the object’s digital nature.',
+        ],
+      },
+      {
+        title: 'Photogrammetry',
+        content: [
+          'I photographed a real ornamental box from multiple angles with a camera and used photogrammetry to reconstruct it as a 3D object.',
+        ],
+      },
+      {
+        title: 'Technical side',
+        content: [
+          'I brought the scanned model into an interactive web scene. A cursor-following square reveals scanlines, RGB separation and distortion on the box’s surface, with normal-map information helping the effect respond to its shape. Still a work in progress.',
         ],
       },
     ],
@@ -171,7 +178,7 @@ export const projects: Project[] = [
       {
         kind: 'image',
         src: '/projects/box/desk.jpg',
-        alt: 'The physical ornamental box on a desk in front of a monitor showing the 3D scan.',
+        alt: 'The physical ornamental box beside a monitor displaying its photogrammetry-based 3D model.',
       },
     ],
   },
