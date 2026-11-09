@@ -224,11 +224,17 @@ export function ProjectPage({ project }: { project: Project }) {
           </div>
         ) : null}
 
+        {project.slug === 'box' && project.embed ? (
+          <Embed src={project.embed.src} title={project.embed.title} />
+        ) : null}
+
         {project.overview ? <p className={styles.overview}>{project.overview}</p> : null}
 
-        {project.embed ? <Embed src={project.embed.src} title={project.embed.title} /> : null}
+        {project.slug !== 'box' && project.embed ? (
+          <Embed src={project.embed.src} title={project.embed.title} />
+        ) : null}
 
-        {project.embed && project.media?.length ? (
+        {project.embed && project.slug !== 'box' && project.media?.length ? (
           <div className={`${styles.media} ${styles.mediaWithEmbed}`}>
             {project.media.map((item) => (
               <MediaFigure key={item.src} item={item} />
@@ -254,11 +260,17 @@ export function ProjectPage({ project }: { project: Project }) {
           </section>
         ) : null}
 
-        {project.sections?.map((section) => (
-          <SectionBlock
-            key={section.title ?? section.content?.[0] ?? section.highlight}
-            section={section}
-          />
+        {project.sections?.map((section, index) => (
+          <div key={section.title ?? section.content?.[0] ?? section.highlight} className={styles.sectionGroup}>
+            <SectionBlock section={section} />
+            {project.slug === 'box' && index === 1 && project.media?.length ? (
+              <div className={styles.media}>
+                {project.media.map((item) => (
+                  <MediaFigure key={item.src} item={item} />
+                ))}
+              </div>
+            ) : null}
+          </div>
         ))}
 
         {!project.embed && project.slug !== 'unseen' && project.media?.length ? (
