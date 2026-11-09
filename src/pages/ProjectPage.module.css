@@ -355,3 +355,27 @@
     gap: 0.25rem;
   }
 }
+
+/* The complete catalogue opens the un:seen page, before the description. */
+.catalogue {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.cataloguePages {
+  display: block;
+  width: 100%;
+  height: min(82svh, 58rem);
+  border: 0;
+  background: var(--bg-elev);
+}
+
+.catalogueFallback {
+  justify-self: start;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
