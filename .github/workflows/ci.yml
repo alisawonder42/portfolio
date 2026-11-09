@@ -18,4 +18,13 @@ jobs:
       - run: npm ci
       - run: npm run format:check
       - run: npm run lint
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Render localized catalogue images
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-liberation fonts-noto-core
+          python -m pip install pymupdf==1.26.7
+          python scripts/render_unseen_catalogue.py
       - run: npm run build
