@@ -260,10 +260,8 @@ export const experiments: Experiment[] = [
     note: 'A first Unity project, kept as personal history rather than current work.',
   },
   {
-    // Working title. The recognition method is deliberately unstated: it has not
-    // been confirmed, and naming one would be a guess.
     title: 'painting:ar',
     type: 'Physical painting / mobile interaction / animation · 2020',
-    note: 'A physical painting recognised through a phone, with digital animation connected to the work. An early version of the physical–digital direction that un:seen continues.',
+    note: 'I was experimenting with an app that recognised a picture when you pointed your phone at it and brought it to life with animation. Unfortunately, I no longer have access to the project files.',
   },
 ]
