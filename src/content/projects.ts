@@ -78,6 +78,7 @@ export const projects: Project[] = [
   {
     slug: 'unseen',
     title: 'un:seen',
+    year: '2026',
     type: 'Interactive Installation / Generative AI',
     kindLabel: 'Interactive Installation / Generative AI',
     credit: 'Concept & technical development',
@@ -147,6 +148,7 @@ export const projects: Project[] = [
   {
     slug: 'box',
     title: 'box : distortion: in progress',
+    year: '2026',
     type: 'Interactive 3D / Photogrammetry',
     kindLabel: 'Interactive 3D / Photogrammetry',
     kind: 'independent',
@@ -185,6 +187,7 @@ export const projects: Project[] = [
   {
     slug: 'the-book-of-distance',
     title: 'the book of distance:vr',
+    year: '2020',
     type: 'Narrative VR experience',
     kindLabel: 'Virtual Reality',
     credit: 'Consultant',
@@ -211,6 +214,7 @@ export const projects: Project[] = [
   {
     slug: 'mladen-ilic',
     title: 'artist portfolio:web',
+    year: '2026',
     type: 'Artist Portfolio / Photography / Video',
     kindLabel: 'Artist Portfolio',
     credit: 'Concept, photography & video',
@@ -230,6 +234,24 @@ export const projects: Project[] = [
     ],
     externalLinks: [
       { label: 'Visit mladenilic.art', href: 'https://mladenilic.art/' },
+    ],
+  },
+  {
+    slug: 'soft-photography',
+    title: 'soft:photography:2017',
+    type: 'Analogue Photography / Digital Experiments',
+    kindLabel: 'Photography / Digital Experiments',
+    kind: 'independent',
+    year: '2017',
+    overview:
+      'An early experiment with analogue photography and digital forms, photographed on a Zenit film camera in 2017.',
+    sections: [
+      {
+        title: 'Explorations',
+        content: [
+          'A series of photographs of women, made while I was experimenting with film photography, soft focus, imperfect framing and the ways analogue images can be reassembled in a digital format.',
+        ],
+      },
     ],
   },
 ]
