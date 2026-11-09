@@ -112,6 +112,8 @@ const translations: Record<string, Partial<Project>> = {
     kindLabel: 'Virtuelna stvarnost',
     credit: 'Konsultantkinja',
     role: 'Narativno VR iskustvo autora Randalla Okite, u produkciji Nacionalnog filmskog odbora Kanade.',
+    overview:
+      'Priča prati Joneza Okitu, koji je 1935. otišao iz Hirošime u Kanadu, gde se tokom Drugog svetskog rata suočio sa rasizmom i prisilnom internacijom. Njegov unuk, umetnik Randal Okita, kroz interaktivno iskustvo rekonstruiše priču o porodici, raseljavanju i sećanju.',
     contribution: [
       'Pomagala sam timu u završnoj fazi razvoja, uglavnom kroz testiranje i profilisanje performansi, uz manji doprinos samom razvoju.',
     ],
