@@ -152,7 +152,7 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
     },
     {
       type: 'Fizička slika / Mobilna interakcija / Animacija · 2020',
-      note: 'Fizička slika koju telefon prepoznaje i povezuje sa digitalnom animacijom. Rani korak u povezivanju fizičkog i digitalnog, koje se nastavlja kroz un:seen.',
+      note: 'Eksperimentisala sam sa aplikacijom koja prepoznaje sliku kada uperite telefon u nju i oživljava je animacijom. Nažalost, više nemam pristup fajlovima projekta.',
     },
   ][index],
 }))
