@@ -291,7 +291,7 @@ export interface Experiment {
  */
 export const experiments: Experiment[] = [
   {
-    title: 'thomas was alone:copycat',
+    title: 'game:copycat',
     link: 'https://www.katarinagames.fyi/thomas-was-alone',
     type: 'Early Gameplay Experiment · 2016',
     note: 'A first Unity project, kept as personal history rather than current work.',
