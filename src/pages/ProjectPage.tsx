@@ -216,6 +216,14 @@ export function ProjectPage({ project }: { project: Project }) {
           ) : null}
         </header>
 
+        {project.slug === 'unseen' && project.media?.length ? (
+          <div className={styles.media}>
+            {project.media.map((item) => (
+              <MediaFigure key={item.src} item={item} />
+            ))}
+          </div>
+        ) : null}
+
         {project.overview ? <p className={styles.overview}>{project.overview}</p> : null}
 
         {project.embed ? <Embed src={project.embed.src} title={project.embed.title} /> : null}
@@ -253,7 +261,7 @@ export function ProjectPage({ project }: { project: Project }) {
           />
         ))}
 
-        {!project.embed && project.media?.length ? (
+        {!project.embed && project.slug !== 'unseen' && project.media?.length ? (
           <div className={styles.media}>
             {project.media.map((item) => (
               <MediaFigure key={item.src} item={item} />
