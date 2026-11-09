@@ -253,11 +253,6 @@ export interface Experiment {
  */
 export const experiments: Experiment[] = [
   {
-    title: 'proto:architecture',
-    type: 'Systems / Architecture Study',
-    note: 'A small Unity demo exploring scalable architecture with Zenject, MVC and unit testing. Also used in a teaching context.',
-  },
-  {
     title: 'thomas was alone:remake',
     type: 'Early Gameplay Experiment · 2016',
     note: 'A first Unity project, kept as personal history rather than current work.',
