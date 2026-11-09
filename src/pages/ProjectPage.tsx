@@ -249,6 +249,12 @@ export function ProjectPage({ project }: { project: Project }) {
           <Embed src={project.embed.src} title={project.embed.title} />
         ) : null}
 
+        {project.slug === 'the-book-of-distance' && project.media?.[0] ? (
+          <div className={styles.media}>
+            <MediaFigure item={project.media[0]} />
+          </div>
+        ) : null}
+
         {project.overview ? <p className={styles.overview}>{project.overview}</p> : null}
 
         {project.slug !== 'box' && project.embed ? (
@@ -281,6 +287,12 @@ export function ProjectPage({ project }: { project: Project }) {
           </section>
         ) : null}
 
+        {project.slug === 'the-book-of-distance' && project.media?.[1] ? (
+          <div className={styles.media}>
+            <MediaFigure item={project.media[1]} />
+          </div>
+        ) : null}
+
         {project.sections?.map((section, index) => (
           <div key={section.title ?? section.content?.[0] ?? section.highlight} className={styles.sectionGroup}>
             <SectionBlock section={section} />
@@ -294,7 +306,7 @@ export function ProjectPage({ project }: { project: Project }) {
           </div>
         ))}
 
-        {!project.embed && project.slug !== 'unseen' && project.media?.length ? (
+        {!project.embed && project.slug !== 'unseen' && project.slug !== 'the-book-of-distance' && project.media?.length ? (
           <div className={styles.media}>
             {project.media.map((item) => (
               <MediaFigure key={item.src} item={item} />
