@@ -147,10 +147,6 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
   ...experiment,
   ...[
     {
-      type: 'Sistemi / Studija arhitekture',
-      note: 'Mali Unity demo koji istražuje skalabilnu arhitekturu uz Zenject, MVC i jedinične testove. Korišćen i u nastavi.',
-    },
-    {
       type: 'Rani eksperiment sa mehanikama igre · 2016',
       note: 'Moj prvi Unity projekat, sačuvan kao deo lične istorije razvoja.',
     },
