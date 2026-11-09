@@ -257,7 +257,7 @@ export const projects: Project[] = [
       {
         title: 'Explorations',
         content: [
-          'A series of photographs of women, made while I was experimenting with film photography, soft focus, imperfect framing and the ways analogue images can be reassembled in a digital format.',
+          'A series of photographs of sisters and friends in everyday moments, made while trying to capture something of girlhood.',
         ],
       },
     ],
