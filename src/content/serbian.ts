@@ -2,7 +2,7 @@ import { siteContent } from './site'
 import { projects, experiments, type Project } from './projects'
 
 const lede =
-  'Zanimaju me instalacije i kreativna primena tehnologije u umetnosti i dizajnu. Istražujem kako veštačka inteligencija može da podrži kreativnost i kreativne procese, uz pragmatičan pristup.'
+  'Zanima me istraživanje spoja umetnosti, tehnologije i dizajna, sa fokusom na interaktivna iskustva i digitalne inovacije. Istražujem kako veštačka inteligencija može da podrži kreativne procese i otvori nove mogućnosti za umetničko izražavanje.'
 
 export const serbianSite = {
   ...siteContent,
