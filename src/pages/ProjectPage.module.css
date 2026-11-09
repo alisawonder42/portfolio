@@ -387,3 +387,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Center the Book of Distance images within the project page. */
+.bookOfDistance .figure img,
+.bookOfDistance .figure video {
+  object-position: center center;
+  margin-inline: auto;
+}
