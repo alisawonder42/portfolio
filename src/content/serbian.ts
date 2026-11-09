@@ -81,23 +81,30 @@ const translations: Record<string, Partial<Project>> = {
   box: {
     type: 'Interaktivni 3D / Fotogrametrija',
     kindLabel: 'Interaktivni 3D / Fotogrametrija',
-    overview:
-      'Ideja ovog projekta bila je da napravim kontrast između nečega što izgleda realistično i fizički prisutno, a ipak je jasno digitalno.',
     sections: [
       {
+        title: 'Koncept: digitalna distorzija',
         content: [
-          'Pošla sam od stvarnog predmeta snimljenog pomoću **fotogrametrije**. Želela sam da kutija zadrži realističan izgled, dok mali delovi njene površine otkrivaju drugačiji vizuelni sloj koji pokazuje njenu digitalnu prirodu.',
-          'Cilj mi je bio da isprobam efekat koji daje osećaj digitalnog, bez preteranog oslanjanja na retro ASCII estetiku.',
-          'Važan deo rada bio je da efekat prati stvarni oblik kutije, umesto da izgleda kao ravna površina preko nje. Koristila sam podatke iz **mape normala u šejderu** da utičem na položaj i izgled efekta, tako da linije, pomeranja i senčenje prate površinu i sitne detalje predmeta. Na to sam dodala **efekte naknadne obrade**, poput horizontalnih linija, razdvajanja RGB kanala i izobličenja signala.',
-          'Efekat je vidljiv samo unutar malog kvadrata koji prati kursor, i to samo tamo gde se kvadrat preklapa sa kutijom. Fizički oblik ostaje stabilan, dok se način prikazivanja tog dela površine menja.',
-          'Još nisam zadovoljna izgledom, tako da je projekat i dalje u razvoju.',
+          'Želela sam da istražim kontrast između predmeta koji izgleda realistično i fizički prisutno i efekta koji je očigledno digitalan. Umesto retro ASCII estetike, zanimala su me suptilna izobličenja koja otkrivaju digitalnu prirodu objekta.',
+        ],
+      },
+      {
+        title: 'Fotogrametrija',
+        content: [
+          'Fotografisala sam pravu ukrasnu kutiju iz više uglova fotoaparatom i pomoću fotogrametrije rekonstruisala njen 3D model.',
+        ],
+      },
+      {
+        title: 'Tehnička strana',
+        content: [
+          'Skenirani model sam postavila u interaktivnu veb scenu. Kvadrat koji prati kursor otkriva linije, razdvajanje RGB kanala i distorziju na površini kutije, dok podaci iz mape normala pomažu da efekat prati njen oblik. Projekat je još u razvoju.',
         ],
       },
     ],
     embed: { ...projects[1].embed!, title: 'Kutija' },
     media: projects[1].media?.map((item) => ({
       ...item,
-      alt: 'Ukrasna kutija na stolu ispred monitora na kom je prikazan njen 3D sken.',
+      alt: 'Prava ukrasna kutija pored monitora na kom je prikazan njen 3D model napravljen fotogrametrijom.',
     })),
   },
   'the-book-of-distance': {
