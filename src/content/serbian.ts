@@ -50,7 +50,7 @@ const translations: Record<string, Partial<Project>> = {
       {
         title: 'Moj doprinos',
         content: [
-          'Razvila sam interaktivni sistem, od mobilnog interfejsa i procesa generisanja slika do Android kiosk aplikacije koja prikazuje rezultate. Projekat spaja moje interesovanje za instalacije sa praktičnim istraživanjem veštačke inteligencije, interakcije i fizičkog prostora.',
+          'Razvila sam interaktivni sistem, od mobilnog interfejsa i procesa generisanja slika do Android kiosk aplikacije koja prikazuje rezultate. Takođe sam dizajnirala katalog izložbe. Projekat spaja moje interesovanje za instalacije sa praktičnim istraživanjem veštačke inteligencije, interakcije i fizičkog prostora.',
         ],
       },
       {
