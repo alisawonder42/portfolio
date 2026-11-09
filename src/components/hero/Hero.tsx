@@ -3,13 +3,9 @@ import { useLanguage } from '@/content/Language'
 import styles from './Hero.module.css'
 
 export function Hero() {
-  const { site: siteContent, language } = useLanguage()
+  const { site: siteContent } = useLanguage()
   const [given, family] = splitName(siteContent.hero.title)
   const sentenceEnd = siteContent.hero.lede.indexOf('. ') + 1
-  const secondSentence = siteContent.hero.lede.slice(sentenceEnd).trimStart()
-  const trailingPhrase = language === 'sr' ? 'uz pragmatičan pristup.' : 'with a pragmatic approach.'
-  const phraseStart = secondSentence.lastIndexOf(trailingPhrase)
-  const hasTrailingPhrase = phraseStart > 0
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.copy}>
@@ -20,13 +16,7 @@ export function Hero() {
         <p className={styles.lede}>
           {siteContent.hero.lede.slice(0, sentenceEnd)}
           <br />
-          {hasTrailingPhrase ? secondSentence.slice(0, phraseStart).trimEnd() : secondSentence}
-          {hasTrailingPhrase ? (
-            <>
-              <br />
-              {trailingPhrase}
-            </>
-          ) : null}
+          {siteContent.hero.lede.slice(sentenceEnd).trimStart()}
         </p>
       </div>
     </section>
