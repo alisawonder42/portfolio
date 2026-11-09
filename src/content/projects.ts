@@ -146,7 +146,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'box',
-    title: 'box:shader',
+    title: 'box : distortion: in progress',
     type: 'Interactive 3D / Photogrammetry',
     kindLabel: 'Interactive 3D / Photogrammetry',
     kind: 'independent',
