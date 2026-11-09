@@ -18,7 +18,7 @@ export function ProjectIndex() {
             <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
             <span className={styles.body}>
               <span className={styles.title}>{project.title}</span>
-              <span className={styles.type}>{project.type}</span>
+              <span className={styles.type}>{project.type}{project.year ? ` · ${project.year}` : null}</span>
             </span>
             <span className={styles.arrow} aria-hidden="true">
               ↗
