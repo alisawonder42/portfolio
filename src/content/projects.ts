@@ -187,7 +187,7 @@ export const projects: Project[] = [
   {
     slug: 'the-book-of-distance',
     title: 'the book of distance:vr',
-    year: '2020',
+    year: '2022',
     type: 'Narrative VR experience',
     kindLabel: 'Virtual Reality',
     credit: 'Consultant',
