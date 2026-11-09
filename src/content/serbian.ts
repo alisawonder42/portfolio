@@ -103,7 +103,7 @@ const translations: Record<string, Partial<Project>> = {
   'the-book-of-distance': {
     type: 'Narativno VR iskustvo',
     kindLabel: 'Virtuelna stvarnost',
-    credit: 'Freelance Unity programerka',
+    credit: 'Konsultantkinja',
     role: 'Narativno VR iskustvo autora Randalla Okite, u produkciji Nacionalnog filmskog odbora Kanade.',
     contribution: [
       'Pomagala sam timu u završnoj fazi razvoja, uglavnom kroz testiranje i profilisanje performansi, uz manji doprinos samom razvoju.',
