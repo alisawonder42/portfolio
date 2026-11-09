@@ -34,8 +34,8 @@
   font-size: var(--text-sm);
   line-height: 1.6;
   color: var(--fg-muted);
-  /* Keep the subtitle in the left text column, clear of the flower. */
-  max-width: min(100%, 40ch);
+  /* A wider subtitle, without stretching across the flower. */
+  max-width: min(100%, 68ch);
   text-wrap: pretty;
 }
 
