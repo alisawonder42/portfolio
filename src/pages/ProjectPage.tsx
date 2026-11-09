@@ -222,13 +222,13 @@ export function ProjectPage({ project }: { project: Project }) {
             aria-label={t('Exhibition catalogue', 'Katalog izložbe')}
           >
             <div className={styles.cataloguePages}>
-              {[1, 2, 3, 4].map((pageNumber) => (
+              {[1, 2].map((pageNumber) => (
                 <figure className={styles.catalogueFigure} key={pageNumber}>
                   <img
                     src={`/projects/unseen/catalogue/${language}/page-${pageNumber}.jpg`}
                     alt={t(
-                      `un:seen exhibition catalogue, page ${pageNumber} of 4`,
-                      `Katalog izložbe un:seen, strana ${pageNumber} od 4`,
+                      `un:seen exhibition catalogue, page ${pageNumber} of 2`,
+                      `Katalog izložbe un:seen, strana ${pageNumber} od 2`,
                     )}
                     loading={pageNumber === 1 ? 'eager' : 'lazy'}
                     decoding="async"
