@@ -216,12 +216,23 @@ export function ProjectPage({ project }: { project: Project }) {
           ) : null}
         </header>
 
-        {project.slug === 'unseen' && project.media?.length ? (
-          <div className={styles.media}>
-            {project.media.map((item) => (
-              <MediaFigure key={item.src} item={item} />
-            ))}
-          </div>
+        {project.slug === 'unseen' ? (
+          <section className={styles.catalogue} aria-label={t('Exhibition catalogue', 'Katalog izložbe')}>
+            <iframe
+              className={styles.cataloguePages}
+              src="/projects/unseen/unseen-katalog-A5.pdf#toolbar=0&navpanes=0&view=FitH"
+              title={t('un:seen catalogue — all pages', 'un:seen katalog — sve strane')}
+              loading="lazy"
+            />
+            <a
+              className={styles.catalogueFallback}
+              href="/projects/unseen/unseen-katalog-A5.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('Open the complete catalogue ↗', 'Otvori ceo katalog ↗')}
+            </a>
+          </section>
         ) : null}
 
         {project.slug === 'box' && project.embed ? (
@@ -291,6 +302,14 @@ export function ProjectPage({ project }: { project: Project }) {
               </li>
             ))}
           </ul>
+        ) : null}
+
+        {project.slug === 'unseen' && project.media?.length ? (
+          <div className={styles.media}>
+            {project.media.map((item) => (
+              <MediaFigure key={item.src} item={item} />
+            ))}
+          </div>
         ) : null}
 
         {upcoming ? (
