@@ -147,7 +147,7 @@ function MediaFigure({ item }: { item: ProjectMedia }) {
 }
 
 export function ProjectPage({ project }: { project: Project }) {
-  const { projects, site: siteContent, t } = useLanguage()
+  const { projects, site: siteContent, t, language } = useLanguage()
   const upcoming =
     projects[(projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length]
   const meta = [project.type, project.year].filter(Boolean).join(' · ')
@@ -217,21 +217,25 @@ export function ProjectPage({ project }: { project: Project }) {
         </header>
 
         {project.slug === 'unseen' ? (
-          <section className={styles.catalogue} aria-label={t('Exhibition catalogue', 'Katalog izložbe')}>
-            <iframe
-              className={styles.cataloguePages}
-              src="/projects/unseen/unseen-katalog-A5.pdf#toolbar=0&navpanes=0&view=FitH"
-              title={t('un:seen catalogue — all pages', 'un:seen katalog — sve strane')}
-              loading="lazy"
-            />
-            <a
-              className={styles.catalogueFallback}
-              href="/projects/unseen/unseen-katalog-A5.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t('Open the complete catalogue ↗', 'Otvori ceo katalog ↗')}
-            </a>
+          <section
+            className={styles.catalogue}
+            aria-label={t('Exhibition catalogue', 'Katalog izložbe')}
+          >
+            <div className={styles.cataloguePages}>
+              {[1, 2, 3, 4].map((pageNumber) => (
+                <figure className={styles.catalogueFigure} key={pageNumber}>
+                  <img
+                    src={`/projects/unseen/catalogue/${language}/page-${pageNumber}.jpg`}
+                    alt={t(
+                      `un:seen exhibition catalogue, page ${pageNumber} of 4`,
+                      `Katalog izložbe un:seen, strana ${pageNumber} od 4`,
+                    )}
+                    loading={pageNumber === 1 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </figure>
+              ))}
+            </div>
           </section>
         ) : null}
 
