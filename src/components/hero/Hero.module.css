@@ -34,8 +34,15 @@
   font-size: var(--text-sm);
   line-height: 1.6;
   color: var(--fg-muted);
-  max-width: min(100%, 90ch);
+  /* Keep the subtitle in the left text column, clear of the flower. */
+  max-width: min(100%, 40ch);
   text-wrap: pretty;
+}
+
+@media (max-width: 48rem) {
+  .lede {
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 60rem) {
