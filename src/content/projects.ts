@@ -180,7 +180,7 @@ export const projects: Project[] = [
     title: 'the book of distance:vr',
     type: 'Narrative VR experience',
     kindLabel: 'Virtual Reality',
-    credit: 'Freelance Unity Developer',
+    credit: 'Consultant',
     kind: 'professional',
     role: 'A narrative VR experience by Randall Okita, produced by the National Film Board of Canada.',
     contribution: [
