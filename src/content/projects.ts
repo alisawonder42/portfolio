@@ -193,6 +193,8 @@ export const projects: Project[] = [
     credit: 'Consultant',
     kind: 'professional',
     role: 'A narrative VR experience by Randall Okita, produced by the National Film Board of Canada.',
+    overview:
+      'The story follows Yonezo Okita, who left Hiroshima for Canada in 1935 but later faced racism and forced internment during World War II. His grandson, artist Randall Okita, retraces his life in an interactive story about family, displacement and memory.',
     contribution: [
       'I supported the team during the final stage of development, mainly through testing and performance profiling, with a small contribution to development.',
     ],
