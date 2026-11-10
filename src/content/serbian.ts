@@ -2,7 +2,7 @@ import { siteContent } from './site'
 import { projects, experiments, type Project } from './projects'
 
 const lede =
-  'Tehnički: Zanimaju me nove tehnologije i kreativne mogućnosti koje one otvaraju. Filozofski: Privlače me paradoksi, protivrečnosti i kontrasti, posebno napetost između suprotstavljenih ideja.'
+  'Tehnički: Zanimaju me nove tehnologije i kreativne mogućnosti koje one otvaraju. Umetnički: Privlače me paradoksi, protivrečnosti i kontrasti, posebno napetost između suprotstavljenih ideja.'
 
 export const serbianSite = {
   ...siteContent,
