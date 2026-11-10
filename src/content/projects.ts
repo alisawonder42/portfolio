@@ -301,6 +301,6 @@ export const experiments: Experiment[] = [
   {
     title: 'painting:ar',
     type: 'Physical painting / mobile interaction / animation · 2020',
-    note: 'I was experimenting with an app that recognised a picture when you pointed your phone at it and brought it to life with animation. Unfortunately, I no longer have access to the project files.',
+    note: 'I was experimenting with an app that recognised a picture when you pointed your phone at it and brought it to life with animation.',
   },
 ]
