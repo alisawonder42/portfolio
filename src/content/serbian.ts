@@ -2,7 +2,7 @@ import { siteContent } from './site'
 import { projects, experiments, type Project } from './projects'
 
 const lede =
-  'Tehnički: Zanimaju me nove tehnologije i kreativne mogućnosti koje one otvaraju. Umetnički: Privlače me paradoksi, protivrečnosti i kontrasti, posebno napetost između suprotstavljenih ideja.'
+  'Tehnički me zanimaju nove tehnologije i kreativne mogućnosti koje otvaraju. Umetnički me privlače paradoksi, protivrečnosti i kontrasti, posebno između tradicionalnog i savremenog, kao i između umetnosti i nauke.'
 
 export const serbianSite = {
   ...siteContent,
@@ -15,7 +15,14 @@ export const serbianSite = {
       { label: 'Kontakt', href: '/#contact' },
     ],
   },
-  hero: { ...siteContent.hero, lede },
+  hero: {
+    ...siteContent.hero,
+    lede,
+    technicalLabel: 'Tehnički',
+    technical: 'Zanimaju me nove tehnologije i kreativne mogućnosti koje otvaraju.',
+    artisticLabel: 'Umetnički',
+    artistic: 'Privlače me paradoksi, protivrečnosti i kontrasti, posebno između tradicionalnog i savremenog, kao i između umetnosti i nauke.',
+  },
   work: { ...siteContent.work, title: 'Projekti', note: 'Izabrani radovi' },
   playground: { ...siteContent.playground, title: 'Eksperimenti', note: 'Istraživanja i studije' },
   contact: {
