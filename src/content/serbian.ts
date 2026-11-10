@@ -25,6 +25,11 @@ export const serbianSite = {
   },
   work: { ...siteContent.work, title: 'Projekti', note: 'Izabrani radovi' },
   playground: { ...siteContent.playground, title: 'Eksperimenti', note: 'Istraživanja i studije' },
+  background: {
+    ...siteContent.background,
+    consultantRole: 'Konsultantkinja u',
+    university: 'Univerzitet u Novom Sadu',
+  },
   contact: {
     ...siteContent.contact,
     label: 'Javi mi se',
