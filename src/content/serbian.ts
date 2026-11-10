@@ -50,7 +50,7 @@ const translations: Record<string, Partial<Project>> = {
       {
         title: 'Koncept',
         content: [
-          'Koncept za un:seen razvila sam polazeći od metafizičkih slika Mladena Ilića i njegovog intuitivnog pristupa slikanju. Njegovi radovi i stvaralački proces bili su polazište za instalaciju.',
+          'Koncept za un:seen razvila sam polazeći od figurativnih slika Mladena Ilića i njegovog intuitivnog pristupa slikanju. Njegovi radovi i stvaralački proces bili su polazište za instalaciju.',
         ],
       },
       {
