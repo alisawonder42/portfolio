@@ -21,6 +21,10 @@ export function Hero() {
             <span className={styles.interestLabel}>{siteContent.hero.artisticLabel}</span>
             <p className={styles.lede}>{siteContent.hero.artistic}</p>
           </div>
+          <div className={styles.interest}>
+            <span className={styles.interestLabel}>{siteContent.hero.personalLabel}</span>
+            <p className={styles.lede}>{siteContent.hero.personal}</p>
+          </div>
         </div>
       </div>
     </section>
