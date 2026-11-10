@@ -21,8 +21,6 @@ export const siteContent = {
     technical: 'I’m interested in emerging technologies and the creative possibilities they open up.',
     artisticLabel: 'Artistically',
     artistic: 'Drawn to paradoxes, contradictions and contrasts, especially between tradition and modernity, and between art and science.',
-    personalLabel: 'Personally',
-    personal: 'Interested in social inclusion and in AI that creates opportunities for people rather than replacing them.',
   },
   work: {
     eyebrow: '01',
