@@ -59,6 +59,43 @@
   box-sizing: border-box;
 }
 
+.profileDetails {
+  display: grid;
+  gap: 0.7rem;
+  margin-bottom: 3rem;
+}
+
+.profileRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.6;
+}
+
+.profileLead {
+  color: var(--fg);
+}
+
+.profileLink {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--fg) 40%, transparent);
+  text-underline-offset: 0.25em;
+}
+
+.profileLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.profileLink:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 4px;
+}
+
 .contactLinks {
   display: flex;
   flex-wrap: wrap;
