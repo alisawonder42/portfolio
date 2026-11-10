@@ -39,6 +39,13 @@ export const siteContent = {
    * linkedin: full profile URL, e.g. https://www.linkedin.com/in/…
    * email: mailto: address, e.g. mailto:name@example.com
    */
+  background: {
+    consultantRole: 'Consultant at',
+    consultantOrg: 'DeepTech Balkans',
+    consultantUrl: 'https://www.deeptechbalkans.org/',
+    degree: 'BSc Computer Science',
+    university: 'University of Novi Sad',
+  },
   contact: {
     label: 'Contact me',
     gamesLabel: 'Game development experience',
