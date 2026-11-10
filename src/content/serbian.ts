@@ -66,12 +66,6 @@ const translations: Record<string, Partial<Project>> = {
         ],
       },
       {
-        title: 'Tehnička postavka',
-        content: [
-          'Sistem povezuje OpenAI Image API sa Supabase servisom za čuvanje slika i podataka, dok se Capacitor koristi za Android kiosk aplikaciju. Ponovni pokušaji i rezervna rešenja pomažu da sistem pouzdano radi tokom javnog korišćenja.',
-        ],
-      },
-      {
         title: 'Izložba',
         content: [
           'Izložba predstavlja un:seen kao funkcionalnu demonstraciju učešća publike i generativne tehnologije u zajedničkom fizičkom prostoru.',
