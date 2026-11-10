@@ -30,12 +30,29 @@
   display: block;
 }
 
+.interests {
+  display: grid;
+  gap: clamp(1.25rem, 3vh, 2rem);
+}
+
+.interest {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.interestLabel {
+  font-size: 0.68rem;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
 .lede {
+  max-width: min(100%, 62ch);
   font-size: var(--text-sm);
   line-height: 1.6;
   color: var(--fg-muted);
-  /* A wider subtitle, without stretching across the flower. */
-  max-width: min(100%, 68ch);
   text-wrap: pretty;
 }
 
