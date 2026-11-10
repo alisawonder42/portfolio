@@ -175,7 +175,7 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
     },
     {
       type: 'Fizička slika / Mobilna interakcija / Animacija · 2020',
-      note: 'Eksperimentisala sam sa aplikacijom koja prepoznaje sliku kada uperite telefon u nju i oživljava je animacijom. Nažalost, više nemam pristup fajlovima projekta.',
+      note: 'Eksperimentisala sam sa aplikacijom koja prepoznaje sliku kada uperite telefon u nju i oživljava je animacijom.',
     },
   ][index],
 }))
