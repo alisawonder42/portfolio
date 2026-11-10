@@ -5,7 +5,7 @@ export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
     description:
-      'Technically: I’m interested in emerging technologies and the creative possibilities they open up. Philosophically: I’m drawn to paradoxes, contradictions and contrasts, especially the tension between opposing ideas.',
+      'Technically: I’m interested in emerging technologies and the creative possibilities they open up. Artistically: I’m drawn to paradoxes, contradictions and contrasts, especially the tension between opposing ideas.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -17,7 +17,7 @@ export const siteContent = {
   },
   hero: {
     title: 'Katarina Ranković',
-    lede: 'Technically: I’m interested in emerging technologies and the creative possibilities they open up. Philosophically: I’m drawn to paradoxes, contradictions and contrasts, especially the tension between opposing ideas.',
+    lede: 'Technically: I’m interested in emerging technologies and the creative possibilities they open up. Artistically: I’m drawn to paradoxes, contradictions and contrasts, especially the tension between opposing ideas.',
   },
   work: {
     eyebrow: '01',
