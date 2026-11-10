@@ -94,7 +94,7 @@ export const projects: Project[] = [
       {
         title: 'The concept',
         content: [
-          'I developed the concept for un:seen from Mladen Ilić’s metaphysical paintings and his intuitive approach to painting. His work and creative process were the starting point for the installation.',
+          'I developed the concept for un:seen from Mladen Ilić’s figurative paintings and his intuitive approach to painting. His work and creative process were the starting point for the installation.',
         ],
       },
       {
