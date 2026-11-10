@@ -110,12 +110,6 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: 'Technical setup',
-        content: [
-          'The system connects the OpenAI Image API with Supabase for image storage and data, and uses Capacitor for the Android kiosk app. Retry and fallback handling help keep the experience running during public use.',
-        ],
-      },
-      {
         title: 'Exhibition',
         content: [
           'The exhibition presents un:seen as a working demonstration of audience participation and generative technology in a shared physical space.',
