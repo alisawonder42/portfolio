@@ -10,9 +10,11 @@ import styles from './ProjectIndex.module.css'
  */
 export function ProjectIndex() {
   const { projects } = useLanguage()
+  const visibleProjects = projects.filter((project) => project.slug !== 'mladen-ilic')
+
   return (
     <ol className={styles.list}>
-      {projects.map((project, index) => (
+      {visibleProjects.map((project, index) => (
         <li key={project.slug} className={styles.item}>
           <Link className={styles.row} href={projectPath(project.slug)}>
             <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
