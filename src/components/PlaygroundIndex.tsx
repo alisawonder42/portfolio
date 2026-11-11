@@ -12,6 +12,14 @@ export function PlaygroundIndex() {
           <span className={styles.index}>{String(index + 1).padStart(3, '0')}</span>
           <div className={styles.body}>
             <h3 className={styles.title}>{experiment.title}</h3>
+            {experiment.image ? (
+              <img
+                className={styles.image}
+                src={experiment.image}
+                alt={experiment.imageAlt ?? ''}
+                loading="lazy"
+              />
+            ) : null}
             <p className={styles.type}>{experiment.type}</p>
             {experiment.note ? <p className={styles.note}>{experiment.note}</p> : null}
             {experiment.link ? (

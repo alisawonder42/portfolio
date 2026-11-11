@@ -210,5 +210,14 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
       type: 'Fizička slika / Mobilna interakcija / Animacija · 2020',
       note: 'Eksperimentisala sam sa aplikacijom koja prepoznaje sliku kada uperite telefon u nju i oživljava je animacijom.',
     },
+    {
+      type: 'Unity AR eksperiment · 2017',
+      note: 'Prvi put sam koristila Unity da eksperimentišem sa proširenom stvarnošću.',
+    },
+    {
+      type: 'Kolaž · 2015',
+      note: 'Izrezana figura i tašna na ručno crtanoj pozadini sa cvećem.',
+      imageAlt: 'Izrezana figura sa tašnom ispred plave pozadine sa ručno crtanim crvenim cvećem.',
+    },
   ][index],
 }))
