@@ -44,6 +44,14 @@ function ContactLink() {
           {siteContent.contact.gamesLabel} <span aria-hidden="true">↗</span>
         </a>
       </div>
+      <a
+        className={styles.lifeLink}
+        href="https://www.instagram.com/katarina___rankovic/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        life:in progress <span aria-hidden="true">↗</span>
+      </a>
     </footer>
   )
 }
