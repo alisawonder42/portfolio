@@ -10,10 +10,39 @@ import styles from './Home.module.css'
 
 function ContactLink() {
   const { site: siteContent } = useLanguage()
-  const email = siteContent.contact.email
 
   return (
-    <footer id="contact" className={styles.close}>
+    <Section id="contact" eyebrow="03" title="Elsewhere" note="Social · games · contact">
+      <ol className={styles.socialList}>
+        <li className={styles.socialItem}>
+          <span className={styles.socialIndex}>00</span>
+          <a
+            className={styles.socialLink}
+            href="https://www.instagram.com/katarina___rankovic/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            social:maybe <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li className={styles.socialItem}>
+          <span className={styles.socialIndex}>01</span>
+          <a
+            className={styles.socialLink}
+            href={siteContent.contact.gamesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            tech:side <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li className={styles.socialItem}>
+          <span className={styles.socialIndex}>02</span>
+          <a className={styles.socialLink} href={siteContent.contact.email}>
+            contact:me <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ol>
       <div className={styles.profileDetails}>
         <p className={styles.profileRow}>
           <span className={styles.profileLead}>{siteContent.background.consultantRole}</span>
@@ -31,28 +60,7 @@ function ContactLink() {
           <span>· {siteContent.background.university}</span>
         </p>
       </div>
-      <div className={styles.contactLinks}>
-        <a className={styles.sendButton} href={email}>
-          contact:me <span aria-hidden="true">↗</span>
-        </a>
-        <a
-          className={styles.sendButton}
-          href={siteContent.contact.gamesUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          game:development:check:out <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <a
-        className={styles.lifeLink}
-        href="https://www.instagram.com/katarina___rankovic/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        life:in progress <span aria-hidden="true">↗</span>
-      </a>
-    </footer>
+    </Section>
   )
 }
 
