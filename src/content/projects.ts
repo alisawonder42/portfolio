@@ -306,6 +306,7 @@ export function projectPath(slug: string): string {
 
 export interface Experiment {
   title: string
+  year: string
   type: string
   note?: string
   link?: string
@@ -320,24 +321,28 @@ export interface Experiment {
 export const experiments: Experiment[] = [
   {
     title: 'game:copycat',
+    year: '2016',
     link: 'https://www.katarinagames.fyi/thomas-was-alone',
-    type: 'Early Gameplay Experiment · 2016',
+    type: 'Early Gameplay Experiment',
     note: 'A first Unity project, kept as personal history rather than current work.',
   },
   {
     title: 'painting:ar',
-    type: 'Physical painting / mobile interaction / animation · 2020',
+    year: '2020',
+    type: 'Physical painting / mobile interaction / animation',
     note: 'I was experimenting with an app that recognised a picture when you pointed your phone at it and brought it to life with animation.',
   },
   {
     title: 'cat:test:ar',
-    type: 'Unity AR experiment · 2017',
+    year: '2017',
+    type: 'Unity AR experiment',
     note: 'The first time I used Unity to play with augmented reality.',
     link: 'https://photos.google.com/share/AF1QipPcSl4JC-aBn2ba2kgFgENxaKoezdfPbXdP7TxlTNbREOoYL_3Iunr4CKfHEolgkQ/photo/AF1QipPrQ_6ATnbMG2JFGY2RY2lzfb-Tq1APMdaAux1K?key=dmZ3N1BPZlZ1ajBfRnR2ZUg5VzRQbXI0YnhlS0FB',
   },
   {
     title: 'reppression:collage',
-    type: 'Collage · 2015',
+    year: '2015',
+    type: 'Collage',
     note: 'A cut-out figure and handbag set against a hand-drawn floral background.',
     image: '/projects/reppression-collage.webp?v=2',
     imageAlt: 'A cut-out figure with a handbag in front of a blue background filled with red hand-drawn flowers.',

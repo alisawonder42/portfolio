@@ -8,12 +8,12 @@
 
 .item {
   display: grid;
-  grid-template-columns: 2.5rem 1fr;
+  grid-template-columns: 3.5rem 1fr;
   gap: var(--space-4);
   align-items: baseline;
 }
 
-.index {
+.year {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
@@ -103,7 +103,7 @@
 
 @media (max-width: 30rem) {
   .item {
-    grid-template-columns: 2rem 1fr;
+    grid-template-columns: 3.5rem 1fr;
     gap: var(--space-3);
   }
 

@@ -7,6 +7,9 @@ import styles from './PlaygroundIndex.module.css'
 export function PlaygroundIndex() {
   const { experiments, language } = useLanguage()
   const [visibleImage, setVisibleImage] = useState<{ src: string; alt: string } | null>(null)
+  const chronologicalExperiments = [...experiments].sort(
+    (a, b) => Number(b.year) - Number(a.year),
+  )
 
   useEffect(() => {
     if (!visibleImage) return
@@ -20,9 +23,9 @@ export function PlaygroundIndex() {
   return (
     <>
       <ol className={styles.list}>
-        {experiments.map((experiment, index) => (
+        {chronologicalExperiments.map((experiment) => (
           <li key={experiment.title} className={styles.item}>
-            <span className={styles.index}>{String(index + 1).padStart(3, '0')}</span>
+            <span className={styles.year}>{experiment.year}</span>
             <div className={styles.body}>
               <h3 className={styles.title}>{experiment.title}</h3>
               {experiment.image ? (
