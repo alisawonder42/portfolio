@@ -234,7 +234,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'soft-photography',
-    title: 'soft:photography',
+    title: 'mimi:photography',
     type: 'Analogue Photography / Digital Experiments',
     kindLabel: 'Photography / Digital Experiments',
     kind: 'independent',
