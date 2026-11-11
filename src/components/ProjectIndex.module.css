@@ -11,7 +11,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 2.5rem 1fr auto;
+  grid-template-columns: 3.5rem 1fr auto;
   align-items: baseline;
   gap: var(--space-4);
   padding: var(--space-5, 1.25rem) 0;
@@ -23,7 +23,7 @@
   border-bottom: 1px solid var(--line);
 }
 
-.index {
+.year {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
@@ -99,7 +99,7 @@
 
 @media (max-width: 30rem) {
   .row {
-    grid-template-columns: 2rem 1fr auto;
+    grid-template-columns: 3.5rem 1fr auto;
     gap: var(--space-3);
     /* A comfortable touch target for the whole row. */
     padding: var(--space-5, 1.25rem) 0;

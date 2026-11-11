@@ -238,7 +238,7 @@ export const projects: Project[] = [
     type: 'Analogue Photography / Digital Experiments',
     kindLabel: 'Photography / Digital Experiments',
     kind: 'independent',
-    year: '2017',
+    year: '2022',
     overview:
       'An early experiment with analogue photography and digital forms, photographed on a Zenit film camera in 2017.',
     media: [
