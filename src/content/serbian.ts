@@ -132,7 +132,7 @@ const translations: Record<string, Partial<Project>> = {
     })),
   },
   'sculpture-3d-printing': {
-    title: 'oštrice 2: dualitet',
+    title: 'oštrice II: dualitet',
     type: 'Skulptura / 3D štampa',
     kindLabel: 'Skulptura / 3D štampa',
     credit: 'Razvoj koncepta',
@@ -142,7 +142,7 @@ const translations: Record<string, Partial<Project>> = {
       href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
     },
     overview:
-      'Koncept za 3D štampane skulpture, razvijen u saradnji sa dr Vladimirom Alanderom.',
+      'Izložba predstavlja 3D štampane životinjske skulpture Vladimira Alandera i nastavlja njegov ciklus Oštrice. Oslanjajući se na slovenski folklor i narodna verovanja, radovi povezuju životinje u parove kroz kontrast toplih i hladnih oštrica, prenoseći digitalno vajane oblike u fizički prostor.',
   },
   'soft-photography': {
     type: 'Analogna fotografija / Digitalni eksperimenti',
