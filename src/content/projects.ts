@@ -280,6 +280,12 @@ export const projects: Project[] = [
         alt: 'A white 3D-printed sculpture from Oštrice II: Duality, photographed against a light gallery background.',
         caption: '3D-printed sculpture from Oštrice II: Duality.',
       },
+      {
+        kind: 'image',
+        src: '/projects/blades-duality-render.webp',
+        alt: 'Digital render of the white Oštrice II sculpture on a neutral background.',
+        caption: 'Digital render of the sculpture.',
+      },
     ],
   },
 ]

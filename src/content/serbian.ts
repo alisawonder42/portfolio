@@ -150,6 +150,12 @@ const translations: Record<string, Partial<Project>> = {
         alt: 'Bela skulptura izrađena 3D štampom iz izložbe Oštrice II: Dualitet, fotografisana na svetloj pozadini.',
         caption: 'Skulptura iz izložbe Oštrice II: Dualitet.',
       },
+      {
+        kind: 'image',
+        src: '/projects/blades-duality-render.webp',
+        alt: 'Digitalni prikaz bele skulpture iz ciklusa Oštrice II na neutralnoj pozadini.',
+        caption: 'Digitalni prikaz skulpture.',
+      },
     ],
   },
   'soft-photography': {
