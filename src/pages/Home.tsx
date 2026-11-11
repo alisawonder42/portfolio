@@ -33,7 +33,7 @@ function ContactLink() {
       </div>
       <div className={styles.contactLinks}>
         <a className={styles.sendButton} href={email}>
-          {siteContent.contact.label} <span aria-hidden="true">↗</span>
+          contact:me <span aria-hidden="true">↗</span>
         </a>
         <a
           className={styles.sendButton}
@@ -41,7 +41,7 @@ function ContactLink() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {siteContent.contact.gamesLabel} <span aria-hidden="true">↗</span>
+          game:development:check:out <span aria-hidden="true">↗</span>
         </a>
       </div>
       <a
