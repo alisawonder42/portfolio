@@ -260,7 +260,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'sculpture-3d-printing',
-    title: 'OŠTRICE 2 DUALITET',
+    title: 'oštrice 2: dualitet',
     year: '2018',
     type: 'Sculpture / 3D Printing',
     kindLabel: 'Sculpture / 3D Printing',
