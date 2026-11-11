@@ -131,6 +131,22 @@ const translations: Record<string, Partial<Project>> = {
           : 'Scena iz The Book of Distance: osoba u zamračenoj sobi gleda kroz kružni otvor ka vrtu.',
     })),
   },
+  'sculpture-3d-printing': {
+    title: '3D štampane skulpture',
+    type: 'Skulptura / 3D štampa',
+    kindLabel: 'Skulptura / 3D štampa',
+    credit: 'Razvoj koncepta',
+    collaboration: 'Koncept razvijen sa dr Vladimirom Alanderom —',
+    collaborationLink: {
+      label: 'Pogledaj njegov profil ↗',
+      href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
+    },
+    overview:
+      'Koncept za 3D štampane skulpture, razvijen u saradnji sa dr Vladimirom Alanderom.',
+    contribution: [
+      'Zajedno sa dr Vladimirom Alanderom razvila sam koncept za skulpture.',
+    ],
+  },
   'soft-photography': {
     type: 'Analogna fotografija / Digitalni eksperimenti',
     kindLabel: 'Fotografija / Digitalni eksperimenti',
