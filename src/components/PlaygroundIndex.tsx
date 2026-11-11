@@ -31,8 +31,8 @@ export function PlaygroundIndex() {
               <p className={styles.type}>{experiment.type}</p>
               {experiment.note ? <p className={styles.note}>{experiment.note}</p> : null}
               {experiment.link ? (
-                <a className={styles.note} href={experiment.link} target="_blank" rel="noopener noreferrer">
-                  {language === 'sr' ? 'Pogledaj više ↗' : 'See more ↗'}
+                <a className={styles.seeLink} href={experiment.link} target="_blank" rel="noopener noreferrer">
+                  {language === 'sr' ? 'Pogledaj ↗' : 'See ↗'}
                 </a>
               ) : null}
               {experiment.image ? (
@@ -46,7 +46,7 @@ export function PlaygroundIndex() {
                     })
                   }
                 >
-                  SEE ↗
+                  {language === 'sr' ? 'Pogledaj ↗' : 'See ↗'}
                 </button>
               ) : null}
             </div>
