@@ -260,7 +260,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'sculpture-3d-printing',
-    title: 'blades 2: duality',
+    title: 'blades II: duality',
     year: '2018',
     type: 'Sculpture / 3D Printing',
     kindLabel: 'Sculpture / 3D Printing',
@@ -272,7 +272,7 @@ export const projects: Project[] = [
       href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
     },
     overview:
-      'A concept for 3D-printed sculptures, developed in collaboration with Dr. Vladimir Alander.',
+      'The exhibition presents 3D-printed animal sculptures by Vladimir Alander, continuing his Oštrice series. Drawing on Slavic folklore and traditional beliefs, the works pair animals through contrasts of warm and cool edges, bringing digitally sculpted forms into physical space.',
   },
 ]
 
