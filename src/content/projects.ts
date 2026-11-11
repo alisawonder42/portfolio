@@ -273,9 +273,6 @@ export const projects: Project[] = [
     },
     overview:
       'A concept for 3D-printed sculptures, developed in collaboration with Dr. Vladimir Alander.',
-    contribution: [
-      'I helped develop the concept for the sculptures in collaboration with Dr. Vladimir Alander.',
-    ],
   },
 ]
 
