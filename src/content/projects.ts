@@ -274,7 +274,7 @@ export const projects: Project[] = [
     overview:
       'A concept for 3D-printed sculptures, developed in collaboration with Dr. Vladimir Alander.',
     contribution: [
-      'I developed the concept for the sculptures together with Dr. Vladimir Alander.',
+      'I helped develop the concept for the sculptures in collaboration with Dr. Vladimir Alander.',
     ],
   },
 ]
