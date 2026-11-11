@@ -28,6 +28,13 @@ export function PlaygroundIndex() {
             <span className={styles.year}>{experiment.year}</span>
             <div className={styles.body}>
               <h3 className={styles.title}>{experiment.title}</h3>
+              <p className={styles.type}>{experiment.type}</p>
+              {experiment.note ? <p className={styles.note}>{experiment.note}</p> : null}
+              {experiment.link ? (
+                <a className={styles.note} href={experiment.link} target="_blank" rel="noopener noreferrer">
+                  {language === 'sr' ? 'Pogledaj više ↗' : 'See more ↗'}
+                </a>
+              ) : null}
               {experiment.image ? (
                 <button
                   className={styles.seeButton}
@@ -41,13 +48,6 @@ export function PlaygroundIndex() {
                 >
                   SEE ↗
                 </button>
-              ) : null}
-              <p className={styles.type}>{experiment.type}</p>
-              {experiment.note ? <p className={styles.note}>{experiment.note}</p> : null}
-              {experiment.link ? (
-                <a className={styles.note} href={experiment.link} target="_blank" rel="noopener noreferrer">
-                  {language === 'sr' ? 'Pogledaj više ↗' : 'See more ↗'}
-                </a>
               ) : null}
             </div>
           </li>
