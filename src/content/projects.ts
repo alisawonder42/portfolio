@@ -339,7 +339,7 @@ export const experiments: Experiment[] = [
     title: 'reppression:collage',
     type: 'Collage · 2015',
     note: 'A cut-out figure and handbag set against a hand-drawn floral background.',
-    image: '/projects/reppression-collage.webp',
+    image: '/projects/reppression-collage.webp?v=2',
     imageAlt: 'A cut-out figure with a handbag in front of a blue background filled with red hand-drawn flowers.',
   },
 ]
