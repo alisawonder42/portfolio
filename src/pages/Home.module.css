@@ -46,23 +46,10 @@
   z-index: 1;
 }
 
-/* The contact section remains the third scroll station for the vine. */
-.close {
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
-  display: grid;
-  align-content: center;
-  padding: 16vh var(--gutter);
-  width: 100%;
-  max-width: 42rem;
-  box-sizing: border-box;
-}
-
 .profileDetails {
   display: grid;
   gap: 0.7rem;
-  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .profileRow {
@@ -96,99 +83,51 @@
   outline-offset: 4px;
 }
 
-.contactLinks {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-}
-
-.contactTitle {
-  margin: 0 0 2rem;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
-}
-
-.contactForm {
+.socialList {
   display: grid;
-  gap: 1.5rem;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.field {
+.socialItem {
   display: grid;
-  gap: 0.65rem;
-  color: var(--fg-muted);
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.socialIndex {
+  color: var(--fg-faint);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
-.field input,
-.field textarea {
-  width: 100%;
-  box-sizing: border-box;
-  border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
-  border-radius: 0;
-  padding: 0.75rem 0;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+.socialLink {
+  justify-self: start;
   color: var(--fg);
-  font: inherit;
-  font-size: 1rem;
-  letter-spacing: normal;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-.field textarea {
-  resize: vertical;
-  min-height: 8rem;
+.socialLink:hover {
+  color: var(--fg-muted);
 }
 
-.field input:focus-visible,
-.field textarea:focus-visible,
-.sendButton:focus-visible,
-.lifeLink:focus-visible {
+.socialLink:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 5px;
 }
 
-.sendButton,
-.lifeLink {
-  justify-self: start;
-  min-height: 2.75rem;
-  border: 1px solid color-mix(in srgb, var(--fg) 40%, transparent);
-  padding: 0.75rem 1.1rem;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  cursor: pointer;
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
-}
-
-.sendButton:hover,
-.lifeLink:hover {
-  background: var(--fg);
-  color: var(--bg);
-}
-
-.lifeLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  width: fit-content;
-  margin-top: 1.25rem;
-  text-decoration: none;
-}
-
-.deliveryNote {
-  margin: 0;
-  color: var(--fg-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-}
-
-.honeypot {
-  display: none;
+@media (max-width: 30rem) {
+  .socialItem {
+    grid-template-columns: 3.5rem 1fr;
+    gap: var(--space-3);
+  }
 }
