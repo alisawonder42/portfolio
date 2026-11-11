@@ -132,7 +132,7 @@ const translations: Record<string, Partial<Project>> = {
     })),
   },
   'sculpture-3d-printing': {
-    title: '3D štampane skulpture',
+    title: 'OŠTRICE 2 DUALITET',
     type: 'Skulptura / 3D štampa',
     kindLabel: 'Skulptura / 3D štampa',
     credit: 'Razvoj koncepta',
