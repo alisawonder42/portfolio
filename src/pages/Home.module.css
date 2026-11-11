@@ -145,12 +145,14 @@
 
 .field input:focus-visible,
 .field textarea:focus-visible,
-.sendButton:focus-visible {
+.sendButton:focus-visible,
+.lifeLink:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 5px;
 }
 
-.sendButton {
+.sendButton,
+.lifeLink {
   justify-self: start;
   min-height: 2.75rem;
   border: 1px solid color-mix(in srgb, var(--fg) 40%, transparent);
@@ -165,9 +167,19 @@
     color var(--dur-fast) var(--ease-out);
 }
 
-.sendButton:hover {
+.sendButton:hover,
+.lifeLink:hover {
   background: var(--fg);
   color: var(--bg);
+}
+
+.lifeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  margin-top: 1.25rem;
+  text-decoration: none;
 }
 
 .deliveryNote {
@@ -180,4 +192,3 @@
 .honeypot {
   display: none;
 }
-
