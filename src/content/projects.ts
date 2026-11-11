@@ -234,7 +234,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'sculpture-3d-printing',
-    title: '3D-printed sculptures',
+    title: 'OŠTRICE 2 DUALITET',
     year: '2018',
     type: 'Sculpture / 3D Printing',
     kindLabel: 'Sculpture / 3D Printing',
