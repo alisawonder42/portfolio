@@ -203,19 +203,19 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
   ...experiment,
   ...[
     {
-      type: 'Rani eksperiment sa mehanikama igre · 2016',
+      type: 'Rani eksperiment sa mehanikama igre',
       note: 'Moj prvi Unity projekat, sačuvan kao deo lične istorije razvoja.',
     },
     {
-      type: 'Fizička slika / Mobilna interakcija / Animacija · 2020',
+      type: 'Fizička slika / Mobilna interakcija / Animacija',
       note: 'Eksperimentisala sam sa aplikacijom koja prepoznaje sliku kada uperite telefon u nju i oživljava je animacijom.',
     },
     {
-      type: 'Unity AR eksperiment · 2017',
+      type: 'Unity AR eksperiment',
       note: 'Prvi put sam koristila Unity da eksperimentišem sa proširenom stvarnošću.',
     },
     {
-      type: 'Kolaž · 2015',
+      type: 'Kolaž',
       note: 'Izrezana figura i tašna na ručno crtanoj pozadini sa cvećem.',
       imageAlt: 'Izrezana figura sa tašnom ispred plave pozadine sa ručno crtanim crvenim cvećem.',
     },
