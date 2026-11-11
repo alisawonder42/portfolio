@@ -33,20 +33,30 @@
   letter-spacing: 0.02em;
 }
 
+.seeButton {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: zoom-in;
+}
+
+.seeButton:hover,
+.seeButton:focus-visible {
+  color: var(--fg);
+}
+
 .type {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.06em;
   color: var(--fg-muted);
-}
-
-.image {
-  display: block;
-  width: min(100%, 16rem);
-  max-height: 22rem;
-  object-fit: contain;
-  object-position: left center;
-  margin: 0.5rem 0;
 }
 
 .note {
@@ -57,9 +67,52 @@
   margin-top: 0.15rem;
 }
 
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 3rem;
+  background: rgb(0 0 0 / 88%);
+  cursor: zoom-out;
+}
+
+.enlargedImage {
+  display: block;
+  max-width: min(92vw, 70rem);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  padding: 0.25rem 0.6rem;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 @media (max-width: 30rem) {
   .item {
     grid-template-columns: 2rem 1fr;
     gap: var(--space-3);
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .enlargedImage {
+    max-width: 96vw;
+    max-height: 88vh;
   }
 }
