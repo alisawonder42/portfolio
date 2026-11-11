@@ -144,7 +144,7 @@ const translations: Record<string, Partial<Project>> = {
     overview:
       'Koncept za 3D štampane skulpture, razvijen u saradnji sa dr Vladimirom Alanderom.',
     contribution: [
-      'Zajedno sa dr Vladimirom Alanderom razvila sam koncept za skulpture.',
+      'Pomogla sam u razvoju koncepta za skulpture u saradnji sa dr Vladimirom Alanderom.',
     ],
   },
   'soft-photography': {
