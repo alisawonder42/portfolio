@@ -143,6 +143,14 @@ const translations: Record<string, Partial<Project>> = {
     },
     overview:
       'Izložba predstavlja 3D štampane životinjske skulpture Vladimira Alandera i nastavlja njegov ciklus Oštrice. Oslanjajući se na slovenski folklor i narodna verovanja, radovi povezuju životinje u parove kroz kontrast toplih i hladnih oštrica, prenoseći digitalno vajane oblike u fizički prostor.',
+    media: [
+      {
+        kind: 'image',
+        src: '/projects/blades-duality.png',
+        alt: 'Bela skulptura izrađena 3D štampom iz izložbe Oštrice II: Dualitet, fotografisana na svetloj pozadini.',
+        caption: 'Skulptura iz izložbe Oštrice II: Dualitet.',
+      },
+    ],
   },
   'soft-photography': {
     type: 'Analogna fotografija / Digitalni eksperimenti',
