@@ -233,25 +233,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'sculpture-3d-printing',
-    title: 'OŠTRICE 2 DUALITET',
-    year: '2018',
-    type: 'Sculpture / 3D Printing',
-    kindLabel: 'Sculpture / 3D Printing',
-    credit: 'Concept development',
-    kind: 'professional',
-    collaboration: 'Developed with Dr. Vladimir Alander —',
-    collaborationLink: {
-      label: 'View his profile ↗',
-      href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
-    },
-    overview:
-      'A concept for 3D-printed sculptures, developed in collaboration with Dr. Vladimir Alander.',
-    contribution: [
-      'I developed the concept for the sculptures together with Dr. Vladimir Alander.',
-    ],
-  },
-  {
     slug: 'soft-photography',
     title: 'soft:photography',
     type: 'Analogue Photography / Digital Experiments',
@@ -275,6 +256,25 @@ export const projects: Project[] = [
           'A series of photographs of sisters and friends in everyday moments, exploring girlhood through the small details of daily life.',
         ],
       },
+    ],
+  },
+  {
+    slug: 'sculpture-3d-printing',
+    title: 'OŠTRICE 2 DUALITET',
+    year: '2018',
+    type: 'Sculpture / 3D Printing',
+    kindLabel: 'Sculpture / 3D Printing',
+    credit: 'Concept development',
+    kind: 'professional',
+    collaboration: 'Developed with Dr. Vladimir Alander —',
+    collaborationLink: {
+      label: 'View his profile ↗',
+      href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
+    },
+    overview:
+      'A concept for 3D-printed sculptures, developed in collaboration with Dr. Vladimir Alander.',
+    contribution: [
+      'I developed the concept for the sculptures together with Dr. Vladimir Alander.',
     ],
   },
 ]
