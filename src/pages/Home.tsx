@@ -9,10 +9,10 @@ import { OrganismScene } from '@/organism/OrganismScene'
 import styles from './Home.module.css'
 
 function ContactLink() {
-  const { site: siteContent } = useLanguage()
+  const { site: siteContent, t } = useLanguage()
 
   return (
-    <Section id="contact" eyebrow="03" title="Elsewhere" note="Social · games · contact">
+    <Section id="contact" eyebrow="03" title={t('Elsewhere', 'Ostalo')} note="Social · games · contact">
       <ol className={styles.socialList}>
         <li className={styles.socialItem}>
           <span className={styles.socialIndex}>00</span>
