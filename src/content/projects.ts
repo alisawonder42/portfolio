@@ -233,32 +233,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'soft-photography',
-    title: 'mimi:photography',
-    type: 'Analogue Photography / Digital Experiments',
-    kindLabel: 'Photography / Digital Experiments',
-    kind: 'independent',
-    year: '2017',
-    overview:
-      'An early experiment with analogue photography and digital forms, photographed on a Zenit film camera in 2017.',
-    media: [
-      {
-        kind: 'image',
-        src: '/projects/soft-photography/soft_photography_original_photos.gif',
-        alt: 'A simple looping slideshow of five original Zenit photographs of women.',
-        caption: 'Five photographs, shown in sequence without effects.',
-      },
-    ],
-    sections: [
-      {
-        title: 'Explorations',
-        content: [
-          'A series of photographs of sisters and friends in everyday moments, exploring girlhood through the small details of daily life.',
-        ],
-      },
-    ],
-  },
-  {
     slug: 'sculpture-3d-printing',
     title: 'blades II: duality',
     year: '2018',
@@ -338,13 +312,5 @@ export const experiments: Experiment[] = [
     type: 'Unity AR experiment',
     note: 'The first time I used Unity to play with augmented reality.',
     link: 'https://photos.google.com/share/AF1QipPcSl4JC-aBn2ba2kgFgENxaKoezdfPbXdP7TxlTNbREOoYL_3Iunr4CKfHEolgkQ/photo/AF1QipPrQ_6ATnbMG2JFGY2RY2lzfb-Tq1APMdaAux1K?key=dmZ3N1BPZlZ1ajBfRnR2ZUg5VzRQbXI0YnhlS0FB',
-  },
-  {
-    title: 'reppression:collage',
-    year: '2015',
-    type: 'Collage',
-    note: 'A cut-out figure and handbag set against a hand-drawn floral background.',
-    image: '/projects/reppression-collage.webp?v=2',
-    imageAlt: 'A cut-out figure with a handbag in front of a blue background filled with red hand-drawn flowers.',
   },
 ]
