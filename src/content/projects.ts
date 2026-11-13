@@ -190,7 +190,7 @@ export const projects: Project[] = [
     overview:
       'The story follows Yonezo Okita, who left Hiroshima for Canada in 1935 but later faced racism and forced internment during World War II. His grandson, artist Randall Okita, retraces his life in an interactive story about family, displacement and memory.',
     contribution: [
-      'I supported the team during the final stage of development, mainly through testing and performance profiling, with a small contribution to development.',
+      'I supported the team with testing and performance profiling during the final stage of the project.',
     ],
     media: [
       {
