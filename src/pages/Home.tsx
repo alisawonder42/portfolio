@@ -34,12 +34,12 @@ function ContactLink() {
       </ol>
       <div className={styles.profileDetails}>
         <a
-          className={styles.techSide}
+          className={styles.technicalLink}
           href={siteContent.contact.gamesUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
-          tech:side <span aria-hidden="true">↗</span>
+          More about my technical work <span aria-hidden="true">↗</span>
         </a>
         <p className={styles.profileRow}>
           <span className={styles.profileLead}>{siteContent.background.consultantRole}</span>
