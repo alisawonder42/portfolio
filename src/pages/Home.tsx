@@ -27,23 +27,20 @@ function ContactLink() {
         </li>
         <li className={styles.socialItem}>
           <span className={styles.socialIndex}>01</span>
-          <a
-            className={styles.socialLink}
-            href={siteContent.contact.gamesUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            tech:side <span aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li className={styles.socialItem}>
-          <span className={styles.socialIndex}>02</span>
           <a className={styles.socialLink} href={siteContent.contact.email}>
             contact:me <span aria-hidden="true">↗</span>
           </a>
         </li>
       </ol>
       <div className={styles.profileDetails}>
+        <a
+          className={styles.techSide}
+          href={siteContent.contact.gamesUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          tech:side <span aria-hidden="true">↗</span>
+        </a>
         <p className={styles.profileRow}>
           <span className={styles.profileLead}>{siteContent.background.consultantRole}</span>
           <a
