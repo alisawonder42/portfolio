@@ -215,9 +215,8 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
       note: 'Prvi put sam koristila Unity da eksperimentišem sa proširenom stvarnošću.',
     },
     {
-      type: 'Kolaž',
-      note: 'Izrezana figura i tašna na ručno crtanoj pozadini sa cvećem.',
-      imageAlt: 'Izrezana figura sa tašnom ispred plave pozadine sa ručno crtanim crvenim cvećem.',
+      type: 'C++ / OpenGL studija',
+      note: 'Moj prvi projekat u C++-u i OpenGL-u, napravljen tokom studija računarske grafike na fakultetu.',
     },
   ][index],
 }))
