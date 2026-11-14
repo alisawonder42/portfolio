@@ -41,27 +41,27 @@
   margin-top: 3rem;
 }
 
-.techSide {
+.technicalLink {
   display: inline-flex;
   justify-self: start;
   align-items: baseline;
   gap: 0.45em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.45rem;
   color: var(--fg);
   font-family: var(--font-sans);
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
   font-weight: 400;
   letter-spacing: 0.01em;
-  line-height: 1.1;
+  line-height: 1.4;
   text-decoration: none;
   transition: color var(--dur-fast) var(--ease-out);
 }
 
-.techSide:hover {
+.technicalLink:hover {
   color: var(--fg-muted);
 }
 
-.techSide:focus-visible {
+.technicalLink:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 5px;
 }
