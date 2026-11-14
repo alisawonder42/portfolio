@@ -313,4 +313,11 @@ export const experiments: Experiment[] = [
     note: 'The first time I used Unity to play with augmented reality.',
     link: 'https://photos.google.com/share/AF1QipPcSl4JC-aBn2ba2kgFgENxaKoezdfPbXdP7TxlTNbREOoYL_3Iunr4CKfHEolgkQ/photo/AF1QipPrQ_6ATnbMG2JFGY2RY2lzfb-Tq1APMdaAux1K?key=dmZ3N1BPZlZ1ajBfRnR2ZUg5VzRQbXI0YnhlS0FB',
   },
+  {
+    title: 'computer:graphics:opengl',
+    year: '2016',
+    type: 'C++ / OpenGL study',
+    note: 'My first project in C++ and OpenGL, made while studying computer graphics at university.',
+    link: 'https://youtube.com/shorts/2V-GeYQu81c',
+  },
 ]
