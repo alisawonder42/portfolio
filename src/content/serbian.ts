@@ -36,7 +36,7 @@ export const serbianSite = {
 
 const translations: Record<string, Partial<Project>> = {
   'interactive-installation': {
-    title: 'un:seen — Interaktivna instalacija',
+    title: 'un:seen — interaktivna instalacija',
     type: 'Interaktivna instalacija / Generativna AI',
     kindLabel: 'Interaktivna instalacija / Generativna AI',
     credit: 'Koncept i tehnička realizacija',
