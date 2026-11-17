@@ -36,7 +36,7 @@ export const serbianSite = {
 
 const translations: Record<string, Partial<Project>> = {
   'interactive-installation': {
-    title: 'Interaktivna instalacija',
+    title: 'un:seen — Interaktivna instalacija',
     type: 'Interaktivna instalacija / Generativna AI',
     kindLabel: 'Interaktivna instalacija / Generativna AI',
     credit: 'Koncept i tehnička realizacija',
@@ -46,7 +46,7 @@ const translations: Record<string, Partial<Project>> = {
       {
         title: 'Verbalizacija kao interfejs',
         content: [
-          'Kada posmatrač pretoči svoj doživljaj u reči, subjektivno i trenutno čitanje slike postaje eksplicitno. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Pošto generator dobija samo opis svakog posetioca, rezultat odražava ono što je ta osoba primetila i odlučila da izrazi, a ne neposrednu transformaciju slike. Projekat prati kako se ovaj proces nastavlja kroz digitalizaciju: reči postaju podaci, a zatim slike. Ispituje i kako društvene mreže menjaju kruženje i tumačenje digitalnih slika kada se one udalje od izvornog konteksta.',
+          'Kada posmatrač pretoči svoj doživljaj u reči, subjektivno i trenutno čitanje slike postaje eksplicitno. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Projekat prati put slike kroz različite medije: od fizičkog rada, preko reči posetioca i digitalnih podataka, do generisane slike prikazane na ekranima. Svaki prelaz menja način na koji se slika može tumačiti i doživeti; model dobija samo opis, nikada originalnu sliku.',
         ],
       },
       {
