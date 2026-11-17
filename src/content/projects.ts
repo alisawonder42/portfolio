@@ -269,7 +269,7 @@ export const experiments: Experiment[] = [
     year: '2016',
     link: 'https://www.katarinagames.fyi/platformer-study.html',
     type: 'Early Gameplay Experiment',
-    note: 'A first Unity project, kept as personal history rather than current work.',
+    note: 'My first Unity/C# project: a platformer prototype exploring gameplay mechanics, post-processing and VFX.',
   },
 
   {
