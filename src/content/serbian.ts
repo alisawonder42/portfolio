@@ -60,7 +60,7 @@ const translations: Record<string, Partial<Project>> = {
       {
         title: 'Istraživački pogled na kreativnost',
         content: [
-          'Kreativnost posmatram kao istraživanje usmereno ka budućnosti: ispitivanje novih odnosa između percepcije, jezika i generativnih sistema. un:seen postavlja pitanje kako ljudi i računarski alati mogu da otvore nove načine stvaranja i doživljavanja slika. Reference ispod uokviruju pitanja kojima se bavim, ali ne nude konačan odgovor.',
+          'Kreativnost posmatram kao istraživanje usmereno ka budućnosti: ispitivanje novih odnosa između percepcije, jezika i generativnih sistema. un:seen postavlja pitanje kako ljudi i računarski alati mogu da otvore nove načine stvaranja i doživljavanja slika.',
         ],
       },
     ],
@@ -73,14 +73,6 @@ const translations: Record<string, Partial<Project>> = {
       {
         label: 'Video instalacije · srpski · MP4',
         href: '/projects/unseen/unseen-instagram-sr.mp4',
-      },
-      {
-        label: 'Inspiracija: There’s no such thing as AI art · IAI',
-        href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
-      },
-      {
-        label: 'Povezano istraživanje: Kako AI i ljudsko ponašanje oblikuju psihosocijalne efekte korišćenja četbota · MIT Media Lab',
-        href: 'https://www.media.mit.edu/publications/how-ai-and-human-behaviors-shape-psychosocial-effects-of-chatbot-use-a-longitudinal-controlled-study/',
       },
     ],
   },
