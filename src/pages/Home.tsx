@@ -16,19 +16,13 @@ function ContactLink() {
       <ol className={styles.socialList}>
         <li className={styles.socialItem}>
           <span className={styles.socialIndex}>00</span>
-          <a className={styles.socialLink} href={siteContent.contact.email}>
-            Contact me <span aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li className={styles.socialItem}>
-          <span className={styles.socialIndex}>01</span>
           <a
             className={styles.socialLink}
             href={siteContent.contact.gamesUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t('Technical projects & game development', 'Tehnički projekti i razvoj igara')} <span aria-hidden="true">↗</span>
+            {t('Technical side', 'Tehnička strana')} <span aria-hidden="true">↗</span>
           </a>
         </li>
       </ol>
