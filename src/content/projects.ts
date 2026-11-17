@@ -77,7 +77,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'interactive-installation',
-    title: 'Interactive Installation',
+    title: 'un:seen — Interactive Installation',
     year: '2026',
     type: 'Interactive Installation / Generative AI',
     kindLabel: 'Interactive Installation / Generative AI',
@@ -89,7 +89,7 @@ export const projects: Project[] = [
       {
         title: 'Verbalization as an interface',
         content: [
-          'Putting perception into words makes a subjective, momentary reading of the painting explicit. Verbalization is central to the interaction: language becomes the interface between looking and machine interpretation. Because the generator receives only each visitor’s description, its output reflects what that person noticed and chose to express rather than a direct transformation of the painting. The work follows this process into digitalization: words become data and then images. It also asks how social media reshapes the circulation and interpretation of digital images as they move beyond their original context.',
+          'Putting perception into words makes a subjective, momentary reading of the painting explicit. Verbalization is central to the interaction: language becomes the interface between looking and machine interpretation. The project follows the image through several media: from a physical painting, into a visitor’s words and digital data, then into a generated image displayed on screens. Each transfer changes how the image can be interpreted and experienced; the model receives only the description, never the original painting.',
         ],
       },
       {
