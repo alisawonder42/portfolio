@@ -36,7 +36,7 @@ export function Nav() {
             aria-pressed={language === 'sr'}
             onClick={() => setLanguage('sr')}
           >
-            SR
+            NAŠ
           </button>
         </div>
       </nav>
