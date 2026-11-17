@@ -131,7 +131,7 @@ const translations: Record<string, Partial<Project>> = {
     })),
   },
   'sculpture-3d-printing': {
-    title: 'oštrice II: dualitet',
+    title: 'blades || : 3d prints',
     type: 'Skulptura / 3D štampa',
     kindLabel: 'Skulptura / 3D štampa',
     credit: 'Razvoj koncepta',
