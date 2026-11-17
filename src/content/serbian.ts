@@ -44,7 +44,13 @@ const translations: Record<string, Partial<Project>> = {
       'Interaktivna generativna instalacija polazi od slike prijatelja, ulja na podlozi pripremljenoj gessom, sa kompozicijom punom zakrivljenih formi. Posetioci opisuju ono što vide putem mobilnog interfejsa; sistem prosleđuje njihove reči — ne originalnu sliku — procesu generisanja i prikazuje rezultate na devet tableta.',
     sections: [
       {
-        title: 'Verbalizacija kao interfejs',
+              {
+        title: 'Početna ideja',
+        content: [
+          'Počela sam od slike prijatelja, rađene uljem na podlozi pripremljenoj gessom, čiju kompoziciju čine brojne zakrivljene forme. Umesto da samu sliku direktno prosledim generatoru, želela sam da između originala i generisane slike postavim percepciju i reči posetioca. Verbalizacija tako postaje most između fizičkog rada i njegove digitalne interpretacije.',
+        ],
+      },
+title: 'Verbalizacija kao interfejs',
         content: [
           'Kada posmatrač pretoči svoj doživljaj u reči, subjektivno i trenutno čitanje slike postaje eksplicitno. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Projekat prati put slike kroz različite medije: od fizičkog rada, preko reči posetioca i digitalnih podataka, do generisane slike prikazane na ekranima. Svaki prelaz menja način na koji se slika može tumačiti i doživeti; model dobija samo opis, nikada originalnu sliku.',
         ],
@@ -67,7 +73,7 @@ const translations: Record<string, Partial<Project>> = {
         href: '/projects/interactive-installation/installation-video-sr.mp4',
       },
       {
-        label: 'Dodatno čitanje: There’s no such thing as AI art · Derek Matravers (IAI)',
+        label: 'Članak o AI umetnosti: There’s no such thing as AI art · Derek Matravers (IAI)',
         href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
       },
     ],

@@ -87,7 +87,13 @@ export const projects: Project[] = [
       'An interactive generative installation built around a friend’s oil painting on a gesso-prepared surface, with a composition shaped by sweeping curves. Visitors describe what they see through a mobile interface; the system sends their words—not the source painting—to an image-generation workflow and displays the results across nine tablets.',
     sections: [
       {
-        title: 'Verbalization as an interface',
+              {
+        title: 'Starting idea',
+        content: [
+          'I began with a friend’s oil-and-gesso painting, whose composition is full of curved forms. Rather than send the painting itself into an image generator, I wanted a visitor’s perception and words to come between the original and its digital re-formation. Verbalization becomes the bridge between the physical image and the generated one.',
+        ],
+      },
+title: 'Verbalization as an interface',
         content: [
           'Putting perception into words makes a subjective, momentary reading of the painting explicit. Verbalization is central to the interaction: language becomes the interface between looking and machine interpretation. The project follows the image through several media: from a physical painting, into a visitor’s words and digital data, then into a generated image displayed on screens. Each transfer changes how the image can be interpreted and experienced; the model receives only the description, never the original painting.',
         ],
@@ -113,7 +119,7 @@ export const projects: Project[] = [
         href: '/projects/interactive-installation/installation-video-sr.mp4',
       },
       {
-        label: 'Further reading: There’s no such thing as AI art · Derek Matravers (IAI)',
+        label: 'AI art article: There’s no such thing as AI art · Derek Matravers (IAI)',
         href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
       },
     ],
