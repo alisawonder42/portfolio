@@ -147,7 +147,7 @@ function MediaFigure({ item }: { item: ProjectMedia }) {
 }
 
 export function ProjectPage({ project }: { project: Project }) {
-  const { projects, site: siteContent, t, language } = useLanguage()
+  const { projects, site: siteContent, t } = useLanguage()
   const upcoming =
     projects[(projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length]
   const meta = [project.type, project.year].filter(Boolean).join(' · ')
