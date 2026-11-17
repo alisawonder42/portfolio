@@ -27,7 +27,6 @@ export const serbianSite = {
   playground: { ...siteContent.playground, title: 'Eksperimenti', note: 'Istraživanja i studije' },
   background: {
     ...siteContent.background,
-    consultantRole: 'Konsultantkinja u',
     university: 'Univerzitet u Novom Sadu',
   },
   contact: {
