@@ -16,23 +16,12 @@ function ContactLink() {
       <ol className={styles.socialList}>
         <li className={styles.socialItem}>
           <span className={styles.socialIndex}>00</span>
-          <a
-            className={styles.socialLink}
-            href="https://www.instagram.com/katarina___rankovic/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram <span aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li className={styles.socialItem}>
-          <span className={styles.socialIndex}>01</span>
           <a className={styles.socialLink} href={siteContent.contact.email}>
             contact:me <span aria-hidden="true">↗</span>
           </a>
         </li>
         <li className={styles.socialItem}>
-          <span className={styles.socialIndex}>02</span>
+          <span className={styles.socialIndex}>01</span>
           <a
             className={styles.socialLink}
             href={siteContent.contact.gamesUrl}
