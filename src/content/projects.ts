@@ -240,11 +240,7 @@ export const projects: Project[] = [
     kindLabel: 'Sculpture / 3D Printing',
     credit: 'Concept development',
     kind: 'professional',
-    collaboration: 'Developed with Dr. Vladimir Alander —',
-    collaborationLink: {
-      label: 'View his profile ↗',
-      href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
-    },
+    collaboration: 'In collaboration with Dr. Vladimir Alander.',
     overview:
       'The exhibition presents 3D-printed animal sculptures by Vladimir Alander, continuing his Oštrice series. Drawing on Slavic folklore and traditional beliefs, the works pair animals through contrasts of warm and cool edges, bringing digitally sculpted forms into physical space.',
     media: [
@@ -317,7 +313,7 @@ export const experiments: Experiment[] = [
     title: 'computer:graphics:opengl',
     year: '2016',
     type: 'C++ / OpenGL study',
-    note: 'My first project in C++ and OpenGL, made while studying computer graphics at university.',
+    note: 'A DX-Ball-style clone and my first C++/OpenGL project, made during university computer graphics coursework.',
     link: 'https://youtube.com/shorts/2V-GeYQu81c',
   },
 ]
