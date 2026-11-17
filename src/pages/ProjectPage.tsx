@@ -222,14 +222,6 @@ export function ProjectPage({ project }: { project: Project }) {
           ) : null}
         </header>
 
-        {project.slug === 'interactive-installation' && project.media?.length ? (
-          <div className={styles.media}>
-            {project.media.map((item) => (
-              <MediaFigure key={item.src} item={item} />
-            ))}
-          </div>
-        ) : null}
-
         {project.slug === 'box' && project.embed ? (
           <Embed src={project.embed.src} title={project.embed.title} />
         ) : null}
@@ -241,6 +233,14 @@ export function ProjectPage({ project }: { project: Project }) {
         ) : null}
 
         {project.overview ? <p className={styles.overview}>{project.overview}</p> : null}
+
+        {project.slug === 'interactive-installation' && project.media?.length ? (
+          <div className={styles.media}>
+            {project.media.map((item) => (
+              <MediaFigure key={item.src} item={item} />
+            ))}
+          </div>
+        ) : null}
 
         {project.slug !== 'box' && project.embed ? (
           <Embed src={project.embed.src} title={project.embed.title} />

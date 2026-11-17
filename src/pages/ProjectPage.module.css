@@ -320,9 +320,11 @@
 }
 
 .exhibition .overview {
-  max-width: 48ch;
-  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
-  line-height: 1.4;
+  max-width: 68ch;
+  font-family: inherit;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--fg-muted);
 }
 
 .exhibition .sectionBody {

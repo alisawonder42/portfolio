@@ -84,18 +84,18 @@ export const projects: Project[] = [
     credit: 'Concept & technical development',
     kind: 'independent',
     overview:
-      'An interactive generative installation built around a friend’s oil painting on a gesso-prepared surface, with a composition shaped by sweeping curves. Visitors describe what they see through a mobile interface; the system sends their words—not the source painting—to an image-generation workflow and displays the results across nine tablets.',
+      'An article asking whether AI can make art led me to a broader question: what defines art as art? I use this installation to explore that question through a chain of interpretation: a visitor looks at a friend’s painting, describes it in words, and sees those words become a new digital image. The system receives the description, never the original painting.',
     sections: [
       {
-        title: 'Starting idea',
+        title: 'Questioning art through the installation',
         content: [
-          'I began with a friend’s oil-and-gesso painting, whose composition is full of curved forms. Rather than send the painting itself into an image generator, I wanted a visitor’s perception and words to come between the original and its digital re-formation. Verbalization becomes the bridge between the physical image and the generated one.',
+          'The project does not try to settle whether an AI-generated image is art. Instead, it asks what happens to an image as it passes through different people and media, and where authorship, intention and interpretation sit along that path. The visitor’s description becomes part of the work: their attention and language shape the image that appears.',
         ],
       },
       {
-        title: 'Verbalization as an interface',
+        title: 'From looking to language',
         content: [
-          'Putting perception into words makes a subjective, momentary reading of the painting explicit. Verbalization is central to the interaction: language becomes the interface between looking and machine interpretation. The project follows the image through several media: from a physical painting, into a visitor’s words and digital data, then into a generated image displayed on screens. Each transfer changes how the image can be interpreted and experienced; the model receives only the description, never the original painting.',
+          'Putting perception into words makes a subjective, momentary reading of the painting explicit. Language becomes the interface between looking and machine interpretation. The image moves from a physical painting to a visitor’s words, then to digital data and a generated image displayed on screens. Each transfer changes how it can be interpreted and experienced.',
         ],
       },
       {

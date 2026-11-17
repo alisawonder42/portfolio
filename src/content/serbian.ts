@@ -41,18 +41,18 @@ const translations: Record<string, Partial<Project>> = {
     kindLabel: 'Interaktivna instalacija / Generativna AI',
     credit: 'Koncept i tehnička realizacija',
     overview:
-      'Interaktivna generativna instalacija polazi od slike prijatelja, ulja na podlozi pripremljenoj gessom, sa kompozicijom punom zakrivljenih formi. Posetioci opisuju ono što vide putem mobilnog interfejsa; sistem prosleđuje njihove reči — ne originalnu sliku — procesu generisanja i prikazuje rezultate na devet tableta.',
+      'Članak koji postavlja pitanje može li AI da stvara umetnost naveo me je na šire pitanje: šta umetnost čini umetnošću? Kroz ovu instalaciju istražujem to pitanje kroz niz interpretacija: posetilac posmatra sliku prijatelja, opisuje je rečima, a zatim te reči postaju nova digitalna slika. Sistem dobija opis, nikada originalnu sliku.',
     sections: [
       {
-        title: 'Početna ideja',
+        title: 'Preispitivanje umetnosti kroz instalaciju',
         content: [
-          'Počela sam od slike prijatelja, rađene uljem na podlozi pripremljenoj gessom, čiju kompoziciju čine brojne zakrivljene forme. Umesto da samu sliku direktno prosledim generatoru, želela sam da između originala i generisane slike postavim percepciju i reči posetioca. Verbalizacija tako postaje most između fizičkog rada i njegove digitalne interpretacije.',
+          'Projekat ne pokušava da razreši da li je slika koju je generisala AI umetnost. Umesto toga, pita šta se dešava sa slikom dok prolazi kroz različite ljude i medije, i gde se u tom procesu nalaze autorstvo, namera i interpretacija. Opis posetioca postaje deo rada: njegova pažnja i jezik oblikuju sliku koja nastaje.',
         ],
       },
       {
-        title: 'Verbalizacija kao interfejs',
+        title: 'Od posmatranja do jezika',
         content: [
-          'Kada posmatrač pretoči svoj doživljaj u reči, subjektivno i trenutno čitanje slike postaje eksplicitno. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Projekat prati put slike kroz različite medije: od fizičkog rada, preko reči posetioca i digitalnih podataka, do generisane slike prikazane na ekranima. Svaki prelaz menja način na koji se slika može tumačiti i doživeti; model dobija samo opis, nikada originalnu sliku.',
+          'Kada posmatrač pretoči svoj doživljaj u reči, subjektivno i trenutno čitanje slike postaje eksplicitno. Jezik postaje interfejs između gledanja i mašinske interpretacije. Slika prelazi iz fizičkog rada u reči posetioca, zatim u digitalne podatke i generisanu sliku prikazanu na ekranima. Svaki prelaz menja način na koji se ona može tumačiti i doživeti.',
         ],
       },
       {
