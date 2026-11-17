@@ -36,50 +36,53 @@ export const serbianSite = {
 
 const translations: Record<string, Partial<Project>> = {
   unseen: {
+    title: 'un:seen — Interaktivna instalacija',
     type: 'Interaktivna instalacija / Generativna AI',
     kindLabel: 'Interaktivna instalacija / Generativna AI',
     credit: 'Koncept i tehnička realizacija',
     collaboration: 'U saradnji sa slikarom Mladenom Ilićem —',
     collaborationLink: { label: 'Pogledaj njegove slike ↗', href: 'https://mladenilic.art/' },
     overview:
-      'un:seen pokazuje kako veštačka inteligencija i interaktivna tehnologija mogu da pretvore doprinos publike u zajedničko iskustvo, povezujući fizičku sliku, mobilni interfejs i devet ekrana.',
+      'Tekstualno zasnovana generativna instalacija koja povezuje mobilni veb interfejs, proces generisanja slika, Supabase i Android kiosk na devet tableta. Model prima opise posetilaca, nikada originalnu sliku.',
     sections: [
       {
-        title: 'Koncept',
+        title: 'Verbalizacija kao interfejs',
         content: [
-          'Koncept za un:seen razvila sam polazeći od figurativnih slika Mladena Ilića i njegovog intuitivnog pristupa slikanju. Njegovi radovi i stvaralački proces bili su polazište za instalaciju.',
+          'Kada posetioci rečima opisuju sliku, oni svoju subjektivnu i trenutnu percepciju čine eksplicitnom. Verbalizacija je centralna: jezik postaje interfejs između gledanja i mašinske interpretacije. Model obrađuje samo opise, pa svaki rezultat odražava ono što je osoba primetila i odlučila da izrazi, a ne neposrednu transformaciju slike.',
         ],
       },
       {
-        title: 'Iskustvo',
+        title: 'Tehnički sistem',
         content: [
-          'Posetioci opisuju sliku putem telefona. Njihove reči postaju slike generisane veštačkom inteligencijom, prikazane na devet tableta raspoređenih u mrežu tri puta tri pored originalnog rada. Model nikada ne vidi sliku: svaki rezultat nastaje isključivo na osnovu opisa posetioca.',
+          'Razvila sam mobilni veb interfejs za prikupljanje opisa i povezala ih sa procesom generisanja slika. Supabase (PostgreSQL, Auth i Storage) čuva opise, vremenske oznake i generisane slike. Android kiosk aplikacija prikazuje rezultate na devet tableta, uz ponovne pokušaje i rezervnu obradu u slučaju grešaka u generisanju ili mreži.',
         ],
       },
       {
-        title: 'Moj doprinos',
+        title: 'Istraživački pogled na kreativnost',
         content: [
-          'Razvila sam interaktivni sistem, od mobilnog interfejsa i procesa generisanja slika do Android kiosk aplikacije koja prikazuje rezultate. Takođe sam dizajnirala katalog izložbe. Projekat spaja moje interesovanje za instalacije sa praktičnim istraživanjem veštačke inteligencije, interakcije i fizičkog prostora.',
-        ],
-      },
-      {
-        title: 'Izložba',
-        content: [
-          'Izložba predstavlja un:seen kao funkcionalnu demonstraciju učešća publike i generativne tehnologije u zajedničkom fizičkom prostoru.',
+          'Kreativnost posmatram kao istraživanje usmereno ka budućnosti: ispitivanje novih odnosa između percepcije, jezika i generativnih sistema. un:seen postavlja pitanje kako ljudi i računarski alati mogu da otvore nove načine stvaranja i doživljavanja slika. Reference ispod uokviruju pitanja kojima se bavim, ali ne nude konačan odgovor.',
         ],
       },
     ],
-    media: projects[0].media?.map((item, index) => ({
+    media: projects[0].media?.map((item) => ({
       ...item,
-      alt:
-        index === 0
-          ? 'Prikaz instalacije un:seen: slika pored devet uspravno postavljenih tableta u mreži tri puta tri.'
-          : 'Promotivni Instagram video za un:seen na srpskom jeziku.',
-      caption:
-        index === 0
-          ? 'Prikaz postavke sa slikom i devet ekrana.'
-          : 'Promotivni Instagram video · srpski',
+      alt: 'Prikaz instalacije un:seen: slika pored devet uspravno postavljenih tableta u mreži tri puta tri.',
+      caption: 'Prikaz postavke sa slikom i devet ekrana.',
     })),
+    externalLinks: [
+      {
+        label: 'Video instalacije · srpski · MP4',
+        href: '/projects/unseen/unseen-instagram-sr.mp4',
+      },
+      {
+        label: 'Inspiracija: There’s no such thing as AI art · IAI',
+        href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
+      },
+      {
+        label: 'Povezano istraživanje: Kako AI i ljudsko ponašanje oblikuju psihosocijalne efekte korišćenja četbota · MIT Media Lab',
+        href: 'https://www.media.mit.edu/publications/how-ai-and-human-behaviors-shape-psychosocial-effects-of-chatbot-use-a-longitudinal-controlled-study/',
+      },
+    ],
   },
   box: {
     type: 'Interaktivni 3D / Fotogrametrija',
