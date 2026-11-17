@@ -123,6 +123,10 @@ export const projects: Project[] = [
         label: 'Installation video · Serbian · MP4',
         href: '/projects/unseen/unseen-instagram-sr.mp4',
       },
+      {
+        label: 'Further reading: There’s no such thing as AI art · Derek Matravers (IAI)',
+        href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
+      },
     ],
   },
   {
