@@ -74,6 +74,10 @@ const translations: Record<string, Partial<Project>> = {
         label: 'Video instalacije · srpski · MP4',
         href: '/projects/unseen/unseen-instagram-sr.mp4',
       },
+      {
+        label: 'Dodatno čitanje: There’s no such thing as AI art · Derek Matravers (IAI)',
+        href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
+      },
     ],
   },
   box: {
