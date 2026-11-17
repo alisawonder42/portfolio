@@ -46,7 +46,7 @@ const translations: Record<string, Partial<Project>> = {
       {
         title: 'Verbalizacija kao interfejs',
         content: [
-          'Kada posmatrač pretoči svoj doživljaj u reči, on subjektivno i trenutno čitanje slike čini eksplicitnim. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Pošto generator dobija samo opis svakog posetioca, rezultat odražava ono što je ta osoba primetila i odlučila da izrazi, a ne neposrednu transformaciju slike.',
+          'Kada posmatrač pretoči svoj doživljaj u reči, subjektivno i trenutno čitanje slike postaje eksplicitno. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Pošto generator dobija samo opis svakog posetioca, rezultat odražava ono što je ta osoba primetila i odlučila da izrazi, a ne neposrednu transformaciju slike. Projekat prati kako se ovaj proces nastavlja kroz digitalizaciju: reči postaju podaci, a zatim slike. Ispituje i kako društvene mreže menjaju kruženje i tumačenje digitalnih slika kada se one udalje od izvornog konteksta.',
         ],
       },
       {
