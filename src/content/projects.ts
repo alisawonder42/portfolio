@@ -106,7 +106,7 @@ export const projects: Project[] = [
       {
         title: 'An exploratory view of creativity',
         content: [
-          'I approach creativity as forward-looking exploration: a way to test what new relationships between perception, language and generative systems might make possible. un:seen asks how people and computational tools could create new routes for making and experiencing images. The references below frame the questions I am exploring rather than offering a settled answer.',
+          'I approach creativity as forward-looking exploration: a way to test what new relationships between perception, language and generative systems might make possible. un:seen asks how people and computational tools could create new routes for making and experiencing images',
         ],
       },
     ],
@@ -122,14 +122,6 @@ export const projects: Project[] = [
       {
         label: 'Installation video · Serbian · MP4',
         href: '/projects/unseen/unseen-instagram-sr.mp4',
-      },
-      {
-        label: 'Inspiration: There’s no such thing as AI art · IAI',
-        href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
-      },
-      {
-        label: 'Related research: How AI and Human Behaviors Shape Psychosocial Effects of Extended Chatbot Use · MIT Media Lab',
-        href: 'https://www.media.mit.edu/publications/how-ai-and-human-behaviors-shape-psychosocial-effects-of-chatbot-use-a-longitudinal-controlled-study/',
       },
     ],
   },
