@@ -159,7 +159,7 @@ export function ProjectPage({ project }: { project: Project }) {
   return (
     <>
       <Nav />
-      <main className={`${styles.page} ${project.slug === 'unseen' ? styles.exhibition : ''} ${project.slug === 'the-book-of-distance' ? styles.bookOfDistance : ''}`}>
+      <main className={`${styles.page} ${project.slug === 'interactive-installation' ? styles.exhibition : ''} ${project.slug === 'the-book-of-distance' ? styles.bookOfDistance : ''}`}>
         <Link className={styles.back} href="/#projects">
           <span aria-hidden="true">←</span> {t('Projects', 'Projekti')}
         </Link>
@@ -222,6 +222,14 @@ export function ProjectPage({ project }: { project: Project }) {
           ) : null}
         </header>
 
+        {project.slug === 'interactive-installation' && project.media?.length ? (
+          <div className={styles.media}>
+            {project.media.map((item) => (
+              <MediaFigure key={item.src} item={item} />
+            ))}
+          </div>
+        ) : null}
+
         {project.slug === 'box' && project.embed ? (
           <Embed src={project.embed.src} title={project.embed.title} />
         ) : null}
@@ -283,7 +291,7 @@ export function ProjectPage({ project }: { project: Project }) {
           </div>
         ))}
 
-        {!project.embed && project.slug !== 'unseen' && project.slug !== 'the-book-of-distance' && project.media?.length ? (
+        {!project.embed && project.slug !== 'interactive-installation' && project.slug !== 'the-book-of-distance' && project.media?.length ? (
           <div className={styles.media}>
             {project.media.map((item) => (
               <MediaFigure key={item.src} item={item} />
@@ -301,14 +309,6 @@ export function ProjectPage({ project }: { project: Project }) {
               </li>
             ))}
           </ul>
-        ) : null}
-
-        {project.slug === 'unseen' && project.media?.length ? (
-          <div className={styles.media}>
-            {project.media.map((item) => (
-              <MediaFigure key={item.src} item={item} />
-            ))}
-          </div>
         ) : null}
 
         {upcoming ? (

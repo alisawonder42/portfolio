@@ -76,25 +76,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'unseen',
-    title: 'un:seen — Interactive Installation',
+    slug: 'interactive-installation',
+    title: 'Interactive Installation',
     year: '2026',
     type: 'Interactive Installation / Generative AI',
     kindLabel: 'Interactive Installation / Generative AI',
     credit: 'Concept & technical development',
     kind: 'independent',
-    collaboration: 'In collaboration with painter Mladen Ilić —',
-    collaborationLink: {
-      label: 'View his paintings ↗',
-      href: 'https://mladenilic.art/',
-    },
     overview:
-      'A text-driven generative installation linking a mobile web interface, an image-generation workflow, Supabase storage and an Android kiosk across nine tablets. The model receives visitors’ descriptions, never the source painting.',
+      'An interactive generative installation built around a friend’s oil painting on a gesso-prepared surface, with a composition shaped by sweeping curves. Visitors describe what they see through a mobile interface; the system sends their words—not the source painting—to an image-generation workflow and displays the results across nine tablets.',
     sections: [
       {
         title: 'Verbalization as an interface',
         content: [
-          'When visitors put their perception into words, they make a subjective, momentary reading of the painting explicit. That act of verbalization is central: language becomes the interface between looking and machine interpretation. The generator works only from those descriptions, so each image reflects what a person noticed and chose to express rather than a direct transformation of the painting.',
+          'Putting perception into words makes a subjective, momentary reading of the painting explicit. Verbalization is central to the interaction: language becomes the interface between looking and machine interpretation. Because the generator receives only each visitor’s description, its output reflects what that person noticed and chose to express rather than a direct transformation of the painting.',
         ],
       },
       {
@@ -103,25 +98,19 @@ export const projects: Project[] = [
           'I built a mobile web interface to collect descriptions and connect them to an image-generation workflow. Supabase (PostgreSQL, Auth and Storage) stores descriptions, timestamps and generated image assets. An Android kiosk app distributes the resulting images across nine tablets; retry and fallback handling keeps the installation usable when generation or network requests fail.',
         ],
       },
-      {
-        title: 'An exploratory view of creativity',
-        content: [
-          'I approach creativity as forward-looking exploration: a way to test what new relationships between perception, language and generative systems might make possible. un:seen asks how people and computational tools could create new routes for making and experiencing images',
-        ],
-      },
     ],
     media: [
       {
         kind: 'image',
-        src: '/projects/unseen/installation.gif',
-        alt: 'un:seen installation mockup: a painting beside a three-by-three grid of portrait tablets.',
+        src: '/projects/interactive-installation/installation.gif',
+        alt: 'Interactive installation mockup: a friend’s curved oil painting beside a three-by-three grid of portrait tablets.',
         caption: 'Installation mockup showing the painting and nine-screen display.',
       },
     ],
     externalLinks: [
       {
         label: 'Installation video · Serbian · MP4',
-        href: '/projects/unseen/unseen-instagram-sr.mp4',
+        href: '/projects/interactive-installation/installation-video-sr.mp4',
       },
       {
         label: 'Further reading: There’s no such thing as AI art · Derek Matravers (IAI)',

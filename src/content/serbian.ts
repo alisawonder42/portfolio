@@ -35,20 +35,18 @@ export const serbianSite = {
 }
 
 const translations: Record<string, Partial<Project>> = {
-  unseen: {
-    title: 'un:seen — Interaktivna instalacija',
+  'interactive-installation': {
+    title: 'Interaktivna instalacija',
     type: 'Interaktivna instalacija / Generativna AI',
     kindLabel: 'Interaktivna instalacija / Generativna AI',
     credit: 'Koncept i tehnička realizacija',
-    collaboration: 'U saradnji sa slikarom Mladenom Ilićem —',
-    collaborationLink: { label: 'Pogledaj njegove slike ↗', href: 'https://mladenilic.art/' },
     overview:
-      'Tekstualno zasnovana generativna instalacija koja povezuje mobilni veb interfejs, proces generisanja slika, Supabase i Android kiosk na devet tableta. Model prima opise posetilaca, nikada originalnu sliku.',
+      'Interaktivna generativna instalacija polazi od slike prijatelja, ulja na podlozi pripremljenoj gessom, sa kompozicijom punom zakrivljenih formi. Posetioci opisuju ono što vide putem mobilnog interfejsa; sistem prosleđuje njihove reči — ne originalnu sliku — procesu generisanja i prikazuje rezultate na devet tableta.',
     sections: [
       {
         title: 'Verbalizacija kao interfejs',
         content: [
-          'Kada posetioci rečima opisuju sliku, oni svoju subjektivnu i trenutnu percepciju čine eksplicitnom. Verbalizacija je centralna: jezik postaje interfejs između gledanja i mašinske interpretacije. Model obrađuje samo opise, pa svaki rezultat odražava ono što je osoba primetila i odlučila da izrazi, a ne neposrednu transformaciju slike.',
+          'Kada posmatrač pretoči svoj doživljaj u reči, on subjektivno i trenutno čitanje slike čini eksplicitnim. Verbalizacija je ključna za interakciju: jezik postaje interfejs između gledanja i mašinske interpretacije. Pošto generator dobija samo opis svakog posetioca, rezultat odražava ono što je ta osoba primetila i odlučila da izrazi, a ne neposrednu transformaciju slike.',
         ],
       },
       {
@@ -57,22 +55,16 @@ const translations: Record<string, Partial<Project>> = {
           'Razvila sam mobilni veb interfejs za prikupljanje opisa i povezala ih sa procesom generisanja slika. Supabase (PostgreSQL, Auth i Storage) čuva opise, vremenske oznake i generisane slike. Android kiosk aplikacija prikazuje rezultate na devet tableta, uz ponovne pokušaje i rezervnu obradu u slučaju grešaka u generisanju ili mreži.',
         ],
       },
-      {
-        title: 'Istraživački pogled na kreativnost',
-        content: [
-          'Kreativnost posmatram kao istraživanje usmereno ka budućnosti: ispitivanje novih odnosa između percepcije, jezika i generativnih sistema. un:seen postavlja pitanje kako ljudi i računarski alati mogu da otvore nove načine stvaranja i doživljavanja slika.',
-        ],
-      },
     ],
     media: projects[0].media?.map((item) => ({
       ...item,
-      alt: 'Prikaz instalacije un:seen: slika pored devet uspravno postavljenih tableta u mreži tri puta tri.',
+      alt: 'Prikaz interaktivne instalacije: prijateljeva slika sa zakrivljenim formama pored devet tableta u mreži tri puta tri.',
       caption: 'Prikaz postavke sa slikom i devet ekrana.',
     })),
     externalLinks: [
       {
         label: 'Video instalacije · srpski · MP4',
-        href: '/projects/unseen/unseen-instagram-sr.mp4',
+        href: '/projects/interactive-installation/installation-video-sr.mp4',
       },
       {
         label: 'Dodatno čitanje: There’s no such thing as AI art · Derek Matravers (IAI)',
