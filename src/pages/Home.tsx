@@ -42,17 +42,6 @@ function ContactLink() {
           More about my technical work <span aria-hidden="true">↗</span>
         </a>
         <p className={styles.profileRow}>
-          <span className={styles.profileLead}>{siteContent.background.consultantRole}</span>
-          <a
-            className={styles.profileLink}
-            href={siteContent.background.consultantUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {siteContent.background.consultantOrg} <span aria-hidden="true">↗</span>
-          </a>
-        </p>
-        <p className={styles.profileRow}>
           <span className={styles.profileLead}>{siteContent.background.degree}</span>
           <span>· {siteContent.background.university}</span>
         </p>
