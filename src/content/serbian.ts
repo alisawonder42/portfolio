@@ -134,7 +134,7 @@ const translations: Record<string, Partial<Project>> = {
     kindLabel: 'Skulptura / 3D štampa',
     credit: 'Razvoj koncepta',
     overview:
-      'Projekat predstavlja životinjske skulpture čije su digitalno oblikovane forme realizovane kroz 3D štampu.'
+      'Projekat predstavlja životinjske skulpture čije su digitalno oblikovane forme realizovane kroz 3D štampu.',
     media: [
       {
         kind: 'image',
