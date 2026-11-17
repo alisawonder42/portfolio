@@ -222,29 +222,6 @@ export function ProjectPage({ project }: { project: Project }) {
           ) : null}
         </header>
 
-        {project.slug === 'unseen' ? (
-          <section
-            className={styles.catalogue}
-            aria-label={t('Exhibition catalogue', 'Katalog izložbe')}
-          >
-            <div className={styles.cataloguePages}>
-              {[1, 2].map((pageNumber) => (
-                <figure className={styles.catalogueFigure} key={pageNumber}>
-                  <img
-                    src={`/projects/unseen/catalogue/${language}/page-${pageNumber}.jpg`}
-                    alt={t(
-                      `un:seen exhibition catalogue, page ${pageNumber} of 2`,
-                      `Katalog izložbe un:seen, strana ${pageNumber} od 2`,
-                    )}
-                    loading={pageNumber === 1 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
-                </figure>
-              ))}
-            </div>
-          </section>
-        ) : null}
-
         {project.slug === 'box' && project.embed ? (
           <Embed src={project.embed.src} title={project.embed.title} />
         ) : null}

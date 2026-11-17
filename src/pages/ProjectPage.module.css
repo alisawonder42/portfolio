@@ -356,38 +356,6 @@
   }
 }
 
-/* Exhibition catalogue: all four pages shown as images, in reading order. */
-.catalogue {
-  min-width: 0;
-}
-
-.cataloguePages {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(0.75rem, 2vw, 1.5rem);
-  align-items: start;
-}
-
-.catalogueFigure {
-  margin: 0;
-  min-width: 0;
-}
-
-.catalogueFigure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 420 / 595;
-  object-fit: contain;
-  background: var(--bg-elev);
-}
-
-@media (max-width: 40rem) {
-  .cataloguePages {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Center the Book of Distance images within the project page. */
 .bookOfDistance .figure img,
 .bookOfDistance .figure video {
