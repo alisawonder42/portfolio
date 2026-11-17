@@ -232,31 +232,7 @@ export const projects: Project[] = [
       { label: 'Visit mladenilic.art', href: 'https://mladenilic.art/' },
     ],
   },
-  {
-    slug: 'sculpture-3d-printing',
-    title: 'blades || : 3d prints',
-    year: '2018',
-    type: 'Sculpture / 3D Printing',
-    kindLabel: 'Sculpture / 3D Printing',
-    credit: 'Concept development',
-    kind: 'professional',
-    overview:
-      'A 3D printing project presenting animal sculptures whose digitally sculpted forms are realized as physical objects.',
-    media: [
-      {
-        kind: 'image',
-        src: '/projects/blades-duality.png',
-        alt: 'A white 3D-printed animal sculpture photographed against a light gallery background.',
-        caption: '3D-printed animal sculpture.',
-      },
-      {
-        kind: 'image',
-        src: '/projects/blades-duality-render.webp',
-        alt: 'Digital render of a white 3D-printed animal sculpture on a neutral background.',
-        caption: 'Digital render of the sculpture.',
-      },
-    ],
-  },
+
 ]
 
 export function projectBySlug(slug: string): Project | undefined {
@@ -295,12 +271,7 @@ export const experiments: Experiment[] = [
     type: 'Early Gameplay Experiment',
     note: 'A first Unity project, kept as personal history rather than current work.',
   },
-  {
-    title: 'painting:ar',
-    year: '2020',
-    type: 'Physical painting / mobile interaction / animation',
-    note: 'I was experimenting with an app that recognised a picture when you pointed your phone at it and brought it to life with animation.',
-  },
+
   {
     title: 'cat:test:ar',
     year: '2017',

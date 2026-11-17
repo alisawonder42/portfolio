@@ -2,7 +2,7 @@ import { siteContent } from './site'
 import { projects, experiments, type Project } from './projects'
 
 const lede =
-  'Zanimaju me nove tehnologije i kreativne mogućnosti koje otvaraju.'
+  'Zanimaju me nove tehnologije i mogućnosti koje one otvaraju.'
 
 export const serbianSite = {
   ...siteContent,
@@ -19,7 +19,7 @@ export const serbianSite = {
     ...siteContent.hero,
     lede,
     technicalLabel: 'Tehnički',
-    technical: 'Zanimaju me nove tehnologije i kreativne mogućnosti koje otvaraju.',
+    technical: 'Zanimaju me nove tehnologije i mogućnosti koje one otvaraju.',
   },
   work: { ...siteContent.work, title: 'Projekti', note: 'Izabrani radovi' },
   playground: { ...siteContent.playground, title: 'Eksperimenti', note: 'Istraživanja i studije' },
@@ -128,28 +128,6 @@ const translations: Record<string, Partial<Project>> = {
           : 'Scena iz The Book of Distance: osoba u zamračenoj sobi gleda kroz kružni otvor ka vrtu.',
     })),
   },
-  'sculpture-3d-printing': {
-    title: 'blades || : 3d prints',
-    type: 'Skulptura / 3D štampa',
-    kindLabel: 'Skulptura / 3D štampa',
-    credit: 'Razvoj koncepta',
-    overview:
-      'Projekat predstavlja životinjske skulpture čije su digitalno oblikovane forme realizovane kroz 3D štampu.',
-    media: [
-      {
-        kind: 'image',
-        src: '/projects/blades-duality.png',
-        alt: 'Bela životinjska skulptura izrađena 3D štampom, fotografisana na svetloj pozadini.',
-        caption: 'Životinjska skulptura izrađena 3D štampom.',
-      },
-      {
-        kind: 'image',
-        src: '/projects/blades-duality-render.webp',
-        alt: 'Digitalni prikaz bele 3D skulpture na neutralnoj pozadini.',
-        caption: 'Digitalni prikaz skulpture.',
-      },
-    ],
-  },
   'soft-photography': {
     type: 'Analogna fotografija / Digitalni eksperimenti',
     kindLabel: 'Fotografija / Digitalni eksperimenti',
@@ -197,10 +175,6 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
     {
       type: 'Rani eksperiment sa mehanikama igre',
       note: 'Moj prvi Unity projekat, sačuvan kao deo lične istorije razvoja.',
-    },
-    {
-      type: 'Fizička slika / Mobilna interakcija / Animacija',
-      note: 'Eksperimentisala sam sa aplikacijom koja prepoznaje sliku kada uperite telefon u nju i oživljava je animacijom.',
     },
     {
       type: 'Unity AR eksperiment',

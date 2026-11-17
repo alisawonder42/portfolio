@@ -5,7 +5,7 @@ export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
     description:
-      'I’m interested in emerging technologies and the creative possibilities they open up.',
+      'I am interested in new technologies and the possibilities they open up.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -18,7 +18,7 @@ export const siteContent = {
   hero: {
     title: 'Katarina Ranković',
     technicalLabel: 'Technically',
-    technical: 'I’m interested in emerging technologies and the creative possibilities they open up.',
+    technical: 'I am interested in new technologies and the possibilities they open up.',
   },
   work: {
     eyebrow: '01',
