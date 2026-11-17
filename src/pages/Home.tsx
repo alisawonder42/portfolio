@@ -12,7 +12,7 @@ function ContactLink() {
   const { site: siteContent, t } = useLanguage()
 
   return (
-    <Section id="contact" eyebrow="03" title={t('Elsewhere', 'Ostalo')} note="Social · games · contact">
+    <Section id="contact" eyebrow="03" title={t('Other', 'Ostalo')}>
       <ol className={styles.socialList}>
         <li className={styles.socialItem}>
           <span className={styles.socialIndex}>00</span>
@@ -22,7 +22,7 @@ function ContactLink() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            social:maybe <span aria-hidden="true">↗</span>
+            Instagram <span aria-hidden="true">↗</span>
           </a>
         </li>
         <li className={styles.socialItem}>
