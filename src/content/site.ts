@@ -40,9 +40,6 @@ export const siteContent = {
    * email: mailto: address, e.g. mailto:name@example.com
    */
   background: {
-    consultantRole: 'Consultant at',
-    consultantOrg: 'DeepTech Balkans',
-    consultantUrl: 'https://www.deeptechbalkans.org/',
     degree: 'BSc Computer Science',
     university: 'University of Novi Sad',
   },
