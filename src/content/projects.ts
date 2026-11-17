@@ -77,7 +77,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'unseen',
-    title: 'un:seen',
+    title: 'un:seen — Interactive Installation',
     year: '2026',
     type: 'Interactive Installation / Generative AI',
     kindLabel: 'Interactive Installation / Generative AI',
@@ -89,30 +89,24 @@ export const projects: Project[] = [
       href: 'https://mladenilic.art/',
     },
     overview:
-      'un:seen demonstrates how AI and interactive technology can turn audience input into a shared experience, connecting a physical painting, a mobile interface and nine screens.',
+      'A text-driven generative installation linking a mobile web interface, an image-generation workflow, Supabase storage and an Android kiosk across nine tablets. The model receives visitors’ descriptions, never the source painting.',
     sections: [
       {
-        title: 'The concept',
+        title: 'Verbalization as an interface',
         content: [
-          'I developed the concept for un:seen from Mladen Ilić’s figurative paintings and his intuitive approach to painting. His work and creative process were the starting point for the installation.',
+          'When visitors put their perception into words, they make a subjective, momentary reading of the painting explicit. That act of verbalization is central: language becomes the interface between looking and machine interpretation. The generator works only from those descriptions, so each image reflects what a person noticed and chose to express rather than a direct transformation of the painting.',
         ],
       },
       {
-        title: 'The experience',
+        title: 'Technical system',
         content: [
-          'Visitors describe a painting on their phones. Their words become AI-generated images displayed across a three-by-three grid of tablets beside the original work. The model never sees the painting: each result starts with a visitor’s description.',
+          'I built a mobile web interface to collect descriptions and connect them to an image-generation workflow. Supabase (PostgreSQL, Auth and Storage) stores descriptions, timestamps and generated image assets. An Android kiosk app distributes the resulting images across nine tablets; retry and fallback handling keeps the installation usable when generation or network requests fail.',
         ],
       },
       {
-        title: 'My contribution',
+        title: 'An exploratory view of creativity',
         content: [
-          'I developed the interactive system, from the mobile interface and image-generation workflow to the Android kiosk app that displays the results. I also designed the exhibition catalogue. The project combines my interest in installations with practical experimentation in AI, interaction and physical space.',
-        ],
-      },
-      {
-        title: 'Exhibition',
-        content: [
-          'The exhibition presents un:seen as a working demonstration of audience participation and generative technology in a shared physical space.',
+          'I approach creativity as forward-looking exploration: a way to test what new relationships between perception, language and generative systems might make possible. un:seen asks how people and computational tools could create new routes for making and experiencing images. The references below frame the questions I am exploring rather than offering a settled answer.',
         ],
       },
     ],
@@ -126,16 +120,16 @@ export const projects: Project[] = [
     ],
     externalLinks: [
       {
-        label: 'Katalog · srpski · PDF (A5)',
-        href: '/projects/unseen/unseen-katalog-A5.pdf',
-      },
-      {
-        label: 'Katalog za štampu · srpski · PDF (A4)',
-        href: '/projects/unseen/unseen-katalog-A4-stampa.pdf',
-      },
-      {
-        label: 'Instagram video · srpski · MP4',
+        label: 'Installation video · Serbian · MP4',
         href: '/projects/unseen/unseen-instagram-sr.mp4',
+      },
+      {
+        label: 'Inspiration: There’s no such thing as AI art · IAI',
+        href: 'https://iai.tv/articles/theres-no-such-thing-as-ai-art-auid-3621',
+      },
+      {
+        label: 'Related research: How AI and Human Behaviors Shape Psychosocial Effects of Extended Chatbot Use · MIT Media Lab',
+        href: 'https://www.media.mit.edu/publications/how-ai-and-human-behaviors-shape-psychosocial-effects-of-chatbot-use-a-longitudinal-controlled-study/',
       },
     ],
   },
