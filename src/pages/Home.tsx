@@ -39,7 +39,7 @@ function ContactLink() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          More about my technical work <span aria-hidden="true">↗</span>
+          {t('Technical projects & game development', 'Tehnički projekti i razvoj igara')} <span aria-hidden="true">↗</span>
         </a>
         <p className={styles.profileRow}>
           <span className={styles.profileLead}>{siteContent.background.degree}</span>
