@@ -2,7 +2,7 @@ import { siteContent } from './site'
 import { projects, experiments, type Project } from './projects'
 
 const lede =
-  'Tehnički me zanimaju nove tehnologije i kreativne mogućnosti koje otvaraju. Kreativno me privlače paradoksi, protivrečnosti i kontrasti, posebno između tradicionalnog i savremenog, kao i između umetnosti i nauke.'
+  'Zanimaju me nove tehnologije i kreativne mogućnosti koje otvaraju.'
 
 export const serbianSite = {
   ...siteContent,
@@ -20,8 +20,6 @@ export const serbianSite = {
     lede,
     technicalLabel: 'Tehnički',
     technical: 'Zanimaju me nove tehnologije i kreativne mogućnosti koje otvaraju.',
-    artisticLabel: 'Kreativno',
-    artistic: 'Privlače me paradoksi, protivrečnosti i kontrasti, posebno između tradicionalnog i savremenog, kao i između umetnosti i nauke.',
   },
   work: { ...siteContent.work, title: 'Projekti', note: 'Izabrani radovi' },
   playground: { ...siteContent.playground, title: 'Eksperimenti', note: 'Istraživanja i studije' },
@@ -135,20 +133,19 @@ const translations: Record<string, Partial<Project>> = {
     type: 'Skulptura / 3D štampa',
     kindLabel: 'Skulptura / 3D štampa',
     credit: 'Razvoj koncepta',
-    collaboration: 'U saradnji sa dr Vladimirom Alanderom.',
     overview:
-      'Izložba predstavlja 3D štampane životinjske skulpture Vladimira Alandera i nastavlja njegov ciklus Oštrice. Oslanjajući se na slovenski folklor i narodna verovanja, radovi povezuju životinje u parove kroz kontrast toplih i hladnih oštrica, prenoseći digitalno vajane oblike u fizički prostor.',
+      'Projekat predstavlja životinjske skulpture čije su digitalno oblikovane forme realizovane kroz 3D štampu.'
     media: [
       {
         kind: 'image',
         src: '/projects/blades-duality.png',
-        alt: 'Bela skulptura izrađena 3D štampom iz izložbe Oštrice II: Dualitet, fotografisana na svetloj pozadini.',
-        caption: 'Skulptura iz izložbe Oštrice II: Dualitet.',
+        alt: 'Bela životinjska skulptura izrađena 3D štampom, fotografisana na svetloj pozadini.',
+        caption: 'Životinjska skulptura izrađena 3D štampom.',
       },
       {
         kind: 'image',
         src: '/projects/blades-duality-render.webp',
-        alt: 'Digitalni prikaz bele skulpture iz ciklusa Oštrice II na neutralnoj pozadini.',
+        alt: 'Digitalni prikaz bele 3D skulpture na neutralnoj pozadini.',
         caption: 'Digitalni prikaz skulpture.',
       },
     ],

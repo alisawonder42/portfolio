@@ -5,7 +5,7 @@ export const siteContent = {
   meta: {
     title: 'Katarina Ranković',
     description:
-      'Technically, I’m interested in emerging technologies and the creative possibilities they open up. Creatively, drawn to paradoxes, contradictions and contrasts, especially between tradition and modernity, and between art and science.',
+      'I’m interested in emerging technologies and the creative possibilities they open up.',
   },
   nav: {
     brand: 'Katarina Ranković',
@@ -19,8 +19,6 @@ export const siteContent = {
     title: 'Katarina Ranković',
     technicalLabel: 'Technically',
     technical: 'I’m interested in emerging technologies and the creative possibilities they open up.',
-    artisticLabel: 'Creatively',
-    artistic: 'Drawn to paradoxes, contradictions and contrasts, especially between tradition and modernity, and between art and science.',
   },
   work: {
     eyebrow: '01',

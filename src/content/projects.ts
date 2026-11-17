@@ -240,20 +240,19 @@ export const projects: Project[] = [
     kindLabel: 'Sculpture / 3D Printing',
     credit: 'Concept development',
     kind: 'professional',
-    collaboration: 'In collaboration with Dr. Vladimir Alander.',
     overview:
-      'The exhibition presents 3D-printed animal sculptures by Vladimir Alander, continuing his Oštrice series. Drawing on Slavic folklore and traditional beliefs, the works pair animals through contrasts of warm and cool edges, bringing digitally sculpted forms into physical space.',
+      'A 3D printing project presenting animal sculptures whose digitally sculpted forms are realized as physical objects.',
     media: [
       {
         kind: 'image',
         src: '/projects/blades-duality.png',
-        alt: 'A white 3D-printed sculpture from Oštrice II: Duality, photographed against a light gallery background.',
-        caption: '3D-printed sculpture from Oštrice II: Duality.',
+        alt: 'A white 3D-printed animal sculpture photographed against a light gallery background.',
+        caption: '3D-printed animal sculpture.',
       },
       {
         kind: 'image',
         src: '/projects/blades-duality-render.webp',
-        alt: 'Digital render of the white Oštrice II sculpture on a neutral background.',
+        alt: 'Digital render of a white 3D-printed animal sculpture on a neutral background.',
         caption: 'Digital render of the sculpture.',
       },
     ],
