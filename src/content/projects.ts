@@ -234,7 +234,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'sculpture-3d-printing',
-    title: 'blades II: duality',
+    title: 'blades || : 3d prints',
     year: '2018',
     type: 'Sculpture / 3D Printing',
     kindLabel: 'Sculpture / 3D Printing',
