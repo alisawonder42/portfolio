@@ -17,7 +17,7 @@ function ContactLink() {
         <li className={styles.socialItem}>
           <span className={styles.socialIndex}>00</span>
           <a className={styles.socialLink} href={siteContent.contact.email}>
-            contact:me <span aria-hidden="true">↗</span>
+            Contact me <span aria-hidden="true">↗</span>
           </a>
         </li>
         <li className={styles.socialItem}>
