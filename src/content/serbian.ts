@@ -135,11 +135,7 @@ const translations: Record<string, Partial<Project>> = {
     type: 'Skulptura / 3D štampa',
     kindLabel: 'Skulptura / 3D štampa',
     credit: 'Razvoj koncepta',
-    collaboration: 'Koncept razvijen sa dr Vladimirom Alanderom —',
-    collaborationLink: {
-      label: 'Pogledaj njegov profil ↗',
-      href: 'https://www.its.edu.rs/dr-um-vladimir-alander/',
-    },
+    collaboration: 'U saradnji sa dr Vladimirom Alanderom.',
     overview:
       'Izložba predstavlja 3D štampane životinjske skulpture Vladimira Alandera i nastavlja njegov ciklus Oštrice. Oslanjajući se na slovenski folklor i narodna verovanja, radovi povezuju životinje u parove kroz kontrast toplih i hladnih oštrica, prenoseći digitalno vajane oblike u fizički prostor.',
     media: [
@@ -215,7 +211,7 @@ export const serbianExperiments = experiments.map((experiment, index) => ({
     },
     {
       type: 'C++ / OpenGL studija',
-      note: 'Moj prvi projekat u C++-u i OpenGL-u, napravljen tokom studija računarske grafike na fakultetu.',
+      note: 'Klon igre u stilu DX-Ball-a i moj prvi projekat u C++-u i OpenGL-u, napravljen tokom studija računarske grafike.',
     },
   ][index],
 }))
